@@ -23,6 +23,28 @@
     --app-color-black: #161616;
 }
 
+body.light {
+    --app-primary-color: #386641;
+    --app-secondary-color: #6a994e;
+    --app-third-color: #a7c957;
+    --app-light-color: #f2e8cf;
+    --app-evidenced-color: #bc4749;
+
+    --app-dark-primary-color: #1f4022;
+    --app-dark-secondary-color: #406031;
+    --app-dark-third-color: #586b3b;
+    --app-dark-light-color: #292623;
+    --app-dark-evidenced-color: #842a2c;
+
+    --app-color-white: #FFF8E1;
+    --app-color-black: #161616;
+}
+
+body.dark {
+    --app-primary-color: #000000;
+    --app-secondary-color: #122705;
+}
+
 .App{
     height: 100vh;
     width: 100vw;

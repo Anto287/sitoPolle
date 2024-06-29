@@ -5,7 +5,7 @@ import SidebarMenu from '@components/SidebarMenu';
 const Layout = () => {
     return (
         <>
-            <div class="container-app">
+            <div className="container-app">
                 <SidebarMenu></SidebarMenu>
                 <main className="App">
                     <Outlet />
