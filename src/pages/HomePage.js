@@ -1,11 +1,9 @@
 import React from 'react';
-import Header from '@components/Header';
 import Footer from '@components/Footer';
 
 const HomePage = () => {
   return (
-    <div>
-      <Header />
+    <div style={{height: '100%', width: '100%', backgroundColor: 'red' }}>
       <main>
         <h2>Home Page</h2>
         <p>Welcome to the home page!</p>

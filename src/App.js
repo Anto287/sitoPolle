@@ -5,6 +5,9 @@ import HomePage from '@pages/HomePage';
 import AboutPage from '@pages/AboutPage';
 import Layout from '@components/Layout';
 
+import '@styles/App.css';
+import '@fortawesome/fontawesome-free/css/all.css';
+
 const App = () => {
   return (
     <Routes>

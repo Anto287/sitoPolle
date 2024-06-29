@@ -1,11 +1,9 @@
 import React from 'react';
-import Header from '@components/Header';
 import Footer from '@components/Footer';
 
 const AboutPage = () => {
   return (
     <div>
-      <Header />
       <main>
         <h2>About Us</h2>
         <p>This is the about page.</p>
