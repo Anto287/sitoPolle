@@ -10,7 +10,7 @@ module.exports = (env, argv) => {
     output: {
       path: path.resolve(__dirname, 'dist'),
       filename: 'bundle.[contenthash].js',
-      publicPath: isProduction ? '/your-repo-name/' : '/'
+      publicPath: isProduction ? '/sitoPolle/' : '/'
     },
     mode: isProduction ? 'production' : 'development',
     module: {
