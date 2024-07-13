@@ -3,7 +3,7 @@ import Footer from '@components/Footer';
 
 const HomePage = () => {
   return (
-    <div className='container-page'>
+    <div className="container-page">
       <main>
         <h2>Home Page</h2>
         <p>Welcome to the home page!</p>

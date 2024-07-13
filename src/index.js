@@ -5,17 +5,17 @@ import '@styles/App.css';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-function Index(){
-  return(
+function Index() {
+  return (
     <React.StrictMode>
-        <BrowserRouter>
-            <Routes>
-              <Route path="/*" element={<App />} />
-            </Routes>
-        </BrowserRouter>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/*" element={<App />} />
+        </Routes>
+      </BrowserRouter>
     </React.StrictMode>
-  )
-};
+  );
+}
 
 const container = document.getElementById('root');
 const root = ReactDOM.createRoot(container);

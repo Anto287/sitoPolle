@@ -8,10 +8,11 @@ module.exports = (env, argv) => {
   return {
     entry: './src/index.js',
     output: {
-      path: path.resolve(__dirname, 'dist'),
+      path: path.resolve(__dirname, 'build'),
       filename: 'bundle.[contenthash].js',
       publicPath: isProduction ? '/sitoPolle/' : '/'
     },
+    devtool: 'inline-source-map',
     mode: isProduction ? 'production' : 'development',
     module: {
       rules: [
@@ -19,7 +20,7 @@ module.exports = (env, argv) => {
           test: /\.(js|jsx)$/,
           exclude: /node_modules/,
           use: {
-            loader: 'babel-loader',
+            loader: ['babel-loader', 'eslint-loader'],
           },
         },
         {
@@ -58,7 +59,7 @@ module.exports = (env, argv) => {
     ],
     devServer: {
       static: {
-        directory: path.join(__dirname, 'dist'),
+        directory: path.join(__dirname, 'build'),
       },
       compress: true,
       port: 3000,

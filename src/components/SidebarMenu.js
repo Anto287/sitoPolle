@@ -83,10 +83,17 @@ const SidebarMenu = () => {
                 <a href="#" onClick={() => handleItemClick(index)}>
                   <i className={`icon ${item.iconClass}`}></i>
                   <span className="text">{item.title}</span>
-                  {item.submenu && <i className="arrow ph-bold ph-caret-down"></i>}
+                  {item.submenu && (
+                    <i className="arrow ph-bold ph-caret-down"></i>
+                  )}
                 </a>
                 {item.submenu && (
-                  <ul className="sub-menu" style={{ display: activeIndex === index ? 'block' : 'none' }}>
+                  <ul
+                    className="sub-menu"
+                    style={{
+                      display: activeIndex === index ? 'block' : 'none',
+                    }}
+                  >
                     {item.submenu.map((subitem, subIndex) => (
                       <li key={subIndex}>
                         <a href="#">
