@@ -3,7 +3,7 @@ import Footer from '@components/Footer';
 
 const HomePage = () => {
   return (
-    <div style={{backgroundColor: 'var(--app-primary-color)', color: 'var(--app-secondary-color)' }}>
+    <div className='container-page'>
       <main>
         <h2>Home Page</h2>
         <p>Welcome to the home page!</p>

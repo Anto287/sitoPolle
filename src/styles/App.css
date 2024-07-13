@@ -46,25 +46,37 @@ body.dark {
 }
 
 .App{
-    height: 100vh;
-    width: 100vw;
+    height: calc(100vh - 20px);
+    width: 100%;
     z-index: 0;
     overflow: auto;
+    margin: 10px 10px 10px 10px;
+    border-radius: 25px;
+    transition: all 0.3s;
 }
 
+.container-page{
+    width: 100%;
+    height: 100%;
+    background-color: var(--app-primary-color);
+    padding: 10px;
+}
 @media only screen and (max-width: 480px) {
     .container-app{
         display: flex;
         align-items: center;
         justify-content: center;
         flex-direction: column-reverse;
+        background-color: red;
     }
 }
 
 @media only screen and (min-width: 481px){
     .container-app{
+        position: relative;
         display: flex;
         align-items: center;
         justify-content: start;
+        background-color: red;
     }
 }
