@@ -11,7 +11,7 @@ module.exports = (env, argv) => {
     output: {
       path: path.resolve(__dirname, 'build'),
       filename: 'bundle.[contenthash].js',
-      publicPath: ''
+      publicPath: isProduction ? '/sitoPolle/' : '/'
     },
     devtool: isProduction ? 'source-map' : 'inline-source-map',
     mode: isProduction ? 'production' : 'development',
