@@ -10,6 +10,7 @@ import '@fortawesome/fontawesome-free/css/all.css';
 const App = () => {
   return (
     <Routes>
+      <div style={{color: 'red'}}>Ciao</div>
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
         <Route path="home" element={<HomePage />} />
