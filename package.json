@@ -16,7 +16,7 @@
     "eslint-fix": "eslint --fix \"src/**/*.js\"",
     "build": "webpack --mode production",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d build"
   },
   "keywords": [],
   "author": "",
