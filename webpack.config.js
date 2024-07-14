@@ -6,10 +6,13 @@ module.exports = (env, argv) => {
   const isProduction = argv.mode === 'production';
 
   return {
-    entry: './src/index.js',
+    entry: [
+      path.join(__dirname, './src/index.js')
+    ],
     output: {
       path: path.resolve(__dirname, 'build'),
       filename: 'bundle.js',
+      publicPath: ''
     },
     devtool: isProduction ? 'source-map' : 'inline-source-map',
     mode: isProduction ? 'production' : 'development',
@@ -41,6 +44,10 @@ module.exports = (env, argv) => {
             },
           ],
         },
+        {
+          test: /\.json$/, 
+          use: ['json']
+        }
       ],
     },
     resolve: {
