@@ -1,7 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const CompressionPlugin = require('compression-webpack-plugin');
 
 module.exports = (env, argv) => {
   const isProduction = argv.mode === 'production';
@@ -33,7 +32,6 @@ module.exports = (env, argv) => {
         },
         {
           test: /\.(png|svg|jpg|jpeg|gif)$/i,
-          type: 'asset/resource',
           use: [
             {
               loader: 'file-loader',
@@ -47,10 +45,6 @@ module.exports = (env, argv) => {
         {
           test: /\.json$/, 
           use: ['json-loader']
-        },
-        {
-          test: /\.(woff|woff2|eot|ttf|otf)$/i,
-          type: 'asset/resource',
         },
       ],
     },
@@ -68,13 +62,7 @@ module.exports = (env, argv) => {
       new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({
         template: path.join(__dirname, 'public', 'index.html'),
-      }),
-      new CompressionPlugin({
-        algorithm: 'gzip',
-        test: /\.(js|css|html|svg)$/,
-        threshold: 10240,
-        minRatio: 0.8,
-      }),  
+      }), 
     ],
     devServer: {
       historyApiFallback: true,
