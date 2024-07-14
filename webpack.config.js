@@ -8,7 +8,7 @@ module.exports = (env, argv) => {
   return {
     entry: './src/index.js',
     output: {
-      path: path.resolve(__dirname, 'build'),
+      path: path.resolve(__dirname, 'dist'),
       filename: 'bundle.[contenthash].js',
       publicPath: isProduction ? '/sitoPolle/' : '/'
     },
@@ -66,7 +66,7 @@ module.exports = (env, argv) => {
     ],
     devServer: {
       static: {
-        directory: path.join(__dirname, 'build'),
+        directory: path.join(__dirname, 'dist'),
       },
       compress: true,
       port: 3000,
