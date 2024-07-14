@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import '@styles/App.css';
+import myIcon from '@images/icon.png';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
@@ -9,6 +10,7 @@ function Index() {
   return (
     <React.StrictMode>
       <BrowserRouter>
+        <p style={{color: 'red'}}>Ciao</p> 
         <Routes>
           <Route path="/*" element={<App />} />
         </Routes>
@@ -17,7 +19,6 @@ function Index() {
   );
 }
 
-import myIcon from '@images/icon.png';
 
 const link = document.createElement('link');
 link.rel = 'icon';
