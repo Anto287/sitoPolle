@@ -6,7 +6,7 @@ import myIcon from '@images/icon.png';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-const basename = process.env.REACT_APP_BASENAME || '/';
+const basename = process.env.BASENAME;
 
 function Index() {
   return (
