@@ -1,5 +1,4 @@
 {
-  "homepage": "https://Anto287.github.io/sitoPolle",
   "name": "sitopolle",
   "version": "1.0.0",
   "private": true,
@@ -15,7 +14,6 @@
     "format": "prettier --write \"src/**/*.js\"",
     "eslint-fix": "eslint --fix \"src/**/*.js\"",
     "build": "webpack --mode production",
-    "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
   "keywords": [],
