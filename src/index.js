@@ -17,6 +17,14 @@ function Index() {
   );
 }
 
+import myIcon from '@images/icon.png';
+
+const link = document.createElement('link');
+link.rel = 'icon';
+link.type = 'image/png';
+link.href = myIcon;
+document.head.appendChild(link);
+
 const container = document.getElementById('root');
 const root = ReactDOM.createRoot(container);
 root.render(<Index />);
