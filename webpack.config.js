@@ -31,7 +31,8 @@ module.exports = (env, argv) => {
           use: ['style-loader', 'css-loader'],
         },
         {
-          test: /\.(png|jpg|gif|svg)$/,
+          test: /\.(png|svg|jpg|jpeg|gif)$/i,
+          type: 'asset/resource',
           use: [
             {
               loader: 'file-loader',
@@ -45,7 +46,11 @@ module.exports = (env, argv) => {
         {
           test: /\.json$/, 
           use: ['json-loader']
-        }
+        },
+        {
+          test: /\.(woff|woff2|eot|ttf|otf)$/i,
+          type: 'asset/resource',
+        },
       ],
     },
     resolve: {
@@ -63,14 +68,20 @@ module.exports = (env, argv) => {
       new HtmlWebpackPlugin({
         template: './public/index.html',
       }),
+      new CompressionPlugin({
+        algorithm: 'gzip',
+        test: /\.(js|css|html|svg)$/,
+        threshold: 10240,
+        minRatio: 0.8,
+      }),  
     ],
     devServer: {
+      historyApiFallback: true,
       static: {
         directory: path.join(__dirname, 'build'),
       },
       compress: true,
       port: 3000,
-      historyApiFallback: true,
     },
   };
 };

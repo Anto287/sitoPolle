@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
+const App = React.lazy(() => import('./App'));
 import '@styles/App.css';
 import myIcon from '@images/icon.png';
 
@@ -10,10 +10,11 @@ function Index() {
   return (
     <React.StrictMode>
       <BrowserRouter>
-        <p style={{color: 'red'}}>Ciao</p> 
-        <Routes>
-          <Route path="/*" element={<App />} />
-        </Routes>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Routes>
+            <Route path="/*" element={<App />} />
+          </Routes>
+        </Suspense>
       </BrowserRouter>
     </React.StrictMode>
   );
