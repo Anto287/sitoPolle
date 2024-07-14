@@ -9,8 +9,7 @@ module.exports = (env, argv) => {
     entry: './src/index.js',
     output: {
       path: path.resolve(__dirname, 'build'),
-      filename: 'bundle.[contenthash].js',
-      publicPath: isProduction ? '/sitoPolle/' : '/'
+      filename: 'bundle.js',
     },
     devtool: isProduction ? 'source-map' : 'inline-source-map',
     mode: isProduction ? 'production' : 'development',
