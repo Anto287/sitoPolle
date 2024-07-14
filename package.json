@@ -6,6 +6,7 @@
     "type": "git",
     "url": "https://github.com/Anto287/sitoPolle.git"
   },
+  "homepage": "https://Anto287.github.io/sitoPolle",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -14,6 +15,7 @@
     "format": "prettier --write \"src/**/*.js\"",
     "eslint-fix": "eslint --fix \"src/**/*.js\"",
     "build": "webpack --mode production",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
   "keywords": [],
