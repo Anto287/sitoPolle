@@ -4,7 +4,7 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/Anto287/sitoPolle.git"
+    "url": "git@github.com:Anto287/sitoPolle.git"
   },
   "homepage": "https://Anto287.github.io/sitoPolle",
   "description": "",
@@ -29,8 +29,8 @@
     "react-router-dom": "^6.23.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.24.7",
-    "@babel/preset-env": "^7.24.7",
+    "@babel/core": "^7.24.8",
+    "@babel/preset-env": "^7.24.8",
     "@babel/preset-react": "^7.24.7",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^9.1.3",
