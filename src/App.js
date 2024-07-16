@@ -10,10 +10,10 @@ import '@fortawesome/fontawesome-free/css/all.css';
 const App = () => {
   return (
     <Routes>
-      <Route path="sitoPolle/" element={<Layout />}>
+      <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
-        <Route path="sitoPolle/home" element={<HomePage />} />
-        <Route path="sitoPolle/about" element={<AboutPage />} />
+        <Route path="home" element={<HomePage />} />
+        <Route path="about" element={<AboutPage />} />
       </Route>
     </Routes>
   );

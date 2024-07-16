@@ -11,10 +11,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "--env.BASENAME=/ webpack serve --open --mode development --hot",
+    "start": "webpack serve --open --mode development --hot",
     "format": "prettier --write \"src/**/*.js\"",
     "eslint-fix": "eslint --fix \"src/**/*.js\"",
-    "build": "--env.BASENAME=sitoPolle/ webpack --mode production",
+    "build": "webpack --mode production",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },

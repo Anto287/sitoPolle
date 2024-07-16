@@ -1,9 +1,11 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const { DefinePlugin } = require('webpack');
 
 module.exports = (env, argv) => {
   const isProduction = argv.mode === 'production';
+  const basename = isProduction ? '/sitoPolle' : '';
 
   return {
     entry: path.join(__dirname, 'src', 'index.js'),
@@ -63,6 +65,9 @@ module.exports = (env, argv) => {
       new HtmlWebpackPlugin({
         template: path.join(__dirname, 'public', 'index.html'),
       }), 
+      new DefinePlugin({
+        'process.env.BASENAME': JSON.stringify(basename),
+      }),
     ],
     devServer: {
       historyApiFallback: true,
