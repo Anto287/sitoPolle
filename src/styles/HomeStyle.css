@@ -1,0 +1,14 @@
+.container-page{
+    height: 100%;
+    width: 100vw;
+    background-color: var(--app-third-color);
+    display: flex;
+    flex-direction: column;
+}
+
+.contaienr-paralax-effect{
+    background-color: var(--app-primary-color);
+    min-height: 100vh;
+    min-width: 100vw;
+    overflow: hidden;
+}

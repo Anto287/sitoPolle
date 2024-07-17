@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap');
-
 * {
     margin: 0;
     padding: 0;
@@ -7,76 +5,41 @@
 }
 
 :root {
-    --app-primary-color: #386641;
-    --app-secondary-color: #6a994e;
-    --app-third-color: #a7c957;
-    --app-light-color: #f2e8cf;
-    --app-evidenced-color: #bc4749;
-
-    --app-dark-primary-color: #1f4022;
-    --app-dark-secondary-color: #406031;
-    --app-dark-third-color: #586b3b;
-    --app-dark-light-color: #292623;
-    --app-dark-evidenced-color: #842a2c;
+    --app-primary-color: #606c38;
+    --app-secondary-color: #283618;
+    --app-third-color: #fefae0;
+    --app-light-color: #dda15e;
+    --app-evidenced-color: #bc6c25;
 
     --app-color-white: #FFF8E1;
     --app-color-black: #161616;
 }
 
 body.light {
-    --app-primary-color: #386641;
-    --app-secondary-color: #6a994e;
-    --app-third-color: #a7c957;
-    --app-light-color: #f2e8cf;
-    --app-evidenced-color: #bc4749;
-
-    --app-dark-primary-color: #1f4022;
-    --app-dark-secondary-color: #406031;
-    --app-dark-third-color: #586b3b;
-    --app-dark-light-color: #292623;
-    --app-dark-evidenced-color: #842a2c;
+    --app-primary-color: #606c38;
+    --app-secondary-color: #283618;
+    --app-third-color: #fefae0;
+    --app-light-color: #dda15e;
+    --app-evidenced-color: #bc6c25;
 
     --app-color-white: #FFF8E1;
     --app-color-black: #161616;
 }
 
 body.dark {
-    --app-primary-color: #000000;
-    --app-secondary-color: #122705;
+    --app-primary-color: #374520;
+    --app-secondary-color: #1a2410;
+    --app-third-color: #2c2c26;
+    --app-light-color: #87512c;
+    --app-evidenced-color: #663314;
+
+    --app-color-white: #161616;
+    --app-color-black: #FFF8E1;
 }
 
-.App{
-    height: calc(100vh - 20px);
-    width: 100%;
-    z-index: 0;
-    overflow: auto;
-    margin: 10px 10px 10px 10px;
-    border-radius: 25px;
-    transition: all 0.3s;
-}
-
-.container-page{
-    width: 100%;
-    height: 100%;
-    background-color: var(--app-primary-color);
-    padding: 10px;
-}
-@media only screen and (max-width: 480px) {
-    .container-app{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column-reverse;
-        background-color: red;
-    }
-}
-
-@media only screen and (min-width: 481px){
-    .container-app{
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: start;
-        background-color: red;
-    }
+.container-web{
+    height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
