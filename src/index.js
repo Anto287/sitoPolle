@@ -6,12 +6,10 @@ import myIcon from '@images/icon.png';
 
 import { HashRouter } from 'react-router-dom';
 
-const basename = process.env.BASENAME || '';
-
 function Index() {
   return (
     <React.StrictMode>
-      <HashRouter basename={basename}>
+      <HashRouter>
         <Suspense fallback={<div>Loading...</div>}>
           <App />
         </Suspense>
