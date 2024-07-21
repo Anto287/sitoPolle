@@ -18,11 +18,11 @@
 }
 
 body.light {
-    --app-primary-color: #606c38;
-    --app-secondary-color: #283618;
-    --app-third-color: #fefae0;
-    --app-light-color: #dda15e;
-    --app-evidenced-color: #bc6c25;
+    --app-primary-color: rgb(96, 108, 56);
+    --app-secondary-color: rgb(40, 54, 24);
+    --app-third-color: rgb(254, 250, 224);
+    --app-light-color: rgb(221, 161, 94);
+    --app-evidenced-color: rgb(188, 108, 37);
 
     --app-color-white: #FFF8E1;
     --app-color-black: #161616;
