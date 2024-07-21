@@ -1,0 +1,224 @@
+svg {
+    width: 50%;
+    max-height: 500px;
+    height: auto;
+    margin: 0 0 15px;
+}
+  
+.wrapper-small{
+    width: 100%; 
+    height: 100vh;
+    background: var(--app-third-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.landing-page-small {
+    max-width: 100%;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(10px, 5vw, 40px);
+}
+
+.container-svg-small{
+    text-align: center;
+}
+
+.container-text-small{
+    width: 80%;
+    padding: 2vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: clamp(10px, 2vw, 16px);
+}
+
+.container-text-small > h1 {
+    font-family: "Lato", cursive;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.container-text-small > p {
+    font-family: "Lato", cursive;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    margin: 4% auto 6%;
+}
+
+.wrapper-mind{
+    width: 100%; 
+    height: 100vh;
+    background: var(--app-third-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.landing-page-mind {
+    max-width: 80%;
+    width: 80%;
+    height: 70%;
+    margin: 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+    gap: clamp(10px, 2vw, 40px);;
+}
+
+.container-svg-mind{
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+}
+
+.container-text-mind{
+    width: 80%;
+    padding: clamp(10px, 2vw, 20px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: clamp(10px, 2vw, 16px);
+}
+
+.container-text-mind > h1 {
+    font-family: "Lato", cursive;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.container-text-mind > p {
+    font-family: "Lato", cursive;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    margin: 4% auto 6%;
+}
+
+.wrapper-large{
+    width: 100%; 
+    height: 100vh;
+    background: var(--app-third-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.landing-page-large {
+    max-width: 100%;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: clamp(10px, 5vw, 40px);
+}
+
+.container-svg-large{
+    text-align: center;
+}
+
+.container-svg-large > svg {
+    width: 50%;
+    max-height: 1000px;
+    height: auto;
+    margin: 0 0 15px;
+}
+
+.container-text-large{      
+    width: 50%;
+    min-width: 500px;
+    height: 100%;
+    padding: 2vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: clamp(10px, 2vw, 16px);
+    margin-left: clamp(20px, 5vw, 40px);
+}
+
+.container-text-large > h1 {
+    font-family: "Lato", cursive;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.container-text-large > p {
+    font-family: "Lato", cursive;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    margin: 4% auto 6%;
+}
+
+.wrapper-extra-large{
+    width: 100%; 
+    height: 100vh;
+    background: var(--app-third-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.landing-page-extra-large {
+    max-width: 100%;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: clamp(10px, 5vw, 40px);
+}
+
+.container-svg-extra-large{
+    text-align: center;
+}
+
+.container-svg-extra-large > svg {
+    width: 50%;
+    max-height: 2000px;
+    height: auto;
+    margin: 0 0 15px;
+}
+
+.container-text-extra-large{      
+    width: 50%;
+    min-width: 500px;
+    height: 100%;
+    padding: 2vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: clamp(10px, 4vw, 30px);
+    margin-left: clamp(20px, 5vw, 40px);
+}
+
+.container-text-extra-large > h1 {
+    font-family: "Lato", cursive;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.container-text-extra-large > p {
+    font-family: "Lato", cursive;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    margin: 4% auto 6%;
+}
