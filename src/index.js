@@ -1,27 +1,29 @@
 import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
-const App = React.lazy(() => import('./App'));
+import { HashRouter } from 'react-router-dom';
 import '@styles/App.css';
 import myIcon from '@images/icon.png';
 
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+const App = React.lazy(() => import('./App'));
 
 const basename = process.env.BASENAME || '';
 
 function Index() {
   return (
     <React.StrictMode>
-      <BrowserRouter basename={basename}>
+      <HashRouter basename={basename}>
         <Suspense fallback={<div>Loading...</div>}>
-          <Routes>
-            <Route path="/*" element={<App />} />
-          </Routes>
+          <App />
         </Suspense>
-      </BrowserRouter>
+      </HashRouter>
     </React.StrictMode>
   );
 }
 
+if (!window.location.hash) {
+  window.location = window.location + '#/home';
+}
 
 const link = document.createElement('link');
 link.rel = 'icon';
