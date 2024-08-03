@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { UseResponsiveJSX } from '@components/UseResponsiveJSX';
+import { withNamespaces } from 'react-i18next';
 import Button from '@components/Button';
 import '@styles/NoPage.css';
 
-const NoPage = () => {
+const NoPage = ({t}) => {
   const [widthDevice, setWidthDevice] = useState('-small');
 
   const navigate = useNavigate();
@@ -82,13 +83,13 @@ const NoPage = () => {
             </svg>
           </div>
           <div className={"container-text" + widthDevice}>
-            <h1> 404 Error.</h1>
-            <p> We can't find the page you're looking for.</p>
+            <h1>{t('404_ERROR')}</h1>
+            <p>{t('IMPOSSIBLE_LOAD_PAGE')}</p>
             <Button 
               className="btn-default" 
               style={{width: '25vw', minWidth: breakpoint === 3 ? '220px' : '120px', maxWidth: breakpoint === 3 ? '350px' : '250px'}}
               icon="fa-solid fa-house" 
-              text="Back to home"
+              text={t('BACK_TO_HOME')}
               onClick={handleClick}
             />
           </div>
@@ -98,4 +99,4 @@ const NoPage = () => {
   );
 };
 
-export default NoPage;
+export default withNamespaces()(NoPage);

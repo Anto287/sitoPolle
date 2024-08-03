@@ -45,8 +45,10 @@ module.exports = (env, argv) => {
           ],
         },
         {
-          test: /\.json$/, 
-          use: ['json-loader']
+          test: /\.json$/,
+          use: 'json-loader',
+          type: 'javascript/auto',
+          exclude: /node_modules/,
         },
       ],
     },
@@ -58,6 +60,7 @@ module.exports = (env, argv) => {
         '@styles': path.resolve(__dirname, 'src/styles'),
         '@assets': path.resolve(__dirname, 'src/assets'),
         '@images': path.resolve(__dirname, 'src/assets/images'),
+        '@translation': path.resolve(__dirname, 'public/locales'),
       },
     },
     plugins: [

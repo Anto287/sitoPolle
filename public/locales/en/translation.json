@@ -1,0 +1,10 @@
+{
+    "HELLO_MOBILE": "Hello phone",
+    "HELLO_TABLET": "Hello Tablet",
+    "HELLO_PC": "Hello Pc",
+    "HELLO_BIG_MONITOR": "Hello Big Screen",
+    "LOADING": "Loading...",
+    "404_ERROR": "Error 404",
+    "IMPOSSIBLE_LOAD_PAGE": "Unable to load requested page, non-existent or wrong name",
+    "BACK_TO_HOME": "Back to Home"
+}

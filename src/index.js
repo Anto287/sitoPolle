@@ -1,7 +1,9 @@
 import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
+import LoadingSpinner from '@components/LoadingSpinner';
 const App = React.lazy(() => import('./App'));
 import '@styles/App.css';
+import './i18n';
 import myIcon from '@images/icon.png';
 
 import { HashRouter } from 'react-router-dom';
@@ -10,7 +12,7 @@ function Index() {
   return (
     <React.StrictMode>
       <HashRouter>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<LoadingSpinner />}>
           <App />
         </Suspense>
       </HashRouter>
