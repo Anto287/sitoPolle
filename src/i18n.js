@@ -1,6 +1,6 @@
 import i18n from "i18next";
 import detector from "i18next-browser-languagedetector";
-import { reactI18nextModule } from "react-i18next";
+import { initReactI18next } from "react-i18next";
 
 import translationEN from '@translation/en/translation.json';
 import translationIT from '@translation/it/translation.json';
@@ -25,7 +25,7 @@ const resources = {
 console.log(detector);
 i18n
   .use(detector)
-  .use(reactI18nextModule)
+  .use(initReactI18next)
   .init({
     resources,
     fallbackLng: "en",

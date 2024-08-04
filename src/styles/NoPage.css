@@ -37,6 +37,7 @@ svg {
     flex-direction: column;
     align-items: center;
     font-size: clamp(10px, 2vw, 16px);
+    text-align: center;
     color: var(--app-color-black);
 }
 
@@ -90,6 +91,7 @@ svg {
     flex-direction: column;
     align-items: center;
     font-size: clamp(10px, 2vw, 16px);
+    text-align: center;
     color: var(--app-color-black);
 }
 
@@ -151,6 +153,7 @@ svg {
     align-items: center;
     font-size: clamp(10px, 2vw, 16px);
     margin-left: clamp(20px, 5vw, 40px);
+    text-align: center;
     color: var(--app-color-black);
 }
 
@@ -212,6 +215,7 @@ svg {
     align-items: center;
     font-size: clamp(10px, 4vw, 30px);
     margin-left: clamp(20px, 5vw, 40px);
+    text-align: center;
     color: var(--app-color-black);
 }
 

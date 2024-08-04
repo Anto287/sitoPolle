@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { UseResponsiveJSX } from '@components/UseResponsiveJSX';
-import { withNamespaces } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import Button from '@components/Button';
 import '@styles/NoPage.css';
 
-const NoPage = ({t}) => {
+const NoPage = () => {
+  const { t } = useTranslation();
   const [widthDevice, setWidthDevice] = useState('-small');
 
   const navigate = useNavigate();
@@ -99,4 +100,4 @@ const NoPage = ({t}) => {
   );
 };
 
-export default withNamespaces()(NoPage);
+export default NoPage;

@@ -1,8 +1,9 @@
 import React from 'react';
-import { withNamespaces } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import { UseResponsiveJSX } from '@components/UseResponsiveJSX';
 
-const ParalaxHome = ({t}) => {
+const ParalaxHome = () => {
+  const { t } = useTranslation();
   const breakpoint = UseResponsiveJSX([600, 1200, 2000]); 
   
   return (
@@ -15,4 +16,4 @@ const ParalaxHome = ({t}) => {
   );
 };
 
-export default withNamespaces()(ParalaxHome);
+export default ParalaxHome;

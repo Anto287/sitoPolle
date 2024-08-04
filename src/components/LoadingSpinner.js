@@ -1,16 +1,23 @@
 import React from 'react';
-import { withNamespaces } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import '@styles/LoadingSpinner.css';
 
-const LoadingSpinner = ({t}) => {
+const LoadingSpinner = () => {
+  const { t } = useTranslation();
+
   return (
     <div className='container-spinner'>
-        <div className="loading-spinner">
-            <div className="spinner"></div>
-            <div>{t('LOADING')}</div>
-        </div>
+      <div className="loading-spinner">
+        <svg class="pl" width="240" height="240" viewBox="0 0 240 240">
+          <circle class="pl__ring pl__ring--a" cx="120" cy="120" r="105" fill="none" stroke="#000" stroke-width="20" stroke-dasharray="0 660" stroke-dashoffset="-330" stroke-linecap="round"></circle>
+          <circle class="pl__ring pl__ring--b" cx="120" cy="120" r="35" fill="none" stroke="#000" stroke-width="20" stroke-dasharray="0 220" stroke-dashoffset="-110" stroke-linecap="round"></circle>
+          <circle class="pl__ring pl__ring--c" cx="85" cy="120" r="70" fill="none" stroke="#000" stroke-width="20" stroke-dasharray="0 440" stroke-linecap="round"></circle>
+          <circle class="pl__ring pl__ring--d" cx="155" cy="120" r="70" fill="none" stroke="#000" stroke-width="20" stroke-dasharray="0 440" stroke-linecap="round"></circle>
+        </svg>
+        <div>{t('LOADING')}</div>
+      </div>
     </div>
   );
 };
 
-export default withNamespaces()(LoadingSpinner);
+export default LoadingSpinner;
