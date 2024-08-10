@@ -8,10 +8,10 @@ const ParalaxHome = () => {
   
   return (
     <div>
-        {breakpoint === 0 && <div>{t('HELLO_MOBILE')}</div>}
-        {breakpoint === 1 && <div>{t('HELLO_TABLET')}</div>}
-        {breakpoint === 2 && <div>{t('HELLO_PC')}</div>}
-        {breakpoint === 3 && <div>{t('HELLO_BIG_MONITOR')}</div>}
+      {breakpoint === 0 && <div>{t('HELLO_MOBILE')}</div>}
+      {breakpoint === 1 && <div>{t('HELLO_TABLET')}</div>}
+      {breakpoint === 2 && <div>{t('HELLO_PC')}</div>}
+      {breakpoint === 3 && <div>{t('HELLO_BIG_MONITOR')}</div>}
     </div>
   );
 };

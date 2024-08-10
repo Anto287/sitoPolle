@@ -22,7 +22,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^6.5.2",
     "gsap": "^3.12.5",
     "i18next": "^23.12.2",
     "i18next-browser-languagedetector": "^8.0.0",

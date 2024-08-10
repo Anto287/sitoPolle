@@ -6,5 +6,11 @@
     "LOADING": "Loading...",
     "404_ERROR": "Error 404",
     "IMPOSSIBLE_LOAD_PAGE": "Unable to load requested page, non-existent or wrong name",
-    "BACK_TO_HOME": "Back to Home"
+    "BACK_TO_HOME": "Back to Home",
+    "THE_POLLE": "The Polle",
+    "HOME": "Home",
+    "TANA_DEL_LUPO": "Tana Del Lupo",
+    "AREA_CAMPING": "Camping area",
+    "LAGHETTO": "Pond",
+    "MENU": "Menu"
 }
