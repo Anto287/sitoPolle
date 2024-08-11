@@ -3,11 +3,11 @@ import { Outlet } from 'react-router-dom';
 import Topbar from '@components/Topbar';
 
 
-const Layout = () => {
+const Layout = ({ showTopbar  }) => {
   return (
     <>
       <div className='container-web'>
-        <Topbar />
+        {showTopbar  && <Topbar />}
         <Outlet />
       </div>
     </>
