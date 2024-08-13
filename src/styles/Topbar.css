@@ -9,12 +9,13 @@
     align-items: center;
     justify-content: center;
     padding: 1% 4% 0% 4%;
-    transition: top 0.7s;
+    transition: top 0.5s;
     z-index: 99;
 }
 
 .topbar-pc.hidden {
-    top: -600px;
+    top: -11vh;
+    transition: top 0.5s;
 }
 
 .topbar-pc.visible {

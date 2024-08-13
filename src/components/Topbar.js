@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { UseResponsiveJSX } from '@components/UseResponsiveJSX';
 import ImgLoader from '@components/ImgLoader';
@@ -8,10 +8,6 @@ import myIcon from '@images/img_topbar/icon.webp';
 const ParalaxHome = ({ showTopBarScrolling }) => {
   const { t } = useTranslation();
   const breakpoint = UseResponsiveJSX([600, 1200, 2000]); 
-
-  useEffect(() => {
-    console.log(showTopBarScrolling)
-  }, [showTopBarScrolling]);
 
   return (
     <nav>
