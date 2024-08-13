@@ -1,6 +1,7 @@
 import React from 'react';
 
 import ParalaxHome from '@components/ParalaxHome';
+import DescriptionHome from '@components/DescriptionHome';
 
 import '@styles/HomeStyle.css';
 
@@ -11,6 +12,7 @@ const HomePage = () => {
         <div className='contaienr-paralax-effect'>
           <ParalaxHome />
         </div>
+        <DescriptionHome />
       </div>
     </>
   );

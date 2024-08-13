@@ -6,7 +6,7 @@ const Button = ({ text, icon, className, onClick, style }) => {
     <button className={className} onClick={onClick} style={style}>
         {icon && 
             <div className='icon-container'>
-                <i class={icon}></i>
+                <i className={icon}></i>
             </div>
         }
         {text && 

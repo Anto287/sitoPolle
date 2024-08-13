@@ -9,6 +9,16 @@
     align-items: center;
     justify-content: center;
     padding: 1% 4% 0% 4%;
+    transition: top 0.7s;
+    z-index: 99;
+}
+
+.topbar-pc.hidden {
+    top: -600px;
+}
+
+.topbar-pc.visible {
+    top: 0;
 }
 
 .topbar-content{

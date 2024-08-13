@@ -22,7 +22,6 @@ const resources = {
   }
 };
 
-console.log(detector);
 i18n
   .use(detector)
   .use(initReactI18next)
