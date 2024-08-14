@@ -2,6 +2,7 @@ import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import LoadingSpinner from '@components/LoadingSpinner';
 const App = React.lazy(() => import('./App'));
+import { MyDataProvider } from '@components/ScrollData';
 import '@styles/App.css';
 import './i18n';
 import myIcon from '@images/icon.png';
@@ -13,7 +14,9 @@ function Index() {
     <React.StrictMode>
       <HashRouter>
         <Suspense fallback={<LoadingSpinner />}>
-          <App />
+          <MyDataProvider>
+            <App />
+          </MyDataProvider>
         </Suspense>
       </HashRouter>
     </React.StrictMode>
