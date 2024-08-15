@@ -25,5 +25,15 @@
 .cell{
     width: 90%;
     max-width: 30%;
-    height: 35rem;
+    min-height: 25rem;
+    max-height: 30rem;
+    background-color: var(--app-primary-color);
+    padding: 1%;
+    border-radius: 16px;
+    transition: all ease-in 0.2s;
+}
+
+.cell:hover{
+    background-color: var(--app-secondary-color);
+    transition: all ease-in 0.2s;
 }

@@ -1,3 +1,188 @@
+.topbar-mobile{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6vh;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: top 0.5s;
+    z-index: 99;
+    display: flex;
+    align-items: center;
+    background: rgba(250, 246, 246, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    border-bottom: 1px solid rgba(255, 255, 255);
+}
+
+.topbar-mobile.hidden {
+    top: -10vh;
+    transition: top 0.5s;
+}
+
+.topbar-mobile.visible {
+    top: 0;
+}
+
+.topbar-content-mobile{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.container-logo-mobile{
+    height: 100%;
+    width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-topbar-mobile{
+    height: 100%;
+    width: calc(100% - 120px);
+    padding-right: 4%;
+    display: flex;
+    align-items: center;
+    gap: 1%;
+    justify-content: end;
+}
+
+.topbar-tablet{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 8vh;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: top 0.5s;
+    z-index: 99;
+    display: flex;
+    align-items: center;
+    background: rgba(250, 246, 246, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    border-bottom: 1px solid rgba(255, 255, 255);
+}
+
+.topbar-tablet.hidden {
+    top: -10vh;
+    transition: top 0.5s;
+}
+
+.topbar-tablet.visible {
+    top: 0;
+}
+
+.topbar-content-tablet{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.container-logo-tablet{
+    height: 100%;
+    width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-topbar-tablet{
+    container-name: container-topbar-tablet;
+    container-type: inline-size;
+    height: 100%;
+    width: calc(100% - 120px);
+    padding-right: 4%;
+    display: flex;
+    align-items: center;
+    gap: 1%;
+    justify-content: end;
+}
+
+.element-primary{
+    display: none;
+}
+
+@media (width >= 975px) {
+    .element-primary{
+        display: block;
+    }
+
+    .element-secondary{
+        display: block;
+    }
+
+    .element-third{
+        display: block;
+    }
+}
+
+@media (width >= 800px) and (width < 974px){
+    .element-primary{
+        display: none;
+    }
+
+    .element-secondary{
+        display: block;
+    }
+
+    .element-third{
+        display: block;
+    }
+}
+
+@media (width >= 600px) and (width < 799px) {
+    .element-primary{
+        display: none;
+    }
+
+    .element-secondary{
+        display: none;
+    }
+
+    .element-third{
+        display: block;
+    }
+}
+
+.container-element-tablet{
+    display: flex;
+    padding: 8px 20px 6px 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 8%;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.container-element-tablet > b{
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    transform: translateY(-1px);
+}
+
+.icon-topbar-tablet{
+    min-height: 16px;
+    height: 16px;
+    min-width: 20px;
+    width: 20px;
+    margin: 0;
+    transform: translateX(25%);
+}
+
 .topbar-pc{
     position: fixed;
     top: 0;
@@ -30,8 +215,8 @@
     align-items: center;
     background: rgba(250, 246, 246, 0.5);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
     border: 1px solid rgba(255, 255, 255);
 }
 
@@ -52,21 +237,23 @@
 
 .container-element{
     display: flex;
-    justify-content: flex-start;
+    width: auto;
+    justify-content: center;
     align-items: center;
-    gap: 8px;
+    gap: 8%;
     cursor: pointer;
+    white-space: nowrap;
 }
 
 .container-element > b{
     font-family: "Lato", sans-serif;
     font-weight: 400;
-    transform: translateY(1px);
+    transform: translateY(-1px);
 }
 
 .icon-topbar{
     height: auto;
-    width: 24px;
-    fill: var(--app-color-black);
+    width: 27px;
     margin: 0;
+    transform: translateX(25%);
 }

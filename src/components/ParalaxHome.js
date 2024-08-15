@@ -11,8 +11,32 @@ const ParalaxHome = () => {
   
   return (
     <div style={{position: 'relative', height: '100vh', width: '100vw', objectFit: 'contain'}}>
-      {breakpoint === 0 && <div>{t('HELLO_MOBILE')}</div>}
-      {breakpoint === 1 && <div>{t('HELLO_TABLET')}</div>}
+      {breakpoint === 0 && 
+         <div>
+          <MouseParallax 
+            enableOnTouchDevice
+            shouldResetPosition 
+            isAbsolutelyPositioned
+            lerpEase={0.01}
+            strength={0.01}
+          >
+            <img src={img_home} style={{maskImage: 'linear-gradient(white 70%, transparent)'}} alt=''/>
+          </MouseParallax>
+        </div>
+      }
+      {breakpoint === 1 && 
+        <div>
+          <MouseParallax 
+            enableOnTouchDevice
+            shouldResetPosition 
+            isAbsolutelyPositioned
+            lerpEase={0.01}
+            strength={0.01}
+          >
+            <img src={img_home} style={{maskImage: 'linear-gradient(white 70%, transparent)'}} alt=''/>
+          </MouseParallax>
+        </div>
+      }
       {breakpoint === 2 && 
         <div>
           <MouseParallax 

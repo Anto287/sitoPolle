@@ -18,15 +18,15 @@ const DescriptionHome = () => {
   const controlsCell = useAnimation();
   const listStructure = [
     {
-        img: laghetto
+      img: laghetto
     },
     {
-        img: la_tana
+      img: la_tana
     },
     {
-        img: area_camper
+      img: area_camper
     }
-  ]
+  ];
 
   useEffect(() => {
     const scrollPosition = data;
@@ -38,10 +38,10 @@ const DescriptionHome = () => {
       controls.start({ opacity: 0, y: 50 }); 
     }
 
-    if(scrollPosition > (triggerPoint + 100)){
-        controlsCell.start({ opacity: 1, y: 0 });
+    if(scrollPosition > (triggerPoint + 70)){
+      controlsCell.start({ opacity: 1, y: 0 });
     }else{
-        controlsCell.start({ opacity: 0, y: 70 });
+      controlsCell.start({ opacity: 0, y: 70 });
     }
   }, [data]);
 
@@ -51,32 +51,33 @@ const DescriptionHome = () => {
       {breakpoint === 1 && <div>{t('HELLO_TABLET')}</div>}
       {breakpoint === 2 && 
         <div className='content-where-are'>
-            <div className='container-paragraph'>
-                <motion.div
-                    initial={{ opacity: 0, y: 50 }}
-                    animate={controls}
-                    transition={{ duration: 0.5 }} 
-                >
-                    <h1>{t('OUR_STRUCTURE')}</h1>
-                </motion.div>
-            </div>
-            <div className='container-cell-img'>
-                {(listStructure || []).map((el) => 
-                    <motion.div
-                        className='cell'
-                        initial={{ opacity: 0, y: 70 }}
-                        animate={controlsCell}
-                        transition={{ duration: 0.5 }} 
-                    >
-                        <ImgLoader 
-                            src={el.img} 
-                            style={{minWidth: '40px', width: '100%', maxWidth: '100%', height: 'auto'}} 
-                            styleImg={{width: '100%', height: 'auto'}}
-                            alt={t('THE_POLLE')}
-                        />
-                    </motion.div>
-                )}
-            </div>
+          <div className='container-paragraph'>
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              animate={controls}
+              transition={{ duration: 0.5 }} 
+            >
+              <h1>{t('OUR_STRUCTURE')}</h1>
+            </motion.div>
+          </div>
+          <div className='container-cell-img'>
+            {(listStructure || []).map((el) => 
+              <motion.div
+                className='cell'
+                initial={{ opacity: 0, y: 70 }}
+                animate={controlsCell}
+                transition={{ duration: 0.5 }} 
+              >
+                <ImgLoader 
+                  src={el.img} 
+                  style={{minWidth: '40px', width: '100%', maxWidth: '100%', height: 'auto'}}
+                  containerClass="zoom-effect" 
+                  styleImg={{width: '100%', height: 'auto'}}
+                  alt={t('THE_POLLE')}
+                />
+              </motion.div>
+            )}
+          </div>
         </div>
       }
       {breakpoint === 3 && <div>{t('HELLO_BIG_MONITOR')}</div>}
