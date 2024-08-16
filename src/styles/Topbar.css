@@ -8,11 +8,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: top 0.5s;
+    transition: top 1s;
     z-index: 99;
     display: flex;
     align-items: center;
-    background: rgba(250, 246, 246, 0.1);
+    background: rgba(250, 246, 246, 0.5);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(2px);
@@ -20,8 +20,8 @@
 }
 
 .topbar-mobile.hidden {
-    top: -10vh;
-    transition: top 0.5s;
+    top: -100%;
+    transition: top 1s;
 }
 
 .topbar-mobile.visible {
@@ -64,11 +64,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: top 0.5s;
+    transition: top 1s;
     z-index: 99;
     display: flex;
     align-items: center;
-    background: rgba(250, 246, 246, 0.1);
+    background: rgba(250, 246, 246, 0.5);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(2px);
@@ -76,8 +76,8 @@
 }
 
 .topbar-tablet.hidden {
-    top: -10vh;
-    transition: top 0.5s;
+    top: -100%;
+    transition: top 1s;
 }
 
 .topbar-tablet.visible {
@@ -172,11 +172,15 @@
     font-family: "Lato", sans-serif;
     font-weight: 400;
     transform: translateY(-1px);
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none; 
 }
 
 .icon-topbar-tablet{
-    min-height: 16px;
-    height: 16px;
+    min-height: 20px;
+    height: 20px;
     min-width: 20px;
     width: 20px;
     margin: 0;
@@ -194,13 +198,13 @@
     align-items: center;
     justify-content: center;
     padding: 1% 4% 0% 4%;
-    transition: top 0.5s;
+    transition: top 1s;
     z-index: 99;
 }
 
 .topbar-pc.hidden {
-    top: -11vh;
-    transition: top 0.5s;
+    top: -100%;
+    transition: top 1s;
 }
 
 .topbar-pc.visible {
@@ -243,17 +247,43 @@
     gap: 8%;
     cursor: pointer;
     white-space: nowrap;
+    font-size: clamp(16px, 2vh, 2vh);
+}
+
+.container-element::selection,
+.container-element:hover{
+    color: var(--app-color-selected);
+    fill: var(--app-color-selected);
+    transition: all 0.3s ease;
 }
 
 .container-element > b{
     font-family: "Lato", sans-serif;
     font-weight: 400;
     transform: translateY(-1px);
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none; 
 }
 
 .icon-topbar{
-    height: auto;
-    width: 27px;
+    height: clamp(26px, 3.5vh, 3.5vh);
+    width: auto;
     margin: 0;
     transform: translateX(25%);
+}
+
+.underline {
+    position: absolute;
+    bottom: 1vh;
+    height: 0.3vh;
+    background-color: var(--app-color-selected);
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+.active-element{
+    color: var(--app-color-selected);
+    fill: var(--app-color-selected);
+    transition: all 0.3s ease;
 }

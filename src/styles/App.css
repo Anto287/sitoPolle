@@ -13,6 +13,7 @@
     --app-evidenced-color: rgb(188, 108, 37);
 
     --app-color-white: #FFF8E1;
+    --app-color-selected: #2281ee;
     --app-color-black: #161616;
 }
 
@@ -24,6 +25,7 @@ body.light {
     --app-evidenced-color: rgb(188, 108, 37);
 
     --app-color-white: #FFF8E1;
+    --app-color-selected: #2281ee;
     --app-color-black: #161616;
 }
 
