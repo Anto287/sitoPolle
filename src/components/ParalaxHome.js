@@ -164,9 +164,9 @@ const ParalaxHome = () => {
             strength={0.1}
           >
             <div className='title-img-pc'>
-              <p className='first-title'>{t('WELCOME')}</p>
-              <p className='second-title'>{t('TO_THE')}</p>
-              <b>{t('POLLE')}</b>
+              <p className='first-title' translate="no">{t('WELCOME')}</p>
+              <p className='second-title' translate="no">{t('TO_THE')}</p>
+              <b translate="no">{t('POLLE')}</b>
             </div>  
           </MouseParallax>
 
