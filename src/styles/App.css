@@ -47,3 +47,7 @@ body.dark {
     overflow-x: hidden;
     overflow-y: auto;
 }
+
+.container-web::-webkit-scrollbar {
+    width: 0px;
+}
