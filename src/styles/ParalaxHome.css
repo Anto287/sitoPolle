@@ -1,74 +1,82 @@
-.container-paralax{
+.container-paralax {
     position: relative;
-    height: 120vh;
+    height: 100vh;
+    max-height: 100vh;
     width: 100vw;
     overflow: hidden;
     object-fit: contain;
 }
 
-.cielo-img-pc{
+.cielo-img-mobile{
+    height: 100vh;
+    width: auto;
     transform: rotate(180deg);
     z-index: 1;
 }
 
-.nuvola-img-pc{
+.nuvola-img-mobile{
     position: absolute; 
     right: -10%; 
     top: -5%; 
-    width: 75vw; 
+    width: 100vw; 
+    min-width: 300px;
     height: auto;
     z-index: 2;
 }
 
-.fog-2-img-pc{
+.fog-2-img-mobile{
     position: absolute; 
-    right: -10%; 
-    top: -20%; 
-    width: 100vw; 
+    right: -20vw; 
+    bottom: 0%; 
+    width: 180vw;
+    min-width: 800px;
     height: auto;
     z-index: 3;
 }
 
-.secondo-piano-img-pc{
+.secondo-piano-img-mobile{
     position: absolute;
-    left: -10vw;
-    top: -30%;
-    width: 120vw;
+    left: -30vw;
+    bottom: -10vh;
+    width: 180vw;
+    min-width: 800px;
     height: auto;
     z-index: 4;
 }
 
-.fog-1-img-pc{
+.fog-1-img-mobile{
     position: absolute; 
-    left: -10vw;
-    top: -100px; 
-    width: 120vw; 
+    left: -30vw;
+    bottom: -20vh; 
+    width: 160vw; 
+    min-width: 800px;
     height: auto;
     z-index: 5;
 }
 
-.laghetto-img-pc{
+.laghetto-img-mobile{
     position: absolute;
-    left: -10vw; 
-    top: -30%;
-    width:  120vw; 
+    left: -30vw; 
+    bottom: -10vh;
+    width: 180vw;
+    min-width: 800px;
     height: auto;
     z-index: 6;
 }
 
-.sun-img-pc{
+.sun-img-mobile{
     position: absolute;
-    left: -50vw; 
-    top: -30%;
-    width:  120vw; 
-    height: auto;
+    left: -50%; 
+    top: 0;
+    width: auto; 
+    height: 100vh;
     transform: rotate(270deg);
     z-index: 7;
 }
 
-.title-img-pc{
-    width: 100vw;
-    height: 100vh;
+.title-img-mobile {
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -79,32 +87,249 @@
     z-index: 8;
 }
 
-.title-img-pc > .first-title{
+.title-img-mobile > .first-title {
+    font-family: "Lato", sans-serif;
+    font-weight: 300;
+    font-size: clamp(40px, 12vw, 150px);
+}
+
+.title-img-mobile > .second-title {
+    margin-top: clamp(40px, 10vw, 150px);
+    font-family: "Lato", sans-serif;
+    font-weight: 200;
+    font-size: clamp(40px, 9vw, 150px);
+}
+
+.title-img-mobile > b {
+    margin-top: clamp(40px, 12vw, 150px);;
+    font-family: "Lilita One", sans-serif;
+    font-weight: 400;
+    font-size: clamp(40px, 15vw, 150px);
+    text-shadow: 5px 3px 2px rgba(0,0,0,0.6);
+}
+
+.front-img-mobile {
+    width: 180vw; 
+    min-width: 800px;
+    height: auto;
+    position: absolute;
+    left: -30vw; 
+    bottom: -8vh;
+    z-index: 9;
+}
+
+.cielo-img-tablet{
+    height: 100vh;
+    width: 100vw;
+    transform: rotate(180deg);
+    z-index: 1;
+}
+
+.nuvola-img-tablet{
+    position: absolute; 
+    right: -5vw; 
+    top: -5vh; 
+    width: 80vw; 
+    min-width: 600px;
+    height: auto;
+    z-index: 2;
+}
+
+.fog-2-img-tablet{
+    position: absolute; 
+    right: -10vw; 
+    bottom: 0; 
+    width: 120vw; 
+    min-width: 1000px;
+    height: auto;
+    z-index: 3;
+}
+
+.secondo-piano-img-tablet{
+    position: absolute;
+    left: -20vw;
+    bottom: -30%;
+    width: 140vw;
+    min-width: 1100px;
+    height: auto;
+    z-index: 4;
+}
+
+.fog-1-img-tablet{
+    position: absolute; 
+    left: -30vw;
+    bottom: -10vh; 
+    width: 160vw; 
+    min-width: 1100px;
+    height: auto;
+    z-index: 5;
+}
+
+.laghetto-img-tablet {
+    position: absolute;
+    left: -20vw; 
+    bottom: -30%;
+    width: 140vw;
+    min-width: 1100px;
+    height: auto;
+    z-index: 6;
+}
+
+.sun-img-tablet{
+    position: absolute;
+    left: -50vw; 
+    top: -30%;
+    width: 120vw; 
+    height: auto;
+    transform: rotate(270deg);
+    z-index: 7;
+}
+
+.title-img-tablet {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    flex-direction: column;
+    line-height: 0vh;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    z-index: 8;
+}
+
+.title-img-tablet > .first-title {
     font-family: "Lato", sans-serif;
     font-weight: 300;
     font-size: clamp(40px, 10vw, 150px);
 }
 
-.title-img-pc > .second-title{
-    margin-top: 13vh;
+.title-img-tablet > .second-title {
+    margin-top: clamp(40px, 8vw, 150px);
+    font-family: "Lato", sans-serif;
+    font-weight: 200;
+    font-size: clamp(40px, 6.5vw, 150px);
+}
+
+.title-img-tablet > b {
+    margin-top: clamp(40px, 11vw, 150px);
+    font-family: "Lilita One", sans-serif;
+    font-weight: 400;
+    font-size: clamp(40px, 13vw, 150px);
+    text-shadow: 5px 3px 2px rgba(0,0,0,0.6);
+}
+
+.front-img-tablet {
+    width: 140vw; 
+    min-width: 1100px;
+    height: auto;
+    position: absolute;
+    left: -20vw; 
+    bottom: -30%;
+    z-index: 9;
+}
+
+.cielo-img-pc {
+    height: 100vh;
+    width: 100vw;
+    transform: rotate(180deg);
+    z-index: 1;
+}
+
+.nuvola-img-pc {
+    position: absolute; 
+    right: -10%; 
+    top: -5%; 
+    width: 75vw; 
+    height: auto;
+    z-index: 2;
+}
+
+.fog-2-img-pc {
+    position: absolute; 
+    right: -10vw; 
+    top: -20%; 
+    width: 120vw; 
+    height: auto;
+    z-index: 3;
+}
+
+.secondo-piano-img-pc {
+    position: absolute;
+    left: -10vw;
+    bottom: -40%;
+    width: 120vw;
+    height: auto;
+    z-index: 4;
+}
+
+.fog-1-img-pc {
+    position: absolute; 
+    left: -20vw;
+    bottom: -10vh; 
+    width: 140vw; 
+    height: auto;
+    z-index: 5;
+}
+
+.laghetto-img-pc {
+    position: absolute;
+    left: -10vw; 
+    bottom: -40%;
+    width: 120vw;
+    height: auto;
+    z-index: 6;
+}
+
+.sun-img-pc {
+    position: absolute;
+    left: -50vw; 
+    top: -30%;
+    width: 120vw; 
+    height: auto;
+    transform: rotate(270deg);
+    z-index: 7;
+}
+
+.title-img-pc {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    flex-direction: column;
+    line-height: 0vh;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    z-index: 8;
+}
+
+.title-img-pc > .first-title {
+    font-family: "Lato", sans-serif;
+    font-weight: 300;
+    font-size: clamp(40px, 10vw, 150px);
+}
+
+.title-img-pc > .second-title {
+    margin-top: clamp(40px, 6vw, 150px);
     font-family: "Lato", sans-serif;
     font-weight: 200;
     font-size: clamp(40px, 8vw, 60px);
 }
 
-.title-img-pc > b{
-    margin-top: 15vh;
+.title-img-pc > b {
+    margin-top: clamp(40px, 7vw, 150px);
     font-family: "Lilita One", sans-serif;
     font-weight: 400;
     font-size: clamp(40px, 10vw, 200px);
     text-shadow: 5px 3px 2px rgba(0,0,0,0.6);
 }
 
-.front-img-pc{
-    width: 120vw; 
+.front-img-pc {
+    width: 130vw; 
     height: auto;
     position: absolute;
-    left: -30vw; 
-    top: -45%;
+    left: -15vw; 
+    bottom: -40%;
     z-index: 9;
 }

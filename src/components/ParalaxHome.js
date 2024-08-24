@@ -32,49 +32,217 @@ const ParalaxHome = () => {
 
   return (
     <div className='container-paralax'>
-      {breakpoint === 0 && 
-         <div>
+      {breakpoint === 0 &&
+        <div style={{ display: allImagesLoaded ? 'block' : 'none' }}>
           <MouseParallax 
             enableOnTouchDevice
             shouldResetPosition 
+            shouldPause
             isAbsolutelyPositioned
-            lerpEase={0.01}
-            strength={0.01}
+            lerpEase={0}
+            strength={0}
           >
-            <img src={cielo} alt=''/>
+            <img src={cielo} onLoad={handleImageLoad} className='cielo-img-mobile' alt=''/>
           </MouseParallax>
+
           <MouseParallax 
             enableOnTouchDevice
             shouldResetPosition 
+            shouldPause
             isAbsolutelyPositioned
-            lerpEase={0.01}
-            strength={0.01}
+            lerpEase={0.02}
+            strength={0.02}
           >
-            <img src={secondo_piano} alt=''/>
+            <img src={nuvola} onLoad={handleImageLoad} className='nuvola-img-mobile' alt=''/>
           </MouseParallax>
-        </div>
+
+          <MouseParallax 
+            enableOnTouchDevice
+            shouldResetPosition 
+            shouldPause
+            isAbsolutelyPositioned
+            lerpEase={0.1}
+            strength={0.05}
+          >
+            <img src={fog_2} onLoad={handleImageLoad} className='fog-2-img-mobile' alt=''/>
+          </MouseParallax>
+
+          <MouseParallax 
+            enableOnTouchDevice
+            shouldResetPosition 
+            shouldPause
+            isAbsolutelyPositioned
+            lerpEase={0.05}
+            strength={0.05}
+          >
+            <img src={secondo_piano} onLoad={handleImageLoad} className='secondo-piano-img-mobile' alt=''/>
+          </MouseParallax>
+
+          <MouseParallax 
+            enableOnTouchDevice
+            shouldResetPosition 
+            shouldPause
+            isAbsolutelyPositioned
+            lerpEase={0.05}
+            strength={0.15}
+          >
+            <img src={fog_1} onLoad={handleImageLoad} className='fog-1-img-mobile' alt=''/>
+          </MouseParallax>
+
+          <MouseParallax 
+            enableOnTouchDevice
+            shouldResetPosition 
+            shouldPause
+            isAbsolutelyPositioned
+            lerpEase={0.04}
+            strength={0.10}
+          >
+            <img src={laghetto} onLoad={handleImageLoad} className='laghetto-img-mobile' alt=''/>
+          </MouseParallax>
+
+          <MouseParallax 
+            enableOnTouchDevice
+            shouldResetPosition 
+            shouldPause
+            isAbsolutelyPositioned
+            lerpEase={0.02}
+            strength={0.02}
+          >
+            <img src={sun_rays} onLoad={handleImageLoad} className='sun-img-mobile' alt=''/>
+          </MouseParallax>
+
+          <MouseParallax 
+            enableOnTouchDevice
+            shouldResetPosition 
+            shouldPause
+            isAbsolutelyPositioned
+            lerpEase={0.1}
+            strength={0.08}
+          >
+            <div className='title-img-mobile'>
+              <p className='first-title' translate="no">{t('WELCOME')}</p>
+              <p className='second-title' translate="no">{t('TO_THE')}</p>
+              <b translate="no">{t('POLLE')}</b>
+            </div>  
+          </MouseParallax>
+
+          <MouseParallax 
+            enableOnTouchDevice
+            shouldResetPosition 
+            shouldPause
+            isAbsolutelyPositioned
+            lerpEase={0.05}
+            strength={0.15}
+          >
+            <img src={front} onLoad={handleImageLoad} className='front-img-mobile' alt=''/>
+          </MouseParallax>
+        </div>  
       }
       {breakpoint === 1 && 
-        <div>
+        <div style={{ display: allImagesLoaded ? 'block' : 'none' }}>
           <MouseParallax 
             enableOnTouchDevice
             shouldResetPosition 
+            shouldPause
             isAbsolutelyPositioned
-            lerpEase={0.01}
-            strength={0.01}
+            lerpEase={0}
+            strength={0}
           >
-            <img src={cielo} alt=''/>
+            <img src={cielo} onLoad={handleImageLoad} className='cielo-img-tablet' alt=''/>
           </MouseParallax>
+
           <MouseParallax 
             enableOnTouchDevice
             shouldResetPosition 
+            shouldPause
             isAbsolutelyPositioned
-            lerpEase={0.01}
-            strength={0.01}
+            lerpEase={0.02}
+            strength={0.02}
           >
-            <img src={secondo_piano} alt=''/>
+            <img src={nuvola} onLoad={handleImageLoad} className='nuvola-img-tablet' alt=''/>
           </MouseParallax>
-        </div>
+
+          <MouseParallax 
+            enableOnTouchDevice
+            shouldResetPosition 
+            shouldPause
+            isAbsolutelyPositioned
+            lerpEase={0.1}
+            strength={0.05}
+          >
+            <img src={fog_2} onLoad={handleImageLoad} className='fog-2-img-tablet' alt=''/>
+          </MouseParallax>
+
+          <MouseParallax 
+            enableOnTouchDevice
+            shouldResetPosition 
+            shouldPause
+            isAbsolutelyPositioned
+            lerpEase={0.05}
+            strength={0.09}
+          >
+            <img src={secondo_piano} onLoad={handleImageLoad} className='secondo-piano-img-tablet' alt=''/>
+          </MouseParallax>
+
+          <MouseParallax 
+            enableOnTouchDevice
+            shouldResetPosition 
+            shouldPause
+            isAbsolutelyPositioned
+            lerpEase={0.05}
+            strength={0.13}
+          >
+            <img src={fog_1} onLoad={handleImageLoad} className='fog-1-img-tablet' alt=''/>
+          </MouseParallax>
+
+          <MouseParallax 
+            enableOnTouchDevice
+            shouldResetPosition 
+            shouldPause
+            isAbsolutelyPositioned
+            lerpEase={0.04}
+            strength={0.12}
+          >
+            <img src={laghetto} onLoad={handleImageLoad} className='laghetto-img-tablet' alt=''/>
+          </MouseParallax>
+
+          <MouseParallax 
+            enableOnTouchDevice
+            shouldResetPosition 
+            shouldPause
+            isAbsolutelyPositioned
+            lerpEase={0.02}
+            strength={0.02}
+          >
+            <img src={sun_rays} onLoad={handleImageLoad} className='sun-img-tablet' alt=''/>
+          </MouseParallax>
+
+          <MouseParallax 
+            enableOnTouchDevice
+            shouldResetPosition 
+            shouldPause
+            isAbsolutelyPositioned
+            lerpEase={0.1}
+            strength={0.1}
+          >
+            <div className='title-img-tablet'>
+              <p className='first-title' translate="no">{t('WELCOME')}</p>
+              <p className='second-title' translate="no">{t('TO_THE')}</p>
+              <b translate="no">{t('POLLE')}</b>
+            </div>  
+          </MouseParallax>
+
+          <MouseParallax 
+            enableOnTouchDevice
+            shouldResetPosition 
+            shouldPause
+            isAbsolutelyPositioned
+            lerpEase={0.05}
+            strength={0.15}
+          >
+            <img src={front} onLoad={handleImageLoad} className='front-img-tablet' alt=''/>
+          </MouseParallax>
+        </div>  
       }
       {breakpoint === 2 && 
         <div style={{ display: allImagesLoaded ? 'block' : 'none' }}>
@@ -127,10 +295,10 @@ const ParalaxHome = () => {
             shouldResetPosition 
             shouldPause
             isAbsolutelyPositioned
-            lerpEase={0.04}
-            strength={0.13}
+            lerpEase={0.05}
+            strength={0.15}
           >
-            <img src={laghetto} onLoad={handleImageLoad} className='laghetto-img-pc' alt=''/>
+            <img src={fog_1} onLoad={handleImageLoad} className='fog-1-img-pc' alt=''/>
           </MouseParallax>
 
           <MouseParallax 
@@ -138,10 +306,10 @@ const ParalaxHome = () => {
             shouldResetPosition 
             shouldPause
             isAbsolutelyPositioned
-            lerpEase={0.05}
-            strength={0.15}
+            lerpEase={0.04}
+            strength={0.13}
           >
-            <img src={fog_1} onLoad={handleImageLoad} className='fog-1-img-pc' alt=''/>
+            <img src={laghetto} onLoad={handleImageLoad} className='laghetto-img-pc' alt=''/>
           </MouseParallax>
 
           <MouseParallax 

@@ -94,7 +94,7 @@
 
 .container-logo-tablet{
     height: 100%;
-    width: 120px;
+    width: 150px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -104,7 +104,7 @@
     container-name: container-topbar-tablet;
     container-type: inline-size;
     height: 100%;
-    width: calc(100% - 120px);
+    width: calc(100% - 150px);
     padding-right: 4%;
     display: flex;
     align-items: center;
