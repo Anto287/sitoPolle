@@ -19,16 +19,38 @@ const ParalaxHome = () => {
   const breakpoint = UseResponsiveJSX([600, 1200, 2000]); 
   const [loadedImages, setLoadedImages] = useState(0);
   const [allImagesLoaded, setAllImagesLoaded] = useState(false);
+  const [gyroData, setGyroData] = useState({ alpha: 0, beta: 0 });
 
   const handleImageLoad = () => {
     setLoadedImages((prev) => prev + 1);
   };
 
   useEffect(() => {
+    const handleDeviceOrientation = (event) => {
+      const { alpha, beta } = event;
+      setGyroData({ alpha, beta });
+    };
+
+    window.addEventListener("deviceorientation", handleDeviceOrientation, true);
+
+    return () => {
+      window.removeEventListener("deviceorientation", handleDeviceOrientation);
+    };
+  }, []);
+
+  useEffect(() => {
     if (loadedImages === 8) {
       setAllImagesLoaded(true);
     }
   }, [loadedImages]);
+
+  const gyroX = gyroData.beta / 10;
+  const gyroY = gyroData.alpha / 10;
+
+  const getGyroStyle = (lerpEase, strength) => ({
+    transform: `translate(${gyroX * strength}px, ${gyroY * strength}px)`,
+    transition: `transform ${lerpEase}s ease-out`,
+  });
 
   return (
     <div className='container-paralax'>
@@ -41,6 +63,7 @@ const ParalaxHome = () => {
             isAbsolutelyPositioned
             lerpEase={0}
             strength={0}
+            style={getGyroStyle(0, 0)}
           >
             <img src={cielo} onLoad={handleImageLoad} className='cielo-img-mobile' alt=''/>
           </MouseParallax>
@@ -52,6 +75,7 @@ const ParalaxHome = () => {
             isAbsolutelyPositioned
             lerpEase={0.02}
             strength={0.02}
+            style={getGyroStyle(0.02, 0.02)}
           >
             <img src={nuvola} onLoad={handleImageLoad} className='nuvola-img-mobile' alt=''/>
           </MouseParallax>
@@ -63,6 +87,7 @@ const ParalaxHome = () => {
             isAbsolutelyPositioned
             lerpEase={0.1}
             strength={0.05}
+            style={getGyroStyle(0.1, 0.05)}
           >
             <img src={fog_2} onLoad={handleImageLoad} className='fog-2-img-mobile' alt=''/>
           </MouseParallax>
@@ -74,6 +99,7 @@ const ParalaxHome = () => {
             isAbsolutelyPositioned
             lerpEase={0.05}
             strength={0.05}
+            style={getGyroStyle(0.05, 0.05)}
           >
             <img src={secondo_piano} onLoad={handleImageLoad} className='secondo-piano-img-mobile' alt=''/>
           </MouseParallax>
@@ -85,6 +111,7 @@ const ParalaxHome = () => {
             isAbsolutelyPositioned
             lerpEase={0.05}
             strength={0.15}
+            style={getGyroStyle(0.05, 0.15)}
           >
             <img src={fog_1} onLoad={handleImageLoad} className='fog-1-img-mobile' alt=''/>
           </MouseParallax>
@@ -96,6 +123,7 @@ const ParalaxHome = () => {
             isAbsolutelyPositioned
             lerpEase={0.04}
             strength={0.10}
+            style={getGyroStyle(0.04, 0.10)}
           >
             <img src={laghetto} onLoad={handleImageLoad} className='laghetto-img-mobile' alt=''/>
           </MouseParallax>
@@ -107,6 +135,7 @@ const ParalaxHome = () => {
             isAbsolutelyPositioned
             lerpEase={0.02}
             strength={0.02}
+            style={getGyroStyle(0.02, 0.02)}
           >
             <img src={sun_rays} onLoad={handleImageLoad} className='sun-img-mobile' alt=''/>
           </MouseParallax>
@@ -118,6 +147,7 @@ const ParalaxHome = () => {
             isAbsolutelyPositioned
             lerpEase={0.1}
             strength={0.08}
+            style={getGyroStyle(0.1, 0.08)}
           >
             <div className='title-img-mobile'>
               <p className='first-title' translate="no">{t('WELCOME')}</p>
@@ -133,10 +163,11 @@ const ParalaxHome = () => {
             isAbsolutelyPositioned
             lerpEase={0.05}
             strength={0.15}
+            style={getGyroStyle(0.05, 0.15)}
           >
             <img src={front} onLoad={handleImageLoad} className='front-img-mobile' alt=''/>
           </MouseParallax>
-        </div>  
+        </div>
       }
       {breakpoint === 1 && 
         <div style={{ display: allImagesLoaded ? 'block' : 'none' }}>
