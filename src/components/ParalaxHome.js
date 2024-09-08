@@ -31,11 +31,13 @@ const ParalaxHome = () => {
       setGyroData({ alpha, beta });
     };
 
-    window.addEventListener('deviceorientation', handleDeviceOrientation, true);
+    if(breakpoint === 0 || breakpoint === 1){
+      window.addEventListener('deviceorientation', handleDeviceOrientation, true);
 
-    return () => {
-      window.removeEventListener('deviceorientation', handleDeviceOrientation);
-    };
+      return () => {
+        window.removeEventListener('deviceorientation', handleDeviceOrientation);
+      };
+    }
   }, []);
 
   useEffect(() => {
@@ -48,8 +50,8 @@ const ParalaxHome = () => {
   const gyroY = (gyroData.beta - 90) || 0;
 
   const getGyroStyle = (lerpEase, strength) => {
-    let transitionX = -gyroX * strength;
-    let transitionY = -gyroY * strength;
+    let transitionX = gyroX * strength;
+    let transitionY = gyroY * strength;
 
     transitionX = Math.max(Math.min(transitionX, 100), -100);
     transitionY = Math.max(Math.min(transitionY, 50), -50);
@@ -85,7 +87,7 @@ const ParalaxHome = () => {
             lerpEase={0.02}
             strength={0.02}
           >
-            <div style={getGyroStyle(1, 0.40)}>
+            <div style={getGyroStyle(0.7, 0.20)}>
               <img src={nuvola} onLoad={handleImageLoad} className='nuvola-img-mobile' alt=''/>            
             </div>
           </MouseParallax>
@@ -98,7 +100,7 @@ const ParalaxHome = () => {
             lerpEase={0.1}
             strength={0.05}
           >
-            <div style={getGyroStyle(1, 0.45)}>
+            <div style={getGyroStyle(0.7, 0.45)}>
               <img src={fog_2} onLoad={handleImageLoad} className='fog-2-img-mobile' alt=''/>
             </div>
           </MouseParallax>
@@ -111,21 +113,8 @@ const ParalaxHome = () => {
             lerpEase={0.05}
             strength={0.05}
           >
-            <div style={getGyroStyle(1, 0.45)}>
+            <div style={getGyroStyle(0.7, 0.45)}>
               <img src={secondo_piano} onLoad={handleImageLoad} className='secondo-piano-img-mobile' alt=''/>
-            </div>
-          </MouseParallax>
-
-          <MouseParallax 
-            enableOnTouchDevice
-            shouldResetPosition 
-            shouldPause
-            isAbsolutelyPositioned
-            lerpEase={0.05}
-            strength={0.15}
-          >
-            <div style={getGyroStyle(1, 0.55)}>
-              <img src={fog_1} onLoad={handleImageLoad} className='fog-1-img-mobile' alt=''/>
             </div>
           </MouseParallax>
 
@@ -137,8 +126,21 @@ const ParalaxHome = () => {
             lerpEase={0.04}
             strength={0.10}
           >
-            <div style={getGyroStyle(1, 0.50)}>
+            <div style={getGyroStyle(0.7, 0.50)}>
               <img src={laghetto} onLoad={handleImageLoad} className='laghetto-img-mobile' alt=''/>
+            </div>
+          </MouseParallax>
+
+          <MouseParallax 
+            enableOnTouchDevice
+            shouldResetPosition 
+            shouldPause
+            isAbsolutelyPositioned
+            lerpEase={0.05}
+            strength={0.15}
+          >
+            <div style={getGyroStyle(0.7, 0.55)}>
+              <img src={fog_1} onLoad={handleImageLoad} className='fog-1-img-mobile' alt=''/>
             </div>
           </MouseParallax>
 
@@ -150,7 +152,7 @@ const ParalaxHome = () => {
             lerpEase={0.02}
             strength={0.02}
           >
-            <div style={getGyroStyle(1, 0.40)}>
+            <div style={getGyroStyle(0.7, 0.40)}>
               <img src={sun_rays} onLoad={handleImageLoad} className='sun-img-mobile' alt=''/>
             </div>
           </MouseParallax>
@@ -163,7 +165,7 @@ const ParalaxHome = () => {
             lerpEase={0.1}
             strength={0.08}
           >
-            <div className='title-img-mobile' style={getGyroStyle(1, 0.45)}>
+            <div className='title-img-mobile' style={getGyroStyle(0.7, 0.45)}>
               <p className='first-title' translate="no">{t('WELCOME')}</p>
               <p className='second-title' translate="no">{t('TO_THE')}</p>
               <b translate="no">{t('POLLE')}</b>
@@ -178,7 +180,7 @@ const ParalaxHome = () => {
             lerpEase={0.05}
             strength={0.15}
           >
-            <div style={getGyroStyle(1, 0.55)}>
+            <div style={getGyroStyle(0.7, 0.55)}>
               <img src={front} onLoad={handleImageLoad} className='front-img-mobile' alt=''/>
             </div>
           </MouseParallax>
@@ -205,7 +207,9 @@ const ParalaxHome = () => {
             lerpEase={0.02}
             strength={0.02}
           >
-            <img src={nuvola} onLoad={handleImageLoad} className='nuvola-img-tablet' alt=''/>
+            <div style={getGyroStyle(0.7, 0.20)}>
+              <img src={nuvola} onLoad={handleImageLoad} className='nuvola-img-tablet' alt=''/>
+            </div>
           </MouseParallax>
 
           <MouseParallax 
@@ -216,7 +220,9 @@ const ParalaxHome = () => {
             lerpEase={0.1}
             strength={0.05}
           >
-            <img src={fog_2} onLoad={handleImageLoad} className='fog-2-img-tablet' alt=''/>
+            <div style={getGyroStyle(0.7, 0.45)}>
+              <img src={fog_2} onLoad={handleImageLoad} className='fog-2-img-tablet' alt=''/>
+            </div>
           </MouseParallax>
 
           <MouseParallax 
@@ -227,18 +233,9 @@ const ParalaxHome = () => {
             lerpEase={0.05}
             strength={0.09}
           >
-            <img src={secondo_piano} onLoad={handleImageLoad} className='secondo-piano-img-tablet' alt=''/>
-          </MouseParallax>
-
-          <MouseParallax 
-            enableOnTouchDevice
-            shouldResetPosition 
-            shouldPause
-            isAbsolutelyPositioned
-            lerpEase={0.05}
-            strength={0.13}
-          >
-            <img src={fog_1} onLoad={handleImageLoad} className='fog-1-img-tablet' alt=''/>
+            <div style={getGyroStyle(0.7, 0.45)}>
+              <img src={secondo_piano} onLoad={handleImageLoad} className='secondo-piano-img-tablet' alt=''/>
+            </div>
           </MouseParallax>
 
           <MouseParallax 
@@ -249,7 +246,22 @@ const ParalaxHome = () => {
             lerpEase={0.04}
             strength={0.12}
           >
-            <img src={laghetto} onLoad={handleImageLoad} className='laghetto-img-tablet' alt=''/>
+            <div style={getGyroStyle(0.7, 0.50)}>
+              <img src={laghetto} onLoad={handleImageLoad} className='laghetto-img-tablet' alt=''/>
+            </div>
+          </MouseParallax>
+
+          <MouseParallax 
+            enableOnTouchDevice
+            shouldResetPosition 
+            shouldPause
+            isAbsolutelyPositioned
+            lerpEase={0.05}
+            strength={0.13}
+          >
+            <div style={getGyroStyle(0.7, 0.55)}>
+              <img src={fog_1} onLoad={handleImageLoad} className='fog-1-img-tablet' alt=''/>
+            </div>
           </MouseParallax>
 
           <MouseParallax 
@@ -260,7 +272,9 @@ const ParalaxHome = () => {
             lerpEase={0.02}
             strength={0.02}
           >
-            <img src={sun_rays} onLoad={handleImageLoad} className='sun-img-tablet' alt=''/>
+            <div style={getGyroStyle(0.7, 0.40)}>
+              <img src={sun_rays} onLoad={handleImageLoad} className='sun-img-tablet' alt=''/>
+            </div>
           </MouseParallax>
 
           <MouseParallax 
@@ -271,7 +285,7 @@ const ParalaxHome = () => {
             lerpEase={0.1}
             strength={0.1}
           >
-            <div className='title-img-tablet'>
+            <div className='title-img-tablet' style={getGyroStyle(0.7, 0.45)}>
               <p className='first-title' translate="no">{t('WELCOME')}</p>
               <p className='second-title' translate="no">{t('TO_THE')}</p>
               <b translate="no">{t('POLLE')}</b>
@@ -286,7 +300,9 @@ const ParalaxHome = () => {
             lerpEase={0.05}
             strength={0.15}
           >
-            <img src={front} onLoad={handleImageLoad} className='front-img-tablet' alt=''/>
+            <div style={getGyroStyle(0.7, 0.55)}>
+              <img src={front} onLoad={handleImageLoad} className='front-img-tablet' alt=''/>
+            </div>
           </MouseParallax>
         </div>  
       }
@@ -341,21 +357,21 @@ const ParalaxHome = () => {
             shouldResetPosition 
             shouldPause
             isAbsolutelyPositioned
-            lerpEase={0.05}
-            strength={0.15}
+            lerpEase={0.04}
+            strength={0.13}
           >
-            <img src={fog_1} onLoad={handleImageLoad} className='fog-1-img-pc' alt=''/>
+            <img src={laghetto} onLoad={handleImageLoad} className='laghetto-img-pc' alt=''/>
           </MouseParallax>
-
+          
           <MouseParallax 
             enableOnTouchDevice
             shouldResetPosition 
             shouldPause
             isAbsolutelyPositioned
-            lerpEase={0.04}
-            strength={0.13}
+            lerpEase={0.05}
+            strength={0.15}
           >
-            <img src={laghetto} onLoad={handleImageLoad} className='laghetto-img-pc' alt=''/>
+            <img src={fog_1} onLoad={handleImageLoad} className='fog-1-img-pc' alt=''/>
           </MouseParallax>
 
           <MouseParallax 
