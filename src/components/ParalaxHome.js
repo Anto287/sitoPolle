@@ -362,7 +362,7 @@ const ParalaxHome = () => {
           >
             <img src={laghetto} onLoad={handleImageLoad} className='laghetto-img-pc' alt=''/>
           </MouseParallax>
-          
+
           <MouseParallax 
             enableOnTouchDevice
             shouldResetPosition 
@@ -412,7 +412,112 @@ const ParalaxHome = () => {
           </MouseParallax>
         </div>  
       }
-      {breakpoint === 3 && <div>{t('HELLO_BIG_MONITOR')}</div>}
+      {breakpoint === 3 && 
+        <div style={{ display: allImagesLoaded ? 'block' : 'none' }}>
+          <MouseParallax 
+            enableOnTouchDevice
+            shouldResetPosition 
+            shouldPause
+            isAbsolutelyPositioned
+            lerpEase={0}
+            strength={0}
+          >
+            <img src={cielo} onLoad={handleImageLoad} className='cielo-img-big-monitor' alt=''/>
+          </MouseParallax>
+
+          <MouseParallax 
+            enableOnTouchDevice
+            shouldResetPosition 
+            shouldPause
+            isAbsolutelyPositioned
+            lerpEase={0.02}
+            strength={0.02}
+          >
+            <img src={nuvola} onLoad={handleImageLoad} className='nuvola-img-big-monitor' alt=''/>
+          </MouseParallax>
+
+          <MouseParallax 
+            enableOnTouchDevice
+            shouldResetPosition 
+            shouldPause
+            isAbsolutelyPositioned
+            lerpEase={0.1}
+            strength={0.05}
+          >
+            <img src={fog_2} onLoad={handleImageLoad} className='fog-2-img-big-monitor' alt=''/>
+          </MouseParallax>
+
+          <MouseParallax 
+            enableOnTouchDevice
+            shouldResetPosition 
+            shouldPause
+            isAbsolutelyPositioned
+            lerpEase={0.05}
+            strength={0.08}
+          >
+            <img src={secondo_piano} onLoad={handleImageLoad} className='secondo-piano-img-big-monitor' alt=''/>
+          </MouseParallax>
+
+          <MouseParallax 
+            enableOnTouchDevice
+            shouldResetPosition 
+            shouldPause
+            isAbsolutelyPositioned
+            lerpEase={0.04}
+            strength={0.13}
+          >
+            <img src={laghetto} onLoad={handleImageLoad} className='laghetto-img-big-monitor' alt=''/>
+          </MouseParallax>
+          
+          <MouseParallax 
+            enableOnTouchDevice
+            shouldResetPosition 
+            shouldPause
+            isAbsolutelyPositioned
+            lerpEase={0.05}
+            strength={0.15}
+          >
+            <img src={fog_1} onLoad={handleImageLoad} className='fog-1-img-big-monitor' alt=''/>
+          </MouseParallax>
+
+          <MouseParallax 
+            enableOnTouchDevice
+            shouldResetPosition 
+            shouldPause
+            isAbsolutelyPositioned
+            lerpEase={0.02}
+            strength={0.02}
+          >
+            <img src={sun_rays} onLoad={handleImageLoad} className='sun-img-big-monitor' alt=''/>
+          </MouseParallax>
+
+          <MouseParallax 
+            enableOnTouchDevice
+            shouldResetPosition 
+            shouldPause
+            isAbsolutelyPositioned
+            lerpEase={0.1}
+            strength={0.1}
+          >
+            <div className='title-img-big-monitor'>
+              <p className='first-title' translate="no">{t('WELCOME')}</p>
+              <p className='second-title' translate="no">{t('TO_THE')}</p>
+              <b translate="no">{t('POLLE')}</b>
+            </div>  
+          </MouseParallax>
+
+          <MouseParallax 
+            enableOnTouchDevice
+            shouldResetPosition 
+            shouldPause
+            isAbsolutelyPositioned
+            lerpEase={0.05}
+            strength={0.2}
+          >
+            <img src={front} onLoad={handleImageLoad} className='front-img-big-monitor' alt=''/>
+          </MouseParallax>
+        </div> 
+      }
     </div>
   );
 };
