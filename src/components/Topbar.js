@@ -6,7 +6,7 @@ import ImgLoader from '@components/ImgLoader';
 import '@styles/Topbar.css';
 import myIcon from '@images/img_topbar/icon.webp';
 
-const Topbar = ({ showTopBarScrolling }) => {
+const Topbar = ({ showTopBarScrolling, toggleMenu }) => {
   const { t } = useTranslation();
   const breakpoint = UseResponsiveJSX([600, 1200, 2000]); 
 
@@ -46,7 +46,7 @@ const Topbar = ({ showTopBarScrolling }) => {
 
   const onClickEvent = (selected) => {
     if(selected === 'menu'){
-
+      toggleMenu();
     }else{
       navigate(`/${selected}`, { replace: true }); 
     }
