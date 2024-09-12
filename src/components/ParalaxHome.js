@@ -19,7 +19,6 @@ const ParalaxHome = () => {
   const breakpoint = UseResponsiveJSX([600, 1200, 2000]);
   const [loadedImages, setLoadedImages] = useState(0);
   const [allImagesLoaded, setAllImagesLoaded] = useState(false);
-  const [initialBeta, setInitialBeta] = useState(null);
   const [gyroData, setGyroData] = useState({ alpha: 0, beta: 0 });
 
   const imageSources = [
@@ -46,11 +45,6 @@ const ParalaxHome = () => {
   useEffect(() => {
     const handleDeviceOrientation = (event) => {
       const { alpha, beta } = event;
-
-      if (initialBeta === null) {
-        setInitialBeta(beta);
-      }
-
       setGyroData({ alpha, beta });
     };
 
@@ -61,10 +55,10 @@ const ParalaxHome = () => {
         window.removeEventListener('deviceorientation', handleDeviceOrientation);
       };
     }
-  }, [breakpoint, initialBeta]);
+  }, [breakpoint]);
 
   const gyroX = (gyroData.alpha > 180 ? gyroData.alpha - 360 : gyroData.alpha) || 0;
-  const gyroY = (gyroData.beta - (initialBeta || 90)) || 0;
+  const gyroY = (gyroData.beta - 90) || 0;
 
   const getGyroStyle = (lerpEase, strength) => {
     let transitionX = gyroX * strength;
@@ -75,7 +69,7 @@ const ParalaxHome = () => {
 
     return {
       height: '100vh',
-      width: '100vw',
+      width: '100vw', 
       transform: `translate(${transitionX}px, ${transitionY}px)`,
       transition: `transform ${lerpEase}s ease-out`,
     };
