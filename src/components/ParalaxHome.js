@@ -16,38 +16,55 @@ import front from '@images/img_paralax_home/front.webp';
 
 const ParalaxHome = () => {
   const { t } = useTranslation();
-  const breakpoint = UseResponsiveJSX([600, 1200, 2000]); 
+  const breakpoint = UseResponsiveJSX([600, 1200, 2000]);
   const [loadedImages, setLoadedImages] = useState(0);
   const [allImagesLoaded, setAllImagesLoaded] = useState(false);
+  const [initialBeta, setInitialBeta] = useState(null);
   const [gyroData, setGyroData] = useState({ alpha: 0, beta: 0 });
+
+  const imageSources = [
+    cielo,
+    nuvola,
+    fog_2,
+    secondo_piano,
+    fog_1,
+    laghetto,
+    sun_rays,
+    front
+  ];
 
   const handleImageLoad = () => {
     setLoadedImages((prev) => prev + 1);
   };
 
   useEffect(() => {
+    if (loadedImages === imageSources.length) {
+      setAllImagesLoaded(true);
+    }
+  }, [loadedImages]);
+
+  useEffect(() => {
     const handleDeviceOrientation = (event) => {
       const { alpha, beta } = event;
+
+      if (initialBeta === null) {
+        setInitialBeta(beta);
+      }
+
       setGyroData({ alpha, beta });
     };
 
-    if(breakpoint === 0 || breakpoint === 1){
+    if (breakpoint === 0 || breakpoint === 1) {
       window.addEventListener('deviceorientation', handleDeviceOrientation, true);
 
       return () => {
         window.removeEventListener('deviceorientation', handleDeviceOrientation);
       };
     }
-  }, []);
-
-  useEffect(() => {
-    if (loadedImages === 8) {
-      setAllImagesLoaded(true);
-    }
-  }, [loadedImages]);
+  }, [breakpoint, initialBeta]);
 
   const gyroX = (gyroData.alpha > 180 ? gyroData.alpha - 360 : gyroData.alpha) || 0;
-  const gyroY = (gyroData.beta - 90) || 0;
+  const gyroY = (gyroData.beta - (initialBeta || 90)) || 0;
 
   const getGyroStyle = (lerpEase, strength) => {
     let transitionX = gyroX * strength;
@@ -58,7 +75,7 @@ const ParalaxHome = () => {
 
     return {
       height: '100vh',
-      width: '100vw', 
+      width: '100vw',
       transform: `translate(${transitionX}px, ${transitionY}px)`,
       transition: `transform ${lerpEase}s ease-out`,
     };
@@ -165,7 +182,7 @@ const ParalaxHome = () => {
             lerpEase={0.1}
             strength={0.08}
           >
-            <div className='title-img-mobile' style={getGyroStyle(0.7, 0.45)}>
+            <div className='title-img-mobile'>
               <p className='first-title' translate="no">{t('WELCOME')}</p>
               <p className='second-title' translate="no">{t('TO_THE')}</p>
               <b translate="no">{t('POLLE')}</b>
@@ -218,7 +235,7 @@ const ParalaxHome = () => {
             shouldPause
             isAbsolutelyPositioned
             lerpEase={0.1}
-            strength={0.05}
+            strength={0.03}
           >
             <div style={getGyroStyle(0.7, 0.45)}>
               <img src={fog_2} onLoad={handleImageLoad} className='fog-2-img-tablet' alt=''/>
@@ -230,8 +247,8 @@ const ParalaxHome = () => {
             shouldResetPosition 
             shouldPause
             isAbsolutelyPositioned
-            lerpEase={0.05}
-            strength={0.09}
+            lerpEase={0.02}
+            strength={0.07}
           >
             <div style={getGyroStyle(0.7, 0.45)}>
               <img src={secondo_piano} onLoad={handleImageLoad} className='secondo-piano-img-tablet' alt=''/>
@@ -244,7 +261,7 @@ const ParalaxHome = () => {
             shouldPause
             isAbsolutelyPositioned
             lerpEase={0.04}
-            strength={0.12}
+            strength={0.09}
           >
             <div style={getGyroStyle(0.7, 0.50)}>
               <img src={laghetto} onLoad={handleImageLoad} className='laghetto-img-tablet' alt=''/>
@@ -285,7 +302,7 @@ const ParalaxHome = () => {
             lerpEase={0.1}
             strength={0.1}
           >
-            <div className='title-img-tablet' style={getGyroStyle(0.7, 0.45)}>
+            <div className='title-img-tablet'>
               <p className='first-title' translate="no">{t('WELCOME')}</p>
               <p className='second-title' translate="no">{t('TO_THE')}</p>
               <b translate="no">{t('POLLE')}</b>
@@ -518,6 +535,8 @@ const ParalaxHome = () => {
           </MouseParallax>
         </div> 
       }
+
+      <div className='gradient-for-background'></div>
     </div>
   );
 };
