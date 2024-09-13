@@ -8,11 +8,11 @@
 }
 
 .gradient-for-background{
-    height: 15vh;
+    height: 20vh;
     width: 100vw;
     background: linear-gradient(to bottom, transparent 0%, var(--app-third-color) 100%);
     position: absolute;
-    bottom: -1vh;
+    bottom: -2px;
     left: 0;
 }
 
