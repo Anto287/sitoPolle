@@ -10,9 +10,12 @@ const Layout = ({ showTopbar }) => {
 
   const [showTopBarScrolling, setShowTopBarScrolling] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(true); // Stato per controllare la visibilità della Topbar
   const lastScrollTop = useRef(0);
   const scrollContainerRef = useRef(null);
   const pageRef = useRef(null);
+  const circleRef = useRef(null);
+  const overlayRef = useRef(null);
   const location = useLocation();
 
   const handleScroll = () => {
@@ -35,13 +38,22 @@ const Layout = ({ showTopbar }) => {
   const animatePageTransition = () => {
     const tl = gsap.timeline();
 
-    tl.to(pageRef.current, {
-      opacity: 0,
-      duration: 0.5,
-      onComplete: () => {
-        gsap.to(pageRef.current, { opacity: 1, duration: 0.5 });
+    setIsAnimating(true);
+
+    tl.fromTo(circleRef.current, 
+      { scale: 0, opacity: 1, transformOrigin: "50% 50%" }, 
+      {
+        scale: 20,
+        duration: 1.5,
+        ease: "power2.inOut",
+        onComplete: () => {
+          gsap.to(pageRef.current, { opacity: 1, duration: 0.5 });
+
+          overlayRef.current.style.display = 'none';
+          setIsAnimating(false);
+        }
       }
-    });
+    );
   };
 
   useEffect(() => {
@@ -59,17 +71,25 @@ const Layout = ({ showTopbar }) => {
   }, []);
 
   useEffect(() => {
+    if (circleRef.current && overlayRef.current) {
+      circleRef.current.style.display = 'block';
+      overlayRef.current.style.display = 'block';
+    }
+
     animatePageTransition();
   }, [location]);
 
   return (
     <>
       <div ref={scrollContainerRef} className='container-web'>
-        {showTopbar && (
-          <Topbar showTopBarScrolling={showTopBarScrolling} toggleMenu={toggleMenu} />
-        )}
+        {showTopbar && !isAnimating && (<Topbar showTopBarScrolling={showTopBarScrolling} toggleMenu={toggleMenu} />)}
         <Menu isMenuOpen={isMenuOpen} />
-        <div ref={pageRef} style={{ opacity: 1 }}> 
+
+        <div ref={overlayRef} className="overlay">
+          <div ref={circleRef} className="circle"></div>
+        </div>
+
+        <div ref={pageRef} style={{ opacity: 0 }}> 
           <Outlet />
         </div>
       </div>
