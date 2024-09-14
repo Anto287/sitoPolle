@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { UseResponsiveJSX } from '@components/UseResponsiveJSX';
 import { MouseParallax } from 'react-just-parallax';
@@ -14,26 +14,22 @@ import laghetto from '@images/img_paralax_home/laghetto.webp';
 import sun_rays from '@images/img_paralax_home/sun_rays.webp';
 import front from '@images/img_paralax_home/front.webp';
 
+//TODO: Ultima cosa che non mi convince di qesta pagina è l'immagine del "laghetto" da rifare secondo me 
 const ParalaxHome = ({ onLoad }) => {
   const { t } = useTranslation();
   const breakpoint = UseResponsiveJSX([600, 1200, 2000]);
   const [loadedImages, setLoadedImages] = useState(0);
-  const [allImagesLoaded, setAllImagesLoaded] = useState(false);
+  const [errorPageLoaded, setErrorPageLoaded] = useState(false);
   const [gyroData, setGyroData] = useState({ alpha: 0, beta: 0 });
+  const loadedFlags = useRef({});
 
   const imageSources = [cielo, nuvola, fog_2, secondo_piano, fog_1, laghetto, sun_rays, front];
 
   useEffect(() => {
-    if (loadedImages === imageSources.length) {
-      setAllImagesLoaded(true);
-    }
-  }, [loadedImages]);
-
-  useEffect(() => {
-    if (allImagesLoaded) {
+    if (loadedImages === imageSources.length || errorPageLoaded) {
       onLoad();
     }
-  }, [allImagesLoaded, onLoad]);
+  }, [loadedImages]);
 
   useEffect(() => {
     const handleDeviceOrientation = (event) => {
@@ -62,7 +58,14 @@ const ParalaxHome = ({ onLoad }) => {
     };
   };
 
-  const handleImageLoad = () => setLoadedImages((prev) => prev + 1);
+  const handleImageLoad = (src) => {
+    if (!loadedFlags.current[src]) {
+      setLoadedImages(prevLoadedImages => prevLoadedImages + 1);
+      loadedFlags.current[src] = true;
+    }
+  };
+  
+  const handleImageError = () => setErrorPageLoaded(true);
 
   const renderParallaxLayer = (src, className, style, lerpEase, strength) => (
     <MouseParallax
@@ -75,7 +78,13 @@ const ParalaxHome = ({ onLoad }) => {
       strength={strength}
     >
       <div style={style}>
-        <img src={src} onLoad={handleImageLoad} className={className} alt='' />
+        <img 
+          src={src} 
+          onLoad={() => handleImageLoad(src)} 
+          onError={handleImageError} 
+          className={className} 
+          alt='' 
+        />
       </div>
     </MouseParallax>
   );
@@ -102,10 +111,17 @@ const ParalaxHome = ({ onLoad }) => {
 
   return (
     <div className='container-paralax'>
-      {breakpoint === 0 && renderContent('img-mobile', 'title-img-mobile')}
-      {breakpoint === 1 && renderContent('img-tablet', 'title-img-tablet')}
-      {breakpoint === 2 && renderContent('img-pc', 'title-img-pc')}
-      {breakpoint === 3 && renderContent('img-big-monitor', 'title-img-big-monitor')}
+      {breakpoint === 0 && !errorPageLoaded && renderContent('img-mobile', 'title-img-mobile')}
+      {breakpoint === 1 && !errorPageLoaded && renderContent('img-tablet', 'title-img-tablet')}
+      {breakpoint === 2 && !errorPageLoaded && renderContent('img-pc', 'title-img-pc')}
+      {breakpoint === 3 && !errorPageLoaded && renderContent('img-big-monitor', 'title-img-big-monitor')}
+      {errorPageLoaded && 
+        <div className="error-load">
+          <p className='first-title' translate="no">{t('WELCOME')}</p>
+          <p className='second-title' translate="no">{t('TO_THE')}</p>
+          <b translate="no">{t('POLLE')}</b>
+        </div>
+      }
       <div className='gradient-for-background'></div>
     </div>
   );

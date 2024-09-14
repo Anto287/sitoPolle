@@ -16,6 +16,43 @@
     left: 0;
 }
 
+.error-load{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    flex-direction: column;
+    line-height: 0vh;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    background-color: var(--app-light-color);
+}
+
+.error-load > .first-title {
+    font-family: "Lato", sans-serif;
+    font-weight: 300;
+    font-size: clamp(40px, 11vw, 450px);
+    transform: translateY(-2vh);
+}
+
+.error-load > .second-title {
+    margin-top: clamp(40px, 10vw, 450px);
+    font-family: "Lato", sans-serif;
+    font-weight: 200;
+    font-size: clamp(40px, 8vw, 360px);
+    transform: translateY(-2vh);
+}
+
+.error-load > b {
+    margin-top: clamp(40px, 12vw, 450px);;
+    font-family: "Lilita One", sans-serif;
+    font-weight: 400;
+    font-size: clamp(40px, 14vw, 500px);
+    text-shadow: 5px 3px 2px rgba(0,0,0,0.6);
+    transform: translateY(-2vh);
+}
+
 .cielo-img-mobile{
     height: 100vh;
     width: auto;

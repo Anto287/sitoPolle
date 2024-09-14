@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import Button from '@components/Button';
 import '@styles/NoPage.css';
 
+//TODO rifarlo perché il layout è orribile, anche il componente button probabilmente 
 const NoPage = () => {
   const { t } = useTranslation();
   const [widthDevice, setWidthDevice] = useState('-small');

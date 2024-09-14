@@ -6,6 +6,7 @@ import ImgLoader from '@components/ImgLoader';
 import '@styles/Topbar.css';
 import myIcon from '@images/img_topbar/icon.webp';
 
+//TODO::Riscriverlo in maniera più pulita e ssitemare il layout per il maxi schermo 
 const Topbar = ({ showTopBarScrolling, toggleMenu }) => {
   const { t } = useTranslation();
   const breakpoint = UseResponsiveJSX([600, 1200, 2000]); 
