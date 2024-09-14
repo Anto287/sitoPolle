@@ -61,8 +61,9 @@ const DescriptionHome = () => {
             </motion.div>
           </div>
           <div className='container-cell-img'>
-            {(listStructure || []).map((el) => 
+            {(listStructure || []).map((el, index) => (
               <motion.div
+                key={index}
                 className='cell'
                 initial={{ opacity: 0, y: 70 }}
                 animate={controlsCell}
@@ -76,7 +77,7 @@ const DescriptionHome = () => {
                   alt={t('THE_POLLE')}
                 />
               </motion.div>
-            )}
+            ))}
           </div>
         </div>
       }

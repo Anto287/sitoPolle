@@ -29,22 +29,22 @@
 }
 
 .pl__ring--a {
-    stroke: #f42f25;
+    stroke: var(--app-primary-color);
 }
 
 .pl__ring--b {
     animation-name: ringB;
-    stroke: #f49725;
+    stroke: var(--app-secondary-color);
 }
 
 .pl__ring--c {
     animation-name: ringC;
-    stroke: #255ff4;
+    stroke: var(--app-evidenced-color);
 }
 
 .pl__ring--d {
     animation-name: ringD;
-    stroke: #f42582;
+    stroke: var(--app-light-color);
 }
 
 @keyframes ringA {

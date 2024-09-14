@@ -24,7 +24,7 @@ function Index() {
 }
 
 if (!window.location.hash) {
-  window.location = window.location + '#/';
+  window.location = window.location + '#/home';
 }
 
 const link = document.createElement('link');
