@@ -5,7 +5,6 @@ import { useTranslation } from 'react-i18next';
 import Button from '@components/Button';
 import '@styles/NoPage.css';
 
-//TODO::Sistemarla per le varie grandezze 
 const NoPage = () => {
   const { t } = useTranslation();
   const [widthDevice, setWidthDevice] = useState('-small');

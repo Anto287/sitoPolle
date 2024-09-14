@@ -1,15 +1,15 @@
 :is(.container-svg-small, .container-svg-mind) svg {
     width: 50%;
-    max-height: 500px;
+    max-height: 80vh;
     height: auto;
     margin: 0 0 15px;
 }
   
 .wrapper-small{
-    max-width: 100%; 
-    min-height: clamp(250px, calc(100vw - 100px), 100vh);
-    width: 100%;
-    height: 100%;
+    height: 100vh;
+    width: 100vw;
+    min-width: 250px;
+    min-height: 350px;
     background: var(--app-third-color);
     display: flex;
     align-items: center;
@@ -58,10 +58,8 @@
 }
 
 .wrapper-mind{
-    max-width: 100%; 
-    min-height: clamp(400px, calc(100vw - 100px), 100vh);
-    width: 100%;
-    height: 100%;
+    height: 100vh;
+    width: 100vw;
     background: var(--app-third-color);
     display: flex;
     align-items: center;
@@ -113,9 +111,8 @@
 }
 
 .wrapper-large{
-    max-width: 100%; 
-    width: 100%;
-    height: 100%;
+    height: 100vh;
+    width: 100vw;
     background: var(--app-third-color);
     display: flex;
     align-items: center;
@@ -175,9 +172,8 @@
 }
 
 .wrapper-extra-large{
-    max-width: 100%; 
-    width: 100%;
-    height: 100%;
+    height: 100vh;
+    width: 100vw;
     background: var(--app-third-color);
     display: flex;
     align-items: center;
