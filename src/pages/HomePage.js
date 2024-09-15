@@ -1,16 +1,22 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import ParalaxHome from '@components/ParalaxHome';
 import DescriptionHome from '@components/DescriptionHome';
 
 import '@styles/HomeStyle.css';
 
-const HomePage = () => {  
+const HomePage = ({ pageArleadyStart }) => {  
   const [isParalaxLoaded, setIsParalaxLoaded] = useState(false);
   
   const handleParalaxLoad = () => {
     setIsParalaxLoaded(true);
   };
+
+  useEffect(() => {
+    if (isParalaxLoaded) {
+      pageArleadyStart();
+    }
+  }, [isParalaxLoaded]);
 
   return (
     <>

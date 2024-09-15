@@ -1,22 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Outlet, useLocation } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import Topbar from '@components/Topbar';
 import Menu from '@components/Menu';
 import { useMyData } from '@components/ScrollData';
-import { gsap } from 'gsap';
 
-const Layout = ({ showTopbar }) => {
+const Layout = ({ showTopbar, startPage }) => {
   const { data, setData } = useMyData();
 
   const [showTopBarScrolling, setShowTopBarScrolling] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isAnimating, setIsAnimating] = useState(true); // Stato per controllare la visibilità della Topbar
+  const [pageLoad, setPageLoad] = useState(false);
   const lastScrollTop = useRef(0);
   const scrollContainerRef = useRef(null);
-  const pageRef = useRef(null);
-  const circleRef = useRef(null);
-  const overlayRef = useRef(null);
-  const location = useLocation();
 
   const handleScroll = () => {
     const scrollTop = scrollContainerRef.current.scrollTop;
@@ -35,26 +30,9 @@ const Layout = ({ showTopbar }) => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const animatePageTransition = () => {
-    const tl = gsap.timeline();
-
-    setIsAnimating(true);
-
-    tl.fromTo(circleRef.current, 
-      { scale: 0, opacity: 1, transformOrigin: "50% 50%" }, 
-      {
-        scale: 20,
-        duration: 1.5,
-        ease: "power2.inOut",
-        onComplete: () => {
-          gsap.to(pageRef.current, { opacity: 1, duration: 0.5 });
-
-          overlayRef.current.style.display = 'none';
-          setIsAnimating(false);
-        }
-      }
-    );
-  };
+  useEffect(() => {
+    setPageLoad(startPage);
+  },[startPage]);
 
   useEffect(() => {
     const scrollContainer = scrollContainerRef.current;
@@ -70,28 +48,13 @@ const Layout = ({ showTopbar }) => {
     };
   }, []);
 
-  useEffect(() => {
-    if (circleRef.current && overlayRef.current) {
-      circleRef.current.style.display = 'block';
-      overlayRef.current.style.display = 'block';
-    }
-
-    animatePageTransition();
-  }, [location]);
-
   return (
     <>
-      <div ref={scrollContainerRef} className='container-web'>
-        {showTopbar && !isAnimating && (<Topbar showTopBarScrolling={showTopBarScrolling} toggleMenu={toggleMenu} />)}
+      <div ref={scrollContainerRef} className="container-web">
+        {showTopbar && pageLoad && <Topbar showTopBarScrolling={showTopBarScrolling} toggleMenu={toggleMenu} />}
         <Menu isMenuOpen={isMenuOpen} />
 
-        <div ref={overlayRef} className="overlay">
-          <div ref={circleRef} className="circle"></div>
-        </div>
-
-        <div ref={pageRef} style={{ opacity: 0 }}> 
-          <Outlet />
-        </div>
+        <Outlet />
       </div>
     </>
   );
