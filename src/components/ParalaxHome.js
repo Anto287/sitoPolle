@@ -14,7 +14,6 @@ import laghetto from '@images/img_paralax_home/laghetto.webp';
 import sun_rays from '@images/img_paralax_home/sun_rays.webp';
 import front from '@images/img_paralax_home/front.webp';
 
-//TODO: Ultima cosa che non mi convince di qesta pagina è l'immagine del "laghetto" da rifare secondo me 
 const ParalaxHome = ({ onLoad }) => {
   const { t } = useTranslation();
   const breakpoint = UseResponsiveJSX([600, 1200, 2000]);
