@@ -48,6 +48,19 @@ body.dark {
     overflow-y: auto;
 }
 
+.loading-cover{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--app-light-color);  
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .container-web::-webkit-scrollbar {
     width: 0px;
 }

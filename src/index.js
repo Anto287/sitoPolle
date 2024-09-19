@@ -5,7 +5,7 @@ const App = React.lazy(() => import('./App'));
 import { MyDataProvider } from '@components/ScrollData';
 import '@styles/App.css';
 import './i18n';
-import myIcon from '@images/icon.png';
+import myIcon from '@images/img_topbar/icon.webp';
 
 import { HashRouter } from 'react-router-dom';
 
@@ -29,7 +29,7 @@ if (!window.location.hash) {
 
 const link = document.createElement('link');
 link.rel = 'icon';
-link.type = 'image/png';
+link.type = 'image/webp';
 link.href = myIcon;
 document.head.appendChild(link);
 
