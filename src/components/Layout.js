@@ -18,7 +18,7 @@ const Layout = ({ showTopbar, startPage }) => {
   const [loadingAnimation, setLoadingAnimation] = useState(true);
   const lastScrollTop = useRef(0);
   const scrollContainerRef = useRef(null);
-  const coverRef = useRef(null);
+  const blobRef = useRef(null);
 
   const handleScroll = () => {
     const scrollTop = scrollContainerRef.current.scrollTop;
@@ -57,9 +57,10 @@ const Layout = ({ showTopbar, startPage }) => {
 
   useEffect(() => {
     if (pageLoad) {
-      gsap.to(coverRef.current, {
-        opacity: 0,
-        duration: 1,
+      gsap.to(blobRef.current, {
+        scale: 50, // Fa crescere il blob
+        duration: 2,
+        ease: 'power2.inOut',
         onComplete: () => setLoadingAnimation(false),
       });
     }
@@ -72,13 +73,15 @@ const Layout = ({ showTopbar, startPage }) => {
         <Menu isMenuOpen={isMenuOpen} />
         
         {loadingAnimation && (
-          <div ref={coverRef} className="loading-cover">
-            <ImgLoader 
-              src={myIcon} 
-              style={{minWidth: '40px', width: '40%', height: '90%'}} 
-              styleImg={{width: 'auto', height: '100%'}}
-              alt={t('THE_POLLE')}
-            />
+          <div className="overlay">
+            <div ref={blobRef} className="blob">
+              <ImgLoader 
+                src={myIcon} 
+                style={{minWidth: '40px', width: '40%', height: '90%'}} 
+                styleImg={{width: 'auto', height: '100%'}}
+                alt={t('THE_POLLE')}
+              />
+            </div>
           </div>
         )}
         

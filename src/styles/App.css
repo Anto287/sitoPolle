@@ -44,22 +44,35 @@ body.dark {
 .container-web{
     height: 100vh;
     width: 100vw;
+    position: relative;
     overflow-x: hidden;
     overflow-y: auto;
 }
 
-.loading-cover{
+.overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: var(--app-light-color);  
-    z-index: 100;
+    background: var(--app-light-color);
+    z-index: 999;
     display: flex;
     justify-content: center;
     align-items: center;
-}
+    overflow: hidden;
+    pointer-events: none; /* Disabilita l'interazione finché l'animazione non è completa */
+  }
+  
+  .blob {
+    width: 50%; /* Dimensioni iniziali */
+    height: 50%; /* Dimensioni iniziali */
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1; /* Assicurati che l'uovo stia sopra l'overlay */
+  }
 
 .container-web::-webkit-scrollbar {
     width: 0px;
