@@ -3,10 +3,9 @@ import { Outlet } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Topbar from '@components/Topbar';
 import Menu from '@components/Menu';
-import ImgLoader from '@components/ImgLoader';
+import LoadingSpinner from '@components/LoadingSpinner';
 import { useMyData } from '@components/ScrollData';
 import gsap from 'gsap';
-import myIcon from '@images/img_topbar/icon.webp';
 
 const Layout = ({ showTopbar, startPage }) => {
   const { t } = useTranslation();
@@ -17,8 +16,7 @@ const Layout = ({ showTopbar, startPage }) => {
   const [pageLoad, setPageLoad] = useState(false);
   const [loadingAnimation, setLoadingAnimation] = useState(true);
   const lastScrollTop = useRef(0);
-  const scrollContainerRef = useRef(null);
-  const blobRef = useRef(null);
+  const scrollContainerRef = useRef(null);  // container-web
 
   const handleScroll = () => {
     const scrollTop = scrollContainerRef.current.scrollTop;
@@ -57,35 +55,41 @@ const Layout = ({ showTopbar, startPage }) => {
 
   useEffect(() => {
     if (pageLoad) {
-      gsap.to(blobRef.current, {
-        scale: 50, // Fa crescere il blob
-        duration: 2,
-        ease: 'power2.inOut',
-        onComplete: () => setLoadingAnimation(false),
+      // Animazione dello spinner
+      gsap.to('.loading-spinner', {
+        opacity: 0,
+        duration: 0.5,
+        onComplete: () => {
+          setLoadingAnimation(false); // Nascondi lo spinner
+          // Animazione del clip-path sull'outlet
+          gsap.fromTo(scrollContainerRef.current,
+            { clipPath: 'circle(0% at 50% 50%)' },  // Inizia come piccolo cerchio
+            { 
+              clipPath: 'circle(150% at 50% 50%)',  // Si espande fino a coprire l'intero schermo
+              duration: 2, 
+              ease: 'power2.inOut',
+            }
+          );
+        },
       });
     }
   }, [pageLoad]);
 
   return (
     <>
+      {/* Spinner di caricamento */}
+      {loadingAnimation && (
+        <LoadingSpinner />
+      )}
+      
       <div ref={scrollContainerRef} className="container-web">
         {showTopbar && pageLoad && <Topbar showTopBarScrolling={showTopBarScrolling} toggleMenu={toggleMenu} />}
         <Menu isMenuOpen={isMenuOpen} />
         
-        {loadingAnimation && (
-          <div className="overlay">
-            <div ref={blobRef} className="blob">
-              <ImgLoader 
-                src={myIcon} 
-                style={{minWidth: '40px', width: '40%', height: '90%'}} 
-                styleImg={{width: 'auto', height: '100%'}}
-                alt={t('THE_POLLE')}
-              />
-            </div>
-          </div>
-        )}
-        
-        <Outlet />
+        {/* L'outlet viene mascherato con clip-path */}
+        <div className="outlet-container">
+          <Outlet />
+        </div>
       </div>
     </>
   );

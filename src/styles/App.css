@@ -18,61 +18,15 @@
     --app-color-black: #161616;
 }
 
-body.light {
-    --app-primary-color: rgb(96, 108, 56);
-    --app-secondary-color: rgb(40, 54, 24);
-    --app-third-color: rgb(254, 250, 224);
-    --app-light-color: rgb(221, 161, 94);
-    --app-evidenced-color: rgb(188, 108, 37);
-
-    --app-color-white: #FFF8E1;
-    --app-color-selected: #2281ee;
-    --app-color-black: #161616;
-}
-
-body.dark {
-    --app-primary-color: #374520;
-    --app-secondary-color: #1a2410;
-    --app-third-color: #2c2c26;
-    --app-light-color: #87512c;
-    --app-evidenced-color: #663314;
-
-    --app-color-white: #161616;
-    --app-color-black: #FFF8E1;
-}
-
-.container-web{
+.container-web {
     height: 100vh;
     width: 100vw;
     position: relative;
     overflow-x: hidden;
     overflow-y: auto;
+    clip-path: circle(0% at 50% 50%); /* Parte da un piccolo cerchio */
+    transition: clip-path 2s ease-in-out; 
 }
-
-.overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--app-light-color);
-    z-index: 999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    pointer-events: none; /* Disabilita l'interazione finché l'animazione non è completa */
-  }
-  
-  .blob {
-    width: 50%; /* Dimensioni iniziali */
-    height: 50%; /* Dimensioni iniziali */
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1; /* Assicurati che l'uovo stia sopra l'overlay */
-  }
 
 .container-web::-webkit-scrollbar {
     width: 0px;
