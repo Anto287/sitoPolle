@@ -24,9 +24,9 @@
     position: relative;
     overflow-x: hidden;
     overflow-y: auto;
-    clip-path: circle(0% at 50% 50%); /* Parte da un piccolo cerchio */
-    transition: clip-path 2s ease-in-out; 
-}
+    clip-path: circle(0% at 50% 50%);
+    will-change: clip-path;
+  }
 
 .container-web::-webkit-scrollbar {
     width: 0px;

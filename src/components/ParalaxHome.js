@@ -45,17 +45,26 @@ const ParalaxHome = ({ onLoad }) => {
   const gyroX = (gyroData.alpha > 180 ? gyroData.alpha - 360 : gyroData.alpha) || 0;
   const gyroY = (gyroData.beta - 90) || 0;
 
+  const lerp = (start, end, t) => start + (end - start) * t;
+
   const getGyroStyle = (lerpEase, strength) => {
     const transitionX = Math.max(Math.min(gyroX * strength, 100), -100);
     const transitionY = Math.max(Math.min(gyroY * strength, 50), -50);
 
+    const newX = lerp(currentX.current, transitionX, lerpEase);
+    const newY = lerp(currentY.current, transitionY, lerpEase);
+    currentX.current = newX;
+    currentY.current = newY;
+
     return {
       height: '100vh',
       width: '100vw',
-      transform: `translate(${transitionX}px, ${transitionY}px)`,
-      transition: `transform ${lerpEase}s ease-out`,
+      transform: `translate(${newX}px, ${newY}px) translateZ(0)`,
     };
   };
+
+  const currentX = useRef(0);
+  const currentY = useRef(0);
 
   const handleImageLoad = (src) => {
     if (!loadedFlags.current[src]) {

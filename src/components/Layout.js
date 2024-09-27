@@ -55,38 +55,30 @@ const Layout = ({ showTopbar, startPage }) => {
 
   useEffect(() => {
     if (pageLoad) {
-      // Animazione dello spinner
-      gsap.to('.loading-spinner', {
-        opacity: 0,
-        duration: 0.5,
-        onComplete: () => {
-          setLoadingAnimation(false); // Nascondi lo spinner
-          // Animazione del clip-path sull'outlet
-          gsap.fromTo(scrollContainerRef.current,
-            { clipPath: 'circle(0% at 50% 50%)' },  // Inizia come piccolo cerchio
-            { 
-              clipPath: 'circle(150% at 50% 50%)',  // Si espande fino a coprire l'intero schermo
-              duration: 2, 
-              ease: 'power2.inOut',
-            }
-          );
-        },
-      });
+      setLoadingAnimation(false);
     }
   }, [pageLoad]);
 
+  useEffect(() => {
+    if(!loadingAnimation){
+      gsap.to(scrollContainerRef.current, {
+        clipPath: 'circle(150% at 50% 50%)',
+        delay: 0.4,
+        duration: 2.5,
+        ease: 'power2.inOut',
+        force3D: true,
+      });
+    }
+  }, [loadingAnimation]);
+
   return (
     <>
-      {/* Spinner di caricamento */}
-      {loadingAnimation && (
-        <LoadingSpinner />
-      )}
+      {loadingAnimation && <LoadingSpinner />}
       
       <div ref={scrollContainerRef} className="container-web">
         {showTopbar && pageLoad && <Topbar showTopBarScrolling={showTopBarScrolling} toggleMenu={toggleMenu} />}
         <Menu isMenuOpen={isMenuOpen} />
         
-        {/* L'outlet viene mascherato con clip-path */}
         <div className="outlet-container">
           <Outlet />
         </div>
