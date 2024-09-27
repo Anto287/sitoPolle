@@ -1,4 +1,4 @@
-import React, { useState, useEffect, forwardRef  } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { UseResponsiveJSX } from '@components/UseResponsiveJSX';
@@ -7,7 +7,7 @@ import '@styles/Topbar.css';
 import myIcon from '@images/img_topbar/icon.webp';
 
 //TODO::Riscriverlo in maniera più pulita e ssitemare il layout per il maxi schermo 
-const Topbar = forwardRef(({ showTopBarScrolling, toggleMenu }, ref) => {
+const Topbar = ({ showTopBarScrolling, toggleMenu }) => {
   const { t } = useTranslation();
   const breakpoint = UseResponsiveJSX([600, 1200, 2000]); 
 
@@ -56,7 +56,7 @@ const Topbar = forwardRef(({ showTopBarScrolling, toggleMenu }, ref) => {
   return (
     <nav>
       {breakpoint === 0 && 
-        <div ref={ref} className={`topbar-mobile ${showTopBarScrolling ? "visible" : "hidden"}`}>
+        <div className={`topbar-mobile ${showTopBarScrolling ? "visible" : "hidden"}`}>
           <div className='topbar-content-mobile'>
             <div className='container-logo-mobile'>
               <ImgLoader 
@@ -86,7 +86,7 @@ const Topbar = forwardRef(({ showTopBarScrolling, toggleMenu }, ref) => {
       }
 
       {breakpoint === 1 && 
-        <div ref={ref} className={`topbar-tablet ${showTopBarScrolling ? "visible" : "hidden"}`}>
+        <div className={`topbar-tablet ${showTopBarScrolling ? "visible" : "hidden"}`}>
           <div className='topbar-content-tablet'>
             <div className='container-logo-tablet'>
               <ImgLoader 
@@ -233,7 +233,7 @@ const Topbar = forwardRef(({ showTopBarScrolling, toggleMenu }, ref) => {
       }
 
       {(breakpoint === 2 || breakpoint === 3) &&
-        <div ref={ref} className={`topbar-pc ${showTopBarScrolling ? "visible" : "hidden"}`}>
+        <div className={`topbar-pc ${showTopBarScrolling ? "visible" : "hidden"}`}>
           <div className='topbar-content'>
             <div className='container-logo'>
               <ImgLoader 
@@ -371,6 +371,6 @@ const Topbar = forwardRef(({ showTopBarScrolling, toggleMenu }, ref) => {
       }
     </nav >
   );
-});
+};
 
 export default Topbar;
