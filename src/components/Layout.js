@@ -60,13 +60,21 @@ const Layout = ({ showTopbar, startPage }) => {
   }, [pageLoad]);
 
   useEffect(() => {
-    if(!loadingAnimation){
+    if (!loadingAnimation) {
+      gsap.set(scrollContainerRef.current, {
+        clipPath: 'circle(0% at 50% 50%)',
+        willChange: 'clip-path',
+      });
+  
       gsap.to(scrollContainerRef.current, {
-        clipPath: 'circle(150% at 50% 50%)',
+        clipPath: 'circle(125% at 50% 50%)',
         delay: 0.4,
         duration: 2.5,
         ease: 'power2.inOut',
         force3D: true,
+        onComplete: () => {
+          gsap.set(scrollContainerRef.current, { willChange: '' });
+        }
       });
     }
   }, [loadingAnimation]);
