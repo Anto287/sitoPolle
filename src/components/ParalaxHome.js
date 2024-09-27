@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { UseResponsiveJSX } from '@components/UseResponsiveJSX';
 import { MouseParallax } from 'react-just-parallax';
+import gsap from 'gsap';
 
 import '@styles/ParalaxHome.css';
 
@@ -21,12 +22,18 @@ const ParalaxHome = ({ onLoad }) => {
   const [errorPageLoaded, setErrorPageLoaded] = useState(false);
   const [gyroData, setGyroData] = useState({ alpha: 0, beta: 0 });
   const loadedFlags = useRef({});
+  const titlesRef = useRef(null);
 
   const imageSources = [cielo, nuvola, fog_2, secondo_piano, fog_1, laghetto, sun_rays, front];
 
   useEffect(() => {
     if (loadedImages === imageSources.length || errorPageLoaded) {
       onLoad();
+
+      gsap.fromTo(titlesRef.current, 
+        { y: 200, opacity: 0 },
+        { y: 0, opacity: 1, duration: 1.5, ease: 'power2.out', delay: 1.2 }
+      );
     }
   }, [loadedImages]);
 
@@ -107,7 +114,7 @@ const ParalaxHome = ({ onLoad }) => {
       {renderParallaxLayer(fog_1, `fog-1-${deviceClass}`, getGyroStyle(0.7, 0.55), 0.05, 0.15)}
       {renderParallaxLayer(sun_rays, `sun-rays-${deviceClass}`, getGyroStyle(0.7, 0.4), 0.02, 0.02)}
       <MouseParallax enableOnTouchDevice shouldResetPosition shouldPause isAbsolutelyPositioned lerpEase={0.1} strength={0.1}>
-        <div className={titlesClass}>
+        <div className={titlesClass} ref={titlesRef}>
           <p className='first-title' translate="no">{t('WELCOME')}</p>
           <p className='second-title' translate="no">{t('TO_THE')}</p>
           <b translate="no">{t('POLLE')}</b>
@@ -124,7 +131,7 @@ const ParalaxHome = ({ onLoad }) => {
       {breakpoint === 2 && !errorPageLoaded && renderContent('img-pc', 'title-img-pc')}
       {breakpoint === 3 && !errorPageLoaded && renderContent('img-big-monitor', 'title-img-big-monitor')}
       {errorPageLoaded && 
-        <div className="error-load">
+        <div className="error-load" ref={titlesRef}>
           <p className='first-title' translate="no">{t('WELCOME')}</p>
           <p className='second-title' translate="no">{t('TO_THE')}</p>
           <b translate="no">{t('POLLE')}</b>

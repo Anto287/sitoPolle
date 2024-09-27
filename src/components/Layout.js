@@ -15,8 +15,10 @@ const Layout = ({ showTopbar, startPage }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [pageLoad, setPageLoad] = useState(false);
   const [loadingAnimation, setLoadingAnimation] = useState(true);
+  const [showTopbarAfterAnimation, setShowTopbarAfterAnimation] = useState(false);
   const lastScrollTop = useRef(0);
-  const scrollContainerRef = useRef(null);  // container-web
+  const scrollContainerRef = useRef(null);
+  const topbarRef = useRef(null); 
 
   const handleScroll = () => {
     const scrollTop = scrollContainerRef.current.scrollTop;
@@ -62,6 +64,34 @@ const Layout = ({ showTopbar, startPage }) => {
   useEffect(() => {
     if (!loadingAnimation) {
       const element = scrollContainerRef.current;
+
+      gsap.set(element, {
+        clipPath: 'circle(1% at 50% 50%)',
+        willChange: 'clip-path',
+      });
+
+      gsap.to(element, {
+        clipPath: 'circle(125% at 50% 50%)',
+        delay: 0.4,
+        duration: 2.0,
+        ease: 'power2.inOut',
+        force3D: true,
+        onComplete: () => {
+          element.style.willChange = ''; 
+          setShowTopbarAfterAnimation(true);
+        }
+      });
+
+      gsap.ticker.fps(60);
+    }
+  }, [loadingAnimation]);
+
+  useEffect(() => {
+    if (!loadingAnimation) {
+      const element = scrollContainerRef.current;
+      const topbar = topbarRef.current;
+  
+      gsap.set(topbar, { top: '-100%', willChange: 'top' });
   
       gsap.set(element, {
         clipPath: 'circle(1% at 50% 50%)',
@@ -79,16 +109,26 @@ const Layout = ({ showTopbar, startPage }) => {
         }
       });
   
+      gsap.to(topbar, {
+        top: '0%',
+        delay: 1, 
+        duration: 0.8,
+        ease: 'power2.inOut',
+        onComplete: () => {
+          topbar.style.willChange = '';
+        }
+      });
+  
       gsap.ticker.fps(60);
     }
-  }, [loadingAnimation]);  
+  }, [loadingAnimation]); 
 
   return (
     <>
       {loadingAnimation && <LoadingSpinner />}
-      
+
       <div ref={scrollContainerRef} className="container-web">
-        {showTopbar && pageLoad && <Topbar showTopBarScrolling={showTopBarScrolling} toggleMenu={toggleMenu} />}
+        {showTopbar && pageLoad && <Topbar ref={topbarRef} showTopBarScrolling={showTopBarScrolling} toggleMenu={toggleMenu} />}
         <Menu isMenuOpen={isMenuOpen} />
         
         <div className="outlet-container">
