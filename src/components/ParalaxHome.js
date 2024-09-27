@@ -51,25 +51,28 @@ const ParalaxHome = ({ onLoad }) => {
 
   const gyroX = (gyroData.alpha > 180 ? gyroData.alpha - 360 : gyroData.alpha) || 0;
   const gyroY = (gyroData.beta - 90) || 0;
-
+  
   const lerp = (start, end, t) => start + (end - start) * t;
-
+  
   const getGyroStyle = (lerpEase, strength) => {
-    const transitionX = Math.max(Math.min(gyroX * strength, 100), -100);
-    const transitionY = Math.max(Math.min(gyroY * strength, 50), -50);
-
+    const maxX = 50;
+    const maxY = 25;
+  
+    const transitionX = Math.max(Math.min(gyroX * strength, maxX), -maxX);
+    const transitionY = Math.max(Math.min(gyroY * strength, maxY), -maxY);
+  
     const newX = lerp(currentX.current, transitionX, lerpEase);
     const newY = lerp(currentY.current, transitionY, lerpEase);
     currentX.current = newX;
     currentY.current = newY;
-
+  
     return {
       height: '100vh',
       width: '100vw',
       transform: `translate(${newX}px, ${newY}px) translateZ(0)`,
     };
   };
-
+  
   const currentX = useRef(0);
   const currentY = useRef(0);
 
@@ -112,7 +115,7 @@ const ParalaxHome = ({ onLoad }) => {
       {renderParallaxLayer(secondo_piano, `secondo-piano-${deviceClass}`, getGyroStyle(0.7, 0.45), 0.05, 0.05)}
       {renderParallaxLayer(laghetto, `laghetto-${deviceClass}`, getGyroStyle(0.7, 0.5), 0.04, 0.1)}
       {renderParallaxLayer(fog_1, `fog-1-${deviceClass}`, getGyroStyle(0.7, 0.55), 0.05, 0.15)}
-      {renderParallaxLayer(sun_rays, `sun-rays-${deviceClass}`, getGyroStyle(0.7, 0.4), 0.02, 0.02)}
+      {renderParallaxLayer(sun_rays, `sun-rays-${deviceClass}`, {}, 0.02, 0.02)}
       <MouseParallax enableOnTouchDevice shouldResetPosition shouldPause isAbsolutelyPositioned lerpEase={0.1} strength={0.1}>
         <div className={titlesClass} ref={titlesRef}>
           <p className='first-title' translate="no">{t('WELCOME')}</p>
