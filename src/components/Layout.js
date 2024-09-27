@@ -61,23 +61,27 @@ const Layout = ({ showTopbar, startPage }) => {
 
   useEffect(() => {
     if (!loadingAnimation) {
-      gsap.set(scrollContainerRef.current, {
-        clipPath: 'circle(0% at 50% 50%)',
+      const element = scrollContainerRef.current;
+  
+      gsap.set(element, {
+        clipPath: 'circle(1% at 50% 50%)',
         willChange: 'clip-path',
       });
   
-      gsap.to(scrollContainerRef.current, {
+      gsap.to(element, {
         clipPath: 'circle(125% at 50% 50%)',
         delay: 0.4,
-        duration: 2.5,
+        duration: 2.0,
         ease: 'power2.inOut',
         force3D: true,
         onComplete: () => {
-          gsap.set(scrollContainerRef.current, { willChange: '' });
+          element.style.willChange = ''; 
         }
       });
+  
+      gsap.ticker.fps(60);
     }
-  }, [loadingAnimation]);
+  }, [loadingAnimation]);  
 
   return (
     <>
