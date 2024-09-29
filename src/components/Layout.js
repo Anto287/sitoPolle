@@ -65,15 +65,11 @@ const Layout = ({ showTopbar, startPage }) => {
   
       setShowTopBarScrolling(false);
   
-      gsap.set(element, {
-        clipPath: 'circle(1% at 50% 50%)',
-        willChange: 'clip-path',
-      });
-  
+      gsap.ticker.fps(120);
+
       gsap.to(element, {
         clipPath: 'circle(125% at 50% 50%)',
-        delay: 0.4,
-        duration: 2.0,
+        duration: 2.5,
         ease: 'power2.inOut',
         force3D: true,
         onComplete: () => {
@@ -81,10 +77,9 @@ const Layout = ({ showTopbar, startPage }) => {
           element.style.transform = ''; 
           element.style.transition = 'none';
           setShowTopBarScrolling(true);
+          gsap.ticker.fps(60);
         }
       });
-  
-      gsap.ticker.fps(60);
     }
   }, [loadingAnimation]); 
 

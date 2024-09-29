@@ -26,7 +26,6 @@
     overflow-y: auto;
     clip-path: circle(0% at 50% 50%);
     will-change: clip-path;
-    -webkit-overflow-scrolling: touch;
 }
 
 .container-web::-webkit-scrollbar {
