@@ -24,13 +24,24 @@
     position: relative;
     overflow-x: hidden;
     overflow-y: auto;
-    clip-path: circle(0% at 50% 50%);
+    clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
     will-change: clip-path;
-    transition: all 2.5s cubic-bezier(0.999, 0.025, 0.675, 0.19); 
+    transition: clip-path 2s cubic-bezier(0.999, 0.025, 0.675, 0.19); 
 }
 
-.open{
-    clip-path: circle(125% at 50% 50%);
+.open {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+
+@media (min-width: 1200px) {
+    .container-web {
+        clip-path: circle(0% at 50% 50%);
+        transition: clip-path 2.5s cubic-bezier(0.999, 0.025, 0.675, 0.19);
+    }
+
+    .open {
+        clip-path: circle(125% at 50% 50%);
+    }
 }
 
 .clip-path-removed {
