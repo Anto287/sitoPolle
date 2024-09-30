@@ -15,6 +15,7 @@ const Layout = ({ showTopbar, startPage }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [pageLoad, setPageLoad] = useState(false);
   const [loadingAnimation, setLoadingAnimation] = useState(true);
+  const [clipPathOpen, setClipPathOpen] = useState('');
   const lastScrollTop = useRef(0);
   const scrollContainerRef = useRef(null);
 
@@ -60,26 +61,14 @@ const Layout = ({ showTopbar, startPage }) => {
   }, [pageLoad]);
 
   useEffect(() => {
-    if (!loadingAnimation) {
-      const element = scrollContainerRef.current;
-  
+    if (!loadingAnimation) {  
       setShowTopBarScrolling(false);
-  
-      gsap.ticker.fps(120);
-
-      gsap.to(element, {
-        clipPath: 'circle(125% at 50% 50%)',
-        duration: 2.5,
-        ease: 'power2.inOut',
-        force3D: true,
-        onComplete: () => {
-          element.style.willChange = ''; 
-          element.style.transform = ''; 
-          element.style.transition = 'none';
-          setShowTopBarScrolling(true);
-          gsap.ticker.fps(60);
-        }
-      });
+      setClipPathOpen('open');
+      
+      setTimeout(() => {
+        setClipPathOpen('clip-path-removed');
+        setShowTopBarScrolling(true);
+      }, 2500);   
     }
   }, [loadingAnimation]); 
 
@@ -87,7 +76,7 @@ const Layout = ({ showTopbar, startPage }) => {
     <>
       {loadingAnimation && <LoadingSpinner />}
 
-      <div ref={scrollContainerRef} className="container-web">
+      <div ref={scrollContainerRef} className={`container-web ${clipPathOpen}`}>
         {showTopbar && pageLoad && <Topbar showTopBarScrolling={showTopBarScrolling} toggleMenu={toggleMenu} />}
         <Menu isMenuOpen={isMenuOpen} />
         
