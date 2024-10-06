@@ -3,12 +3,13 @@ import { motion, useAnimation } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { UseResponsiveJSX } from '@components/UseResponsiveJSX';
 import { useMyData } from '@components/ScrollData';
-import ImgLoader from '@components/ImgLoader';
+import Card from '@components/Card';
 import '@styles/DescriptionHome.css';
 
 import laghetto from '@images/img_home/laghetto.webp';
 import la_tana from '@images/img_home/la_tana.webp';
 import area_camper from '@images/img_home/area_camper.webp';
+import campeggio from '@images/img_home/campeggio.webp';
 
 const DescriptionHome = () => {
   const { t } = useTranslation();
@@ -18,13 +19,24 @@ const DescriptionHome = () => {
   const controlsCell = useAnimation();
   const listStructure = [
     {
-      img: laghetto
+      img: la_tana,
+      title: t('LA_TANA_TITLE'),
+      description: t('LA_TANA_DESCRIPTION'),
     },
     {
-      img: la_tana
+      img: laghetto,
+      title: t('LAGHETTO_TITLE'),
+      description: t('LAGHETTO_DESCRIPTION'),
     },
     {
-      img: area_camper
+      img: area_camper,
+      title: t('AREA_CAMPER_TITLE'),
+      description: t('AREA_CAMPER_DESCRIPTION'),
+    },
+    {
+      img: campeggio,
+      title: t('CAMPING_TITLE'),
+      description: t('CAMPING_DESCRIPTION'),
     }
   ];
 
@@ -47,11 +59,9 @@ const DescriptionHome = () => {
 
   return (
     <div>
-      {breakpoint === 0 && <div>{t('HELLO_MOBILE')}</div>}
-      {breakpoint === 1 && <div>{t('HELLO_TABLET')}</div>}
-      {breakpoint === 2 && 
-        <div className='content-where-are'>
-          <div className='container-paragraph'>
+      {breakpoint === 0 && 
+        <div className='content-where-are-mobile'>
+          <div className='container-paragraph-mobile'>
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               animate={controls}
@@ -60,27 +70,23 @@ const DescriptionHome = () => {
               <h1>{t('OUR_STRUCTURE')}</h1>
             </motion.div>
           </div>
-          <div className='container-cell-img'>
+          <div className='container-cell-img-mobile'>
             {(listStructure || []).map((el, index) => (
-              <motion.div
-                key={index}
-                className='cell'
-                initial={{ opacity: 0, y: 70 }}
-                animate={controlsCell}
-                transition={{ duration: 0.5 }} 
-              >
-                <ImgLoader 
-                  src={el.img} 
-                  style={{minWidth: '40px', width: '100%', maxWidth: '100%', height: 'auto'}}
-                  containerClass="zoom-effect" 
-                  styleImg={{width: '100%', height: 'auto'}}
-                  alt={t('THE_POLLE')}
-                />
-              </motion.div>
+              <Card 
+                imgCard={el?.img} 
+                altImgCard={el?.title}
+                titleCard={el?.title}
+                descriptionCard={el?.description}
+                styleImgLoader={{minWidth: '40px', width: '100%', maxWidth: '100%', height: 'auto', maxHeight: '225px'}}
+                containerClassImgLoader="zoom-effect" 
+                styleImg={{width: '100%', height: 'auto'}}
+              ></Card>
             ))}
           </div>
         </div>
       }
+      {breakpoint === 1 && <div>{t('HELLO_TABLET')}</div>}
+      {breakpoint === 2 && <div>{t('HELLO_PC')}</div>}
       {breakpoint === 3 && <div>{t('HELLO_BIG_MONITOR')}</div>}
     </div>
   );
