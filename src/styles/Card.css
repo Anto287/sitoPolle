@@ -1,10 +1,11 @@
 .card {
-    width: 300px;
-    border-radius: 20px;
+    width: clamp(100px, 85vw, 350px);
+    border-radius: 4vw;
     overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1vw 3vw rgba(0, 0, 0, 0.1);
     background-color: white;
     transition: transform 0.3s;
+    position: relative;
 }
 
 .card:hover {
@@ -13,35 +14,71 @@
 
 .card img {
     width: 100%;
-    height: 180px;
+    height: 40vh;
     object-fit: cover;
 }
 
 .card-content {
-    padding: 16px;
+    padding: 4vw;
 }
 
 .card-title {
-    font-size: 18px;
-    font-weight: bold;
-    margin: 0 0 8px;
+    font-family: "Lilita One", serif;
+    font-size: clamp(18px, 3vh, 40px);
+    font-weight: 200;
+    margin-bottom: 8px;
 }
 
 .card-description {
-    font-size: 14px;
-    color: #555;
+    font-family: "Lato", serif;
+    font-weight: 600;
+    font-size: clamp(14px, 2.3vh, 35px);
     margin-bottom: 16px;
 }
 
-.card-action {
+.card-container-action{
+    width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    font-size: 14px;
-    color: #007BFF;
+    justify-content: end;
+}
+
+.card-action {
+    position: relative;
+    overflow: hidden;
+    width: 60%;
+    padding: 2.2% 10% 2% 10%;
+    border: 2px solid var(--app-primary-color);
+    border-radius: 3vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15%;
+    font-family: "Lato", serif;
+    font-weight: 600;
+    font-size: clamp(13px, 2.5vw, 15px);
+    color: var(--app-primary-color);
     cursor: pointer;
 }
 
-.card-action:hover {
-    text-decoration: underline;
+.card-action > i {
+    font-size: 1.2cap;
+}
+
+.ripple {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    transform: scale(0);
+    animation: ripple-effect 1s ease-out;
+    pointer-events: none;
+}
+
+@keyframes ripple-effect {
+    to {
+        transform: scale(15);
+        opacity: 0;
+    }
 }
