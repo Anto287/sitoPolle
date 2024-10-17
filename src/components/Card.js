@@ -6,6 +6,7 @@ import '@styles/Card.css';
 const Card = ({ imgCard, altImgCard, titleCard, descriptionCard, styleImgLoader, containerClassImgLoader, styleImg }) => {
     const { t } = useTranslation();
     const [ripples, setRipples] = useState([]);
+    const [btnInHover, setBtnInHover] = useState({});
 
     const handleClick = (e) => {
         const button = e.currentTarget;
@@ -21,6 +22,19 @@ const Card = ({ imgCard, altImgCard, titleCard, descriptionCard, styleImgLoader,
         }, 1000);
     };
 
+    const mouseEnter = (e) => {
+        const button = e.currentTarget;
+        const rect = button.getBoundingClientRect();
+        const x = e.clientX - rect.left - 10;
+        const y = e.clientY - rect.top - 10;
+    
+        setBtnInHover({ x, y, id: Date.now() });
+    }
+    
+    const mouseLeave = () => {
+        setBtnInHover(null);
+    }
+
     return (
         <div className="card">
             <ImgLoader 
@@ -34,7 +48,12 @@ const Card = ({ imgCard, altImgCard, titleCard, descriptionCard, styleImgLoader,
                 <h2 className="card-title">{t(titleCard)}</h2>
                 <p className="card-description">{t(descriptionCard)}</p>
                 <div className='card-container-action'>
-                    <div className="card-action" onClick={handleClick}>
+                    <div 
+                        className={`card-action ${btnInHover?.id ? 'card-hover' : ''}`}
+                        onClick={handleClick}
+                        onMouseEnter={mouseEnter}
+                        onMouseLeave={mouseLeave}
+                    >
                         {ripples.map(ripple => (
                             <span 
                                 key={ripple.id} 
@@ -42,6 +61,13 @@ const Card = ({ imgCard, altImgCard, titleCard, descriptionCard, styleImgLoader,
                                 style={{ left: ripple.x, top: ripple.y }}
                             />
                         ))}
+                        {btnInHover?.id &&  
+                            <span 
+                                key={btnInHover.id} 
+                                className="btn-hover" 
+                                style={{ left: btnInHover.x, top: btnInHover.y }}
+                            />
+                        }
                         <span>{t('LEARN_MORE')}</span>
                         <i className="fa-solid fa-share-from-square"></i>
                     </div>

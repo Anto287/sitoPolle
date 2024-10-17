@@ -59,6 +59,25 @@
     font-size: clamp(13px, 2.5vw, 15px);
     color: var(--app-primary-color);
     cursor: pointer;
+    user-select: none;
+    outline: none;
+    box-shadow: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: all 1s ease-out;
+}
+
+.card-action > i,
+.card-action > span {
+    z-index: 2;
+    user-select: none;
+    outline: none;
+}
+
+.card-action.card-hover > i,
+.card-action.card-hover > span {
+    z-index: 2;
+    color: white;
+    transition: all 1s ease-out;
 }
 
 .card-action > i {
@@ -66,6 +85,7 @@
 }
 
 .ripple {
+    z-index: 1;
     position: absolute;
     width: 20px;
     height: 20px;
@@ -74,11 +94,30 @@
     transform: scale(0);
     animation: ripple-effect 1s ease-out;
     pointer-events: none;
+    outline: none;
+}
+
+.card-action.card-hover .btn-hover {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: var(--app-primary-color);
+    border-radius: 50%;
+    transform: scale(0);
+    pointer-events: none;
+    animation: hover-effect 0.6s ease-out forwards;
 }
 
 @keyframes ripple-effect {
     to {
         transform: scale(15);
         opacity: 0;
+    }
+}
+
+@keyframes hover-effect {
+    to {
+        transform: scale(20);
+        opacity: 1;
     }
 }
