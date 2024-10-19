@@ -4,7 +4,7 @@
     width: auto;
     padding: 2.2% 10% 2% 10%;
     border: 2px solid var(--app-primary-color);
-    border-radius: 3vh;
+    border-radius: 3dvh;
     display: flex;
     justify-content: center;
     align-items: center;

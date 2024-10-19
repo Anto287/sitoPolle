@@ -68,7 +68,7 @@ const ParalaxHome = memo(({ onLoad }) => {
     currentY.current = newY;
 
     return {
-      height: '100vh',
+      height: '100dvh',
       width: '100vw',
       transform: `translate(${newX}px, ${newY}px) translateZ(0)`,
     };

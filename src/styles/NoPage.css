@@ -1,12 +1,12 @@
 :is(.container-svg-small, .container-svg-mind) svg {
     width: 50%;
-    max-height: 80vh;
+    max-height: 80dvh;
     height: auto;
     margin: 0 0 15px;
 }
   
 .wrapper-small{
-    height: 100vh;
+    height: 100dvh;
     width: 100vw;
     min-width: 250px;
     min-height: 350px;
@@ -58,7 +58,7 @@
 }
 
 .wrapper-mind{
-    height: 100vh;
+    height: 100dvh;
     width: 100vw;
     background: var(--app-third-color);
     display: flex;
@@ -111,7 +111,7 @@
 }
 
 .wrapper-large{
-    height: 100vh;
+    height: 100dvh;
     width: 100vw;
     background: var(--app-third-color);
     display: flex;
@@ -172,7 +172,7 @@
 }
 
 .wrapper-extra-large{
-    height: 100vh;
+    height: 100dvh;
     width: 100vw;
     background: var(--app-third-color);
     display: flex;

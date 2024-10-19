@@ -6,8 +6,8 @@
     justify-content: start;
     flex-direction: column;
     gap: 50px;
-    padding-top: 5vh;
-    padding-bottom: 5vh;
+    padding-top: 5dvh;
+    padding-bottom: 5dvh;
 }
 
 .container-paragraph-mobile{
@@ -27,5 +27,5 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    gap: 5vh;
+    gap: 5dvh;
 }
