@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { UseResponsiveJSX } from '@components/UseResponsiveJSX';
 import { MouseParallax } from 'react-just-parallax';
@@ -15,7 +15,7 @@ import laghetto from '@images/img_paralax_home/laghetto.webp';
 import sun_rays from '@images/img_paralax_home/sun_rays.webp';
 import front from '@images/img_paralax_home/front.webp';
 
-const ParalaxHome = ({ onLoad }) => {
+const ParalaxHome = memo(({ onLoad }) => {
   const { t } = useTranslation();
   const breakpoint = UseResponsiveJSX([600, 1200, 2000]);
   const [loadedImages, setLoadedImages] = useState(0);
@@ -30,7 +30,8 @@ const ParalaxHome = ({ onLoad }) => {
     if (loadedImages === imageSources.length || errorPageLoaded) {
       onLoad();
 
-      gsap.fromTo(titlesRef.current, 
+      gsap.fromTo(
+        titlesRef.current,
         { y: 200, opacity: 0 },
         { y: 0, opacity: 1, duration: 1.5, ease: 'power2.out', delay: 1.2 }
       );
@@ -51,38 +52,38 @@ const ParalaxHome = ({ onLoad }) => {
 
   const gyroX = (gyroData.alpha > 180 ? gyroData.alpha - 360 : gyroData.alpha) || 0;
   const gyroY = (gyroData.beta - 90) || 0;
-  
+
   const lerp = (start, end, t) => start + (end - start) * t;
-  
+
   const getGyroStyle = (lerpEase, strength) => {
     const maxX = 50;
     const maxY = 25;
-  
+
     const transitionX = Math.max(Math.min(gyroX * strength, maxX), -maxX);
     const transitionY = Math.max(Math.min(gyroY * strength, maxY), -maxY);
-  
+
     const newX = lerp(currentX.current, transitionX, lerpEase);
     const newY = lerp(currentY.current, transitionY, lerpEase);
     currentX.current = newX;
     currentY.current = newY;
-  
+
     return {
       height: '100vh',
       width: '100vw',
       transform: `translate(${newX}px, ${newY}px) translateZ(0)`,
     };
   };
-  
+
   const currentX = useRef(0);
   const currentY = useRef(0);
 
   const handleImageLoad = (src) => {
     if (!loadedFlags.current[src]) {
-      setLoadedImages(prevLoadedImages => prevLoadedImages + 1);
+      setLoadedImages((prevLoadedImages) => prevLoadedImages + 1);
       loadedFlags.current[src] = true;
     }
   };
-  
+
   const handleImageError = () => setErrorPageLoaded(true);
 
   const renderParallaxLayer = (src, className, style, lerpEase, strength) => (
@@ -96,12 +97,12 @@ const ParalaxHome = ({ onLoad }) => {
       strength={strength}
     >
       <div style={style}>
-        <img 
-          src={src} 
-          onLoad={() => handleImageLoad(src)} 
-          onError={handleImageError} 
-          className={className} 
-          alt='' 
+        <img
+          src={src}
+          onLoad={() => handleImageLoad(src)}
+          onError={handleImageError}
+          className={className}
+          alt=''
         />
       </div>
     </MouseParallax>
@@ -133,7 +134,7 @@ const ParalaxHome = ({ onLoad }) => {
       {breakpoint === 1 && !errorPageLoaded && renderContent('img-tablet', 'title-img-tablet')}
       {breakpoint === 2 && !errorPageLoaded && renderContent('img-pc', 'title-img-pc')}
       {breakpoint === 3 && !errorPageLoaded && renderContent('img-big-monitor', 'title-img-big-monitor')}
-      {errorPageLoaded && 
+      {errorPageLoaded &&
         <div className="error-load" ref={titlesRef}>
           <p className='first-title' translate="no">{t('WELCOME')}</p>
           <p className='second-title' translate="no">{t('TO_THE')}</p>
@@ -143,6 +144,6 @@ const ParalaxHome = ({ onLoad }) => {
       <div className='gradient-for-background'></div>
     </div>
   );
-};
+});
 
 export default ParalaxHome;

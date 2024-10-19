@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import '@styles/ButtonPrimary.css';
 
-const ButtonPrimary = () => {
+const ButtonPrimary = ({ label, title, effectButton = true, icon, btnClass, classContainerText, width = 'auto' }) => {
   const { t } = useTranslation();
   const [ripples, setRipples] = useState([]);
   const [hoverCircle, setHoverCircle] = useState(null);
   const [exitCircle, setExitCircle] = useState(null);
+  const [bgActive, setBgActive] = useState(false);
 
   const handleClick = (e) => {
     const button = e.currentTarget;
@@ -44,12 +45,24 @@ const ButtonPrimary = () => {
     setHoverCircle(null);
   };
 
+  const handleHoverAnimationEnd = () => {
+    setBgActive(true);
+  };
+
+  const handleExitAnimationStart = () => {
+    setBgActive(false); 
+  };
+
   return (
     <button
-      className={`btn-action ${hoverCircle ? 'hover-active' : ''}`}
+      className={`btn-action ${hoverCircle && effectButton ? 'hover-active' : ''} ${bgActive ? 'bg-active' : ''} ${btnClass}`}
+      style={{width: width}}
       onClick={handleClick}
       onMouseEnter={mouseEnter}
       onMouseLeave={mouseLeave}
+      title={t(title || label || '')}
+      onAnimationEnd={hoverCircle ? handleHoverAnimationEnd : undefined}
+      onAnimationStart={exitCircle ? handleExitAnimationStart : undefined}
     >
       {ripples.map((ripple) => (
         <span
@@ -59,23 +72,23 @@ const ButtonPrimary = () => {
         />
       ))}
 
-      {hoverCircle && (
+      {hoverCircle && effectButton && (
         <span
           className="hover-circle"
           style={{ left: hoverCircle.x, top: hoverCircle.y }}
         />
       )}
 
-      {exitCircle && (
+      {exitCircle && effectButton && (
         <span
           className="exit-circle"
           style={{ left: exitCircle.x, top: exitCircle.y }}
         />
       )}
 
-      <div className="container-btn">
-        <span>{t('LEARN_MORE')}</span>
-        <i className="fa-solid fa-share-from-square"></i>
+      <div className={`container-btn ${classContainerText}`}>
+        <span>{t(label || '')}</span>
+        <i className={`fa-solid ${icon || ''}`}></i>
       </div>
     </button>
   );

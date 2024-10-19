@@ -28,7 +28,11 @@ const Card = ({
         <h2 className="card-title">{t(titleCard)}</h2>
         <p className="card-description">{t(descriptionCard)}</p>
         <div className="card-container-action">
-          <ButtonPrimary></ButtonPrimary>
+          <ButtonPrimary 
+            icon="fa-share-from-square"
+            label="LEARN_MORE"
+            width="60%"
+          />
         </div>
       </div>
     </div>

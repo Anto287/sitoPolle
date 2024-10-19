@@ -12,8 +12,11 @@
     width: 100vw;
     background: linear-gradient(to bottom, transparent 0%, var(--app-third-color) 100%);
     position: absolute;
-    bottom: -2px;
+    bottom: -1px;
     left: 0;
+    border: 0px;
+    margin: 0px;
+    z-index: 10;
 }
 
 .error-load{
