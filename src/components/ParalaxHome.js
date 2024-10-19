@@ -99,10 +99,11 @@ const ParalaxHome = memo(({ onLoad }) => {
       <div style={style}>
         <img
           src={src}
+          loading="lazy"
           onLoad={() => handleImageLoad(src)}
           onError={handleImageError}
           className={className}
-          alt=''
+          alt=""
         />
       </div>
     </MouseParallax>
