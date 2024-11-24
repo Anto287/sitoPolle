@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import '@styles/ImgLoaderStyle.css';
 
 const ImgLoader = ({ 
@@ -15,15 +15,13 @@ const ImgLoader = ({
   sizes = ['', '', ''],
   types = ['', '', ''],
 }) => {
-
   const [loaded, setLoaded] = useState(false);
   const [error, setError] = useState(false);
-  const [styleImmagine, setStyleImmagine] = useState({});
 
-  useEffect(() => {
-    let value = {...styleImg, display: error ? 'none' : 'block'};
-    setStyleImmagine({...value});
-  }, [error, styleImg]);
+  const computedStyleImg = {
+    ...styleImg,
+    display: error ? 'none' : 'block',
+  };
 
   return (
     <div 
@@ -31,9 +29,9 @@ const ImgLoader = ({
       style={style}
     >
       <picture>
-        <source srcSet={srcset[0]} sizes={sizes[0]} type={types[0]}/>
-        <source srcSet={srcset[1]} sizes={sizes[1]} type={types[1]}/>
-        <source srcSet={srcset[2]} sizes={sizes[2]} type={types[2]}/>
+        <source srcSet={srcset[0]} sizes={sizes[0]} type={types[0]} />
+        <source srcSet={srcset[1]} sizes={sizes[1]} type={types[1]} />
+        <source srcSet={srcset[2]} sizes={sizes[2]} type={types[2]} />
         <img 
           src={src} 
           alt={alt} 
@@ -41,17 +39,21 @@ const ImgLoader = ({
           loading={loading}
           onLoad={() => setLoaded(true)} 
           onError={() => setError(true)}
-          style={styleImmagine}
+          style={computedStyleImg}
           className={`${imgClass}`}
         />
       </picture>
       {(!loaded || error) && (
-        <div className={`fallback ${error ? 'error' : ''}`} style={styleTextError} title={alt || ''}>
-          {(error) && <p>{alt || ''}</p>}
+        <div 
+          className={`fallback ${error ? 'error' : ''}`} 
+          style={styleTextError} 
+          title={alt || ''}
+        >
+          {error && <p>{alt || ''}</p>}
         </div>
       )}
     </div>
   );
 };
-  
+
 export default ImgLoader;
