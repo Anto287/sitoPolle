@@ -24,7 +24,7 @@
 
 .card-title {
     font-family: "Lilita One", serif;
-    font-size: clamp(18px, 7vw, 28px);
+    font-size: clamp(18px, 5vw, 25px);
     font-weight: 200;
     margin-bottom: 8px;
 }
@@ -32,7 +32,7 @@
 .card-description {
     font-family: "Lato", serif;
     font-weight: 600;
-    font-size: clamp(14px, 5vw, 20px);
+    font-size: clamp(14px, 3vw, 20px);
     margin-bottom: 16px;
 }
 

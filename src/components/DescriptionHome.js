@@ -3,6 +3,11 @@ import { useTranslation } from 'react-i18next';
 import { UseResponsiveJSX } from '@components/UseResponsiveJSX';
 import { useMyData } from '@components/ScrollData';
 import { gsap } from 'gsap';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 import Card from '@components/Card';
 import CardLarge from '@components/CardLarge';
 import '@styles/DescriptionHome.css';
@@ -20,11 +25,6 @@ const DescriptionHome = () => {
   const containerParagraphRef = useRef(null);
   const containerCarouselRef = useRef(null);
   const cardsRef = useRef([]);
-  const autoSlideTimer = useRef(null);
-
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isDragging, setIsDragging] = useState(false);
-  const dragStartX = useRef(0);
 
   const listStructure = [
     {
@@ -52,7 +52,7 @@ const DescriptionHome = () => {
   const animateOnScroll = () => {
     const triggerPointParagraph = 150;
     const triggerPointCarousel = 350;
-  
+
     if (containerParagraphRef.current) {
       gsap.to(containerParagraphRef.current, {
         opacity: scrollPosition > triggerPointParagraph ? 1 : 0,
@@ -61,7 +61,7 @@ const DescriptionHome = () => {
         ease: 'power4.out',
       });
     }
-  
+
     if (containerCarouselRef.current) {
       gsap.to(containerCarouselRef.current, {
         opacity: scrollPosition > triggerPointCarousel ? 1 : 0,
@@ -93,42 +93,6 @@ const DescriptionHome = () => {
       cardsRef.current.forEach((card) => gsap.killTweensOf(card));
     };
   }, [scrollPosition]);
-
-  const startAutoSlide = () => {
-    clearInterval(autoSlideTimer.current);
-    autoSlideTimer.current = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % listStructure.length);
-    }, 10000);
-  };
-
-  useEffect(() => {
-    startAutoSlide();
-    return () => clearInterval(autoSlideTimer.current);
-  }, [currentIndex]);
-
-  const handleManualSlide = (direction) => {
-    clearInterval(autoSlideTimer.current);
-    setCurrentIndex((prevIndex) => {
-      if (direction === 'prev') {
-        return prevIndex === 0 ? listStructure.length - 1 : prevIndex - 1;
-      } else if (direction === 'next') {
-        return (prevIndex + 1) % listStructure.length;
-      }
-    });
-    startAutoSlide();
-  };
-
-  const handleMouseDown = (e) => {
-    setIsDragging(true);
-    dragStartX.current = e.clientX;
-  };
-
-  const handleMouseUp = (e) => {
-    setIsDragging(false);
-    const dragDistance = e.clientX - dragStartX.current;
-    if (dragDistance > 50) handleManualSlide('prev');
-    else if (dragDistance < -50) handleManualSlide('next');
-  };
 
   return (
     <div>
@@ -170,7 +134,44 @@ const DescriptionHome = () => {
       )}
       {breakpoint === 1 && (
         <div className="content-where-are-tablet">
-
+          <div
+            className="container-paragraph-tablet"
+            ref={containerParagraphRef}
+            style={{ opacity: 0 }}
+          >
+            <h1>{t('OUR_STRUCTURE')}</h1>
+          </div>
+          <div
+            className="container-carusel-tablet"
+            ref={containerCarouselRef}
+            style={{ opacity: 0 }}
+          >
+            <Swiper
+              modules={[Pagination, Autoplay]}
+              spaceBetween={50}
+              slidesPerView={1}
+              pagination={{ clickable: true }}
+              loop
+              grabCursor
+              autoplay={{
+                delay: 10000,
+                disableOnInteraction: false,
+              }}
+            >
+              {listStructure.map((el, index) => (
+                <SwiperSlide key={index} className='container-slide-tablet'>
+                  <CardLarge
+                    visible
+                    imgCard={el.img}
+                    altImgCard={el.title}
+                    titleCard={el.title}
+                    descriptionCard={el.description}
+                    styleImg={{ width: '100%', height: 'auto' }}
+                  />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
         </div>
       )}
       {breakpoint === 2 && (
@@ -187,47 +188,40 @@ const DescriptionHome = () => {
             ref={containerCarouselRef}
             style={{ opacity: 0 }}
           >
-            <div className="container-arrow-left-pc">
-              <div className="arrow" onClick={() => handleManualSlide('prev')}>
-                <i className="fa-solid fa-chevron-left"></i>
-              </div>
+            <div className="custom-arrow custom-arrow-left">
+              <i class="fa-solid fa-chevron-left"></i>
             </div>
-            <div className="container-cell-img-pc">
+            <Swiper
+              modules={[Navigation, Pagination, Autoplay]}
+              spaceBetween={50}
+              slidesPerView={1}
+              pagination={{ clickable: true }}
+              navigation={{
+                nextEl: '.custom-arrow-right',
+                prevEl: '.custom-arrow-left',
+              }}
+              loop
+              grabCursor
+              autoplay={{
+                delay: 5000,
+                disableOnInteraction: false,
+              }}
+            >
               {listStructure.map((el, index) => (
-                <div
-                  key={index}
-                  style={{
-                    opacity: index === currentIndex ? 1 : 0,
-                    transform: `translateX(${(index - currentIndex) * 100}%)`,
-                    transition: 'opacity 0.5s ease, transform 0.5s ease',
-                  }}
-                  onMouseDown={handleMouseDown}
-                  onMouseUp={handleMouseUp}
-                >
+                <SwiperSlide key={index} className='container-slide-pc'>
                   <CardLarge
-                    visible={index === currentIndex}
+                    visible
                     imgCard={el.img}
                     altImgCard={el.title}
                     titleCard={el.title}
                     descriptionCard={el.description}
                     styleImg={{ width: '100%', height: 'auto' }}
                   />
-                </div>
+                </SwiperSlide>
               ))}
-              <div className="carousel-navigation">
-                {listStructure.map((_, index) => (
-                  <div
-                    key={index}
-                    className={`carousel-dot ${index === currentIndex ? 'active' : ''}`}
-                    onClick={() => setCurrentIndex(index)}
-                  />
-                ))}
-              </div>
-            </div>
-            <div className="container-arrow-right-pc">
-              <div className="arrow" onClick={() => handleManualSlide('next')}>
-                <i className="fa-solid fa-chevron-right"></i>
-              </div>
+            </Swiper>
+            <div className="custom-arrow custom-arrow-right">
+              <i class="fa-solid fa-chevron-right"></i>
             </div>
           </div>
         </div>

@@ -56,7 +56,7 @@
 .card-container-text
 .card-title {
     font-family: "Lilita One", serif;
-    font-size: clamp(18px, 1.8vw, 40px);
+    font-size: clamp(18px, 1.8vw, 30px);
     font-weight: 200;
     margin-bottom: 8px;
     display: flex;
@@ -71,7 +71,7 @@
 .card-description {
     font-family: "Lato", serif;
     font-weight: 600;
-    font-size: clamp(14px, 1.2vw, 35px);
+    font-size: clamp(14px, 1.2vw, 20px);
     margin-bottom: 16px;
 }
 

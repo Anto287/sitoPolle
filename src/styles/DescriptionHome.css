@@ -30,6 +30,42 @@
     gap: 5vh;
 }
 
+.content-where-are-tablet{
+    width: 100%;
+    display: flex;
+    background-color: var(--app-third-color);
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+    gap: 50px;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+}
+
+.container-paragraph-tablet{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Lora", serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: clamp(10px, 5vw, 24px);
+}
+
+.container-carusel-tablet{
+    width: 100%;
+    height: 70vh;
+    display: flex;
+}
+
+.container-slide-tablet{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .content-where-are-pc{
     width: 100%;
     display: flex;
@@ -60,57 +96,40 @@
     display: flex;
 }
 
-.container-arrow-right-pc,
-.container-arrow-left-pc{
-    width: 20%;
+.container-slide-pc{
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.container-cell-img-pc{
-    position: relative;
-    width: 60%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.arrow{
-    height: 5vw;
-    width: 5vw;
-    border-radius: 50%;
-    border: 1px solid var(--app-color-black);
-    background-color: var(--app-color-white);
-    color: var(--app-color-black);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-}
-
-.carousel-navigation {
+.custom-arrow {
     position: absolute;
-    bottom: 15px;
+    top: 50%;
+    z-index: 10;
+    width: 3vw;
+    height: 3vw;
+    border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
-    gap: 10px;
-  }
-  
-  .carousel-dot {
-    width: 10px;
-    height: 10px;
-    background-color: #d3d3d3;
-    border-radius: 50%;
     cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  
-  .carousel-dot.active {
-    width: 14px;
-    height: 14px;
-    background-color: var(--app-color-selected);
-  }
+    transform: translateY(-50%);
+    background: var(--app-color-white);
+    border: 1px solid var(--app-color-black);
+    color: var(--app-color-black);
+}
+
+.custom-arrow-left {
+    left: 20px;
+}
+
+.custom-arrow-right {
+    right: 20px;
+}
+
+.custom-arrow:hover {
+    border: 1px solid var(--app-color-selected);
+    background: var(--app-color-selected);
+    color: var(--app-color-white);
+}

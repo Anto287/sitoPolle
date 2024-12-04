@@ -33,7 +33,6 @@ const Layout = ({ showTopbar, startPage }) => {
   }, [startPage]);
 
   useEffect(() => {
-    console.log('page ', pageLoad)
     if (pageLoad === 'error') {
       setClipPathOpen('clip-path-removed');
       setShowTopBarScrolling(false);
