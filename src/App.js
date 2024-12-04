@@ -6,8 +6,6 @@ import AboutPage from '@pages/AboutPage';
 import Layout from '@components/Layout';
 import NoPage from '@pages/NoPage';
 
-import '@fortawesome/fontawesome-free/css/all.css';
-
 const App = () => {
   const [startAnimation, setStartAnimation] = useState(false);
 

@@ -1,20 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Outlet } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
 import Topbar from '@components/Topbar';
 import Menu from '@components/Menu';
 import LoadingSpinner from '@components/LoadingSpinner';
 import { useMyData } from '@components/ScrollData';
-import gsap from 'gsap';
 
 const Layout = ({ showTopbar, startPage }) => {
-  const { t } = useTranslation();
   const { data, setData } = useMyData();
 
   const [showTopBarScrolling, setShowTopBarScrolling] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [pageLoad, setPageLoad] = useState(false);
-  const [loadingAnimation, setLoadingAnimation] = useState(true);
   const [clipPathOpen, setClipPathOpen] = useState('');
   const lastScrollTop = useRef(0);
   const scrollContainerRef = useRef(null);
@@ -55,13 +51,7 @@ const Layout = ({ showTopbar, startPage }) => {
   }, []);
 
   useEffect(() => {
-    if (pageLoad) {
-      setLoadingAnimation(false);
-    }
-  }, [pageLoad]);
-
-  useEffect(() => {
-    if (!loadingAnimation) {  
+    if (pageLoad) {  
       setShowTopBarScrolling(false);
       setClipPathOpen('open');
       
@@ -70,11 +60,11 @@ const Layout = ({ showTopbar, startPage }) => {
         setShowTopBarScrolling(true);
       }, 2500);   
     }
-  }, [loadingAnimation]); 
+  }, [pageLoad]); 
 
   return (
     <>
-      {loadingAnimation && <LoadingSpinner />}
+      {!pageLoad && <LoadingSpinner />}
 
       <div ref={scrollContainerRef} className={`container-web ${clipPathOpen}`}>
         {showTopbar && pageLoad && <Topbar showTopBarScrolling={showTopBarScrolling} toggleMenu={toggleMenu} />}

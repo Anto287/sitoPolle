@@ -4,6 +4,7 @@ import LoadingSpinner from '@components/LoadingSpinner';
 const App = React.lazy(() => import('./App'));
 import { MyDataProvider } from '@components/ScrollData';
 import '@styles/App.css';
+import '@fortawesome/fontawesome-free/css/all.css';
 import './i18n';
 import myIcon from '@images/img_topbar/icon.webp';
 

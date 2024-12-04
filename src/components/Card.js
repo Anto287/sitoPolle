@@ -12,11 +12,12 @@ const Card = ({
   styleImgLoader,
   containerClassImgLoader,
   styleImg,
+  visible
 }) => {
   const { t } = useTranslation();
 
   return (
-    <div className="card">
+    <div className={'card' + (visible ? '' : ' hidden')}>
       <ImgLoader
         src={imgCard}
         style={styleImgLoader}
