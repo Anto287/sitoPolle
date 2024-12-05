@@ -75,6 +75,10 @@
     flex-grow: 1;
 }
 
+.big-text-title{
+    font-size: clamp(40px, 5vw, 70px) !important;
+}
+
 .card-large 
 .card-content
 .card-container-text
@@ -83,6 +87,10 @@
     font-weight: 600;
     font-size: clamp(14px, 1.2vw, 20px);
     margin-bottom: 16px;
+}
+
+.big-text-description{
+    font-size: clamp(25px, 2.5vw, 38px) !important;
 }
 
 .card-large 

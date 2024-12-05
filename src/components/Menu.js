@@ -1,9 +1,15 @@
 import React from 'react';
+import '@styles/Menu.css';
 
-const Menu = ({ isMenuOpen }) => {
+const Menu = ({ isMenuOpen, closeMenu }) => {
   return (
-    <div className="menu">
-      {isMenuOpen ? <p>Questo è il menu!</p> : null}
+    <div>
+      {isMenuOpen && 
+        <div className='menu'>
+          <p>Questo è il menu!</p>
+          <i class="fa-solid fa-xmark" onClick={() => closeMenu()}></i>
+        </div>
+      }
     </div>
   );
 };

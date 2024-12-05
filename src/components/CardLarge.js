@@ -11,7 +11,8 @@ const CardLarge = ({
   descriptionCard,
   containerClassImgLoader,
   visible,
-  fullLarge
+  fullLarge,
+  textForBigMonitor
 }) => {
   const { t } = useTranslation();
 
@@ -35,13 +36,14 @@ const CardLarge = ({
       
       <div className="card-content">
         <div className='card-container-text'>
-          <h2 className="card-title">{t(titleCard)}</h2>
-          <p className="card-description">{t(descriptionCard)}</p>
+          <h2 className={'card-title' + (textForBigMonitor ? ' big-text-title' : '')}>{t(titleCard)}</h2>
+          <p className={'card-description' + (textForBigMonitor ? ' big-text-description' : '')}>{t(descriptionCard)}</p>
           <div className="card-container-action">
             <ButtonPrimary 
               icon="fa-share-from-square"
               label="LEARN_MORE"
               width="65%"
+              classContainerText={textForBigMonitor ? 'btn-big-monitor' : ''}
             />
           </div>
         </div>

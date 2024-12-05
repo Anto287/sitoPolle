@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { UseResponsiveJSX } from '@components/UseResponsiveJSX';
 import { useMyData } from '@components/ScrollData';
@@ -95,7 +95,7 @@ const DescriptionHome = () => {
   }, [scrollPosition]);
 
   return (
-    <div>
+    <>
       {breakpoint === 0 && (
         <div className="content-where-are-mobile">
           <div
@@ -227,7 +227,60 @@ const DescriptionHome = () => {
           </div>
         </div>
       )}
-    </div>
+      {breakpoint === 3 && (
+        <div className="content-where-are-big-monitor">
+          <div
+            className="container-paragraph-big-monitor"
+            ref={containerParagraphRef}
+            style={{ opacity: 0 }}
+          >
+            <h1>{t('OUR_STRUCTURE')}</h1>
+          </div>
+          <div
+            className="container-carusel-big-monitor"
+            ref={containerCarouselRef}
+            style={{ opacity: 0 }}
+          >
+            <div className="custom-arrow custom-arrow-left">
+              <i class="fa-solid fa-chevron-left"></i>
+            </div>
+            <Swiper
+              modules={[Navigation, Pagination, Autoplay]}
+              spaceBetween={50}
+              slidesPerView={1}
+              pagination={{ clickable: true }}
+              navigation={{
+                nextEl: '.custom-arrow-right',
+                prevEl: '.custom-arrow-left',
+              }}
+              loop
+              grabCursor
+              autoplay={{
+                delay: 5000,
+                disableOnInteraction: false,
+              }}
+            >
+              {listStructure.map((el, index) => (
+                <SwiperSlide key={index} className='container-slide-big-monitor'>
+                  <CardLarge
+                    visible
+                    textForBigMonitor
+                    imgCard={el.img}
+                    altImgCard={el.title}
+                    titleCard={el.title}
+                    descriptionCard={el.description}
+                    styleImg={{ width: '100%', height: 'auto' }}
+                  />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+            <div className="custom-arrow custom-arrow-right">
+              <i class="fa-solid fa-chevron-right"></i>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 

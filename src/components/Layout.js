@@ -68,10 +68,10 @@ const Layout = ({ showTopbar, startPage }) => {
       {(pageLoad !== true && pageLoad !== 'error') && <LoadingSpinner />}
 
       <div ref={scrollContainerRef} className={`container-web ${clipPathOpen}`}>
-        {showTopbar && pageLoad && pageLoad !== 'error' && (
+        {showTopbar && (pageLoad && pageLoad !== 'error') && !isMenuOpen && (
           <Topbar showTopBarScrolling={showTopBarScrolling} toggleMenu={toggleMenu} />
         )}
-        <Menu isMenuOpen={isMenuOpen} />
+        <Menu isMenuOpen={isMenuOpen} closeMenu={toggleMenu}/>
         <div className="outlet-container">
           <Outlet />
         </div>

@@ -1,0 +1,12 @@
+.menu{
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    z-index: 99;
+    background-color: var(--app-color-black);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 4vw 4vh 4vw 4vh;
+    color: var(--app-color-white);
+}
