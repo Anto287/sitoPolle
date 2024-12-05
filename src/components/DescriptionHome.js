@@ -161,6 +161,7 @@ const DescriptionHome = () => {
               {listStructure.map((el, index) => (
                 <SwiperSlide key={index} className='container-slide-tablet'>
                   <CardLarge
+                    fullLarge
                     visible
                     imgCard={el.img}
                     altImgCard={el.title}

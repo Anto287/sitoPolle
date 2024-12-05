@@ -21,7 +21,7 @@ const HomePage = ({ pageArleadyStart }) => {
   return (
     <>
       <div className="container-page">
-        <div className='contaienr-paralax-effect' style={{display: isParalaxLoaded ? 'block' : 'none'}}>
+        <div className='contaienr-paralax-effect' style={{visibility: isParalaxLoaded ? 'visible' : 'hidden'}}>
           <ParalaxHome onLoad={handleParalaxLoad}/>
         </div>
         <DescriptionHome />

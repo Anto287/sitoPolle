@@ -9,6 +9,11 @@
     justify-content: center;
 }
 
+.large{
+    width: clamp(560px, 80vw, 800px);
+    height: clamp(450px, 75vh, 1000px);
+}
+
 .card-large:hover {
     transform: scale(1.05);
 }
@@ -38,6 +43,11 @@
     padding-bottom: 2vh;
     padding-right: 2vw;
     padding-left: 20vw;
+}
+
+.large
+.card-content {
+    padding-left: clamp(190px, 27vw, 270px);
 }
 
 .card-large 

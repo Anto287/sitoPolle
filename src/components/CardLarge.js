@@ -10,12 +10,13 @@ const CardLarge = ({
   titleCard,
   descriptionCard,
   containerClassImgLoader,
-  visible
+  visible,
+  fullLarge
 }) => {
   const { t } = useTranslation();
 
   return (
-    <div className={'card-large' + (visible ? '' : ' hidden')}>
+    <div className={'card-large' + (visible ? '' : ' hidden') + (fullLarge ? ' large' : '')}>
       <div className='container-img'>
         <ImgLoader
           src={imgCard}
