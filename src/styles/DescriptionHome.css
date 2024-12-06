@@ -19,7 +19,7 @@
     font-family: "Lora", serif;
     font-weight: 700;
     font-style: normal;
-    font-size: clamp(10px, 5vw, 24px);
+    font-size: clamp(10px, 3.5vw, 24px);
 }
 
 .container-cell-img-mobile{
@@ -52,7 +52,7 @@
     font-family: "Lora", serif;
     font-weight: 700;
     font-style: normal;
-    font-size: clamp(10px, 5vw, 24px);
+    font-size: clamp(10px, 3.5vw, 24px);
 }
 
 .container-carusel-tablet{
@@ -90,7 +90,7 @@
     font-family: "Lora", serif;
     font-weight: 700;
     font-style: normal;
-    font-size: clamp(10px, 5vw, 24px);
+    font-size: clamp(10px, 3.5vw, 24px);
     padding-left: 5vw;
 }
 
@@ -122,6 +122,7 @@
     background: var(--app-color-white);
     border: 1px solid var(--app-color-black);
     color: var(--app-color-black);
+    font-size: clamp(16px, 1vw, 30px);
 }
 
 .custom-arrow-left {
@@ -159,7 +160,7 @@
     font-family: "Lora", serif;
     font-weight: 700;
     font-style: normal;
-    font-size: clamp(20px, 5vw, 50px);
+    font-size: clamp(20px, 3.5vw, 50px);
     padding-left: 5vw;
 }
 
@@ -174,4 +175,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.responsive-pagination-swiper{
+    width: 0.5vw;
+    height: 0.5vw;
 }

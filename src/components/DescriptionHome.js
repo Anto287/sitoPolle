@@ -50,34 +50,35 @@ const DescriptionHome = () => {
   ];
 
   const animateOnScroll = () => {
-    const triggerPointParagraph = 150;
-    const triggerPointCarousel = 350;
-
+    const viewportHeight = window.innerHeight;
+  
     if (containerParagraphRef.current) {
+      const paragraphTop = containerParagraphRef.current.getBoundingClientRect().top;
       gsap.to(containerParagraphRef.current, {
-        opacity: scrollPosition > triggerPointParagraph ? 1 : 0,
-        y: scrollPosition > triggerPointParagraph ? 0 : 100,
+        opacity: paragraphTop < viewportHeight * 0.9 ? 1 : 0,
+        y: paragraphTop < viewportHeight * 0.9 ? 0 : 100,
         duration: 1.2,
         ease: 'power4.out',
       });
     }
-
+  
     if (containerCarouselRef.current) {
+      const carouselTop = containerCarouselRef.current.getBoundingClientRect().top;
       gsap.to(containerCarouselRef.current, {
-        opacity: scrollPosition > triggerPointCarousel ? 1 : 0,
-        y: scrollPosition > triggerPointCarousel ? 0 : 100,
+        opacity: carouselTop < viewportHeight * 0.8 ? 1 : 0,
+        y: carouselTop < viewportHeight * 0.8 ? 0 : 100,
         duration: 1.2,
         ease: 'power4.out',
       });
     }
   
     listStructure.forEach((_, index) => {
-      const cardTriggerPoint = triggerPointCarousel + index * 475;
       if (cardsRef.current[index]) {
+        const cardTop = cardsRef.current[index].getBoundingClientRect().top;
         gsap.to(cardsRef.current[index], {
-          opacity: scrollPosition > cardTriggerPoint ? 1 : 0,
-          y: scrollPosition > cardTriggerPoint ? 0 : 70,
-          scale: scrollPosition > cardTriggerPoint ? 1 : 0.9,
+          opacity: cardTop < viewportHeight * 0.9 ? 1 : 0,
+          y: cardTop < viewportHeight * 0.9 ? 0 : 70,
+          scale: cardTop < viewportHeight * 0.9 ? 1 : 0.9,
           duration: 1.2,
           ease: 'power4.out',
         });
@@ -94,6 +95,13 @@ const DescriptionHome = () => {
     };
   }, [scrollPosition]);
 
+  const pagination = {
+    clickable: true,
+    renderBullet: function (index, className) {
+      return '<span class="' + className + ' responsive-pagination-swiper"></span>';
+    },
+  };
+  
   return (
     <>
       {breakpoint === 0 && (
@@ -196,7 +204,7 @@ const DescriptionHome = () => {
               modules={[Navigation, Pagination, Autoplay]}
               spaceBetween={50}
               slidesPerView={1}
-              pagination={{ clickable: true }}
+              pagination={pagination}
               navigation={{
                 nextEl: '.custom-arrow-right',
                 prevEl: '.custom-arrow-left',
@@ -248,7 +256,7 @@ const DescriptionHome = () => {
               modules={[Navigation, Pagination, Autoplay]}
               spaceBetween={50}
               slidesPerView={1}
-              pagination={{ clickable: true }}
+              pagination={pagination}
               navigation={{
                 nextEl: '.custom-arrow-right',
                 prevEl: '.custom-arrow-left',

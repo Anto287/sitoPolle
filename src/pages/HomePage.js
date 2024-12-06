@@ -1,16 +1,70 @@
-import React, { useEffect, useState } from 'react';
-
+import React, { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { UseResponsiveJSX } from '@components/UseResponsiveJSX';
+import { useMyData } from '@components/ScrollData';
+import { gsap } from 'gsap';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Autoplay, EffectFade } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/effect-fade';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import ImgLoader from '@components/ImgLoader';
 import ParalaxHome from '@components/ParalaxHome';
 import DescriptionHome from '@components/DescriptionHome';
 
 import '@styles/HomeStyle.css';
 
+import laghetto from '@images/img_home/laghetto.webp';
+import la_tana from '@images/img_home/la_tana.webp';
+import area_camper from '@images/img_home/area_camper.webp';
+import campeggio from '@images/img_home/campeggio.webp';
+
 const HomePage = ({ pageArleadyStart }) => {  
+  const { t } = useTranslation();
   const [isParalaxLoaded, setIsParalaxLoaded] = useState(false);
-  
+  const { data: scrollPosition } = useMyData();
+  const breakpoint = UseResponsiveJSX([600, 1200, 2000]);
+  const listImg = [laghetto, la_tana, area_camper, campeggio];
+
+  const titleRef = useRef(null);
+  const swiperRef = useRef(null);
+
   const handleParalaxLoad = () => {
     setIsParalaxLoaded(true);
   };
+
+  const animateOnScroll = () => {
+    const viewportHeight = window.innerHeight;
+  
+    if (titleRef.current) {
+      const titleTop = titleRef.current.getBoundingClientRect().top;
+      gsap.to(titleRef.current, {
+        opacity: titleTop < viewportHeight * 0.9 ? 1 : 0,
+        y: titleTop < viewportHeight * 0.9 ? 0 : 100,
+        duration: 1.2,
+        ease: 'power4.out',
+      });
+    }
+  
+    if (swiperRef.current) {
+      const swiperTop = swiperRef.current.getBoundingClientRect().top;
+      gsap.to(swiperRef.current, {
+        opacity: swiperTop < viewportHeight * 0.8 ? 1 : 0,
+        y: swiperTop < viewportHeight * 0.8 ? 0 : 100,
+        duration: 1.2,
+        ease: 'power4.out',
+      });
+    }
+  };
+
+  useEffect(() => {
+    animateOnScroll();
+
+    return () => {
+      gsap.killTweensOf([swiperRef.current, titleRef.current]);
+    };
+  }, [scrollPosition]);
 
   useEffect(() => {
     if (isParalaxLoaded) {
@@ -23,6 +77,60 @@ const HomePage = ({ pageArleadyStart }) => {
       <div className="container-page">
         <div className='contaienr-paralax-effect' style={{visibility: isParalaxLoaded ? 'visible' : 'hidden'}}>
           <ParalaxHome onLoad={handleParalaxLoad}/>
+        </div>
+        <div className='container-who-are'>
+          {breakpoint === 0 && (
+            <div className='container-slideer-home-mobile'>
+              <div
+                className='title-who-are-mobile'
+                ref={titleRef}
+              >
+                <h1>{t('WHO_ARE')}</h1>
+              </div>
+              
+              <div
+                className='container-swiper-home-mobile'
+                ref={swiperRef}
+              >
+                <Swiper
+                  modules={[Autoplay, EffectFade]}
+                  spaceBetween={0}
+                  slidesPerView={1}
+                  effect={'fade'}
+                  loop={true}
+                  allowTouchMove={false}
+                  grabCursor={false}
+                  speed={2000}
+                  autoplay={{
+                    delay: 5000,
+                    disableOnInteraction: false,
+                  }}
+                >
+                  <div className='container-who-are-mobile'>
+                    <div className='container-text-who-are-mobile'>
+                      <b style={{fontWeight: 900}}>{t('WHO_ARE_TITLE')}</b>
+                      {t('WHO_ARE_LONG_DESC')}
+                    </div>
+                  </div>
+                  {listImg.map((el, index) => (
+                    <SwiperSlide key={index}>
+                      <ImgLoader
+                        src={el}
+                        styleImgLoader={{
+                          width: '100%',
+                          height: '50vh',
+                        }}
+                        style={{
+                          width: '100%',
+                          height: '50vh',
+                        }}
+                      />
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              </div>
+            </div>
+          )}
         </div>
         <DescriptionHome />
       </div>
