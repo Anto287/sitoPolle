@@ -73,9 +73,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 1vh;
     flex-direction: column;
     color: var(--app-color-black);
     font-family: "Lato", serif;
     font-weight: 600;
     font-size: clamp(14px, 1.2vw, 20px);
+}
+
+.container-text-who-are-mobile > b {
+    font-weight: 900;
+    font-size: clamp(16px, 1.3vw, 22px);
 }

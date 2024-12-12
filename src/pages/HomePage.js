@@ -15,17 +15,25 @@ import DescriptionHome from '@components/DescriptionHome';
 
 import '@styles/HomeStyle.css';
 
-import laghetto from '@images/img_home/laghetto.webp';
-import la_tana from '@images/img_home/la_tana.webp';
-import area_camper from '@images/img_home/area_camper.webp';
-import campeggio from '@images/img_home/campeggio.webp';
+import img_1 from '@images/img_home_desc/img_1.webp';
+import img_2 from '@images/img_home_desc/img_2.webp';
+import img_3 from '@images/img_home_desc/img_3.webp';
+import img_4 from '@images/img_home_desc/img_4.webp';
+import img_5 from '@images/img_home_desc/img_5.webp';
+import img_6 from '@images/img_home_desc/img_6.webp';
+import img_7 from '@images/img_home_desc/img_7.webp';
+import img_8 from '@images/img_home_desc/img_8.webp';
+import img_9 from '@images/img_home_desc/img_9.webp';
+import img_10 from '@images/img_home_desc/img_10.webp';
+import img_11 from '@images/img_home_desc/img_11.webp';
+import img_12 from '@images/img_home_desc/img_12.webp';
 
 const HomePage = ({ pageArleadyStart }) => {  
   const { t } = useTranslation();
   const [isParalaxLoaded, setIsParalaxLoaded] = useState(false);
   const { data: scrollPosition } = useMyData();
   const breakpoint = UseResponsiveJSX([600, 1200, 2000]);
-  const listImg = [laghetto, la_tana, area_camper, campeggio];
+  const listImg = [img_1, img_2, img_3, img_4, img_5, img_6, img_7, img_8, img_9, img_10, img_11, img_12];
 
   const titleRef = useRef(null);
   const swiperRef = useRef(null);
@@ -108,7 +116,7 @@ const HomePage = ({ pageArleadyStart }) => {
                 >
                   <div className='container-who-are-mobile'>
                     <div className='container-text-who-are-mobile'>
-                      <b style={{fontWeight: 900}}>{t('WHO_ARE_TITLE')}</b>
+                      <b>{t('WHO_ARE_TITLE')}</b>
                       {t('WHO_ARE_LONG_DESC')}
                     </div>
                   </div>
