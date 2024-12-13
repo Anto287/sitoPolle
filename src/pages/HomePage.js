@@ -12,7 +12,6 @@ import 'swiper/css/pagination';
 import ImgLoader from '@components/ImgLoader';
 import ParalaxHome from '@components/ParalaxHome';
 import DescriptionHome from '@components/DescriptionHome';
-
 import '@styles/HomeStyle.css';
 
 import img_1 from '@images/img_home_desc/img_1.webp';
