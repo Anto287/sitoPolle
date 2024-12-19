@@ -14,7 +14,7 @@ const LoadingSpinner = () => {
           <circle className="pl__ring pl__ring--c" cx="85" cy="120" r="70" fill="none" stroke="#000" strokeWidth="20" strokeDasharray="0 440" strokeLinecap="round"></circle>
           <circle className="pl__ring pl__ring--d" cx="155" cy="120" r="70" fill="none" stroke="#000" strokeWidth="20" strokeDasharray="0 440" strokeLinecap="round"></circle>
         </svg>
-        <div>{t('LOADING')}</div>
+        <p translate="no">{t('LOADING')}</p>
       </div>
     </div>
   );
