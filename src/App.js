@@ -5,7 +5,6 @@ import HomePage from '@pages/HomePage';
 import AboutPage from '@pages/AboutPage';
 import Layout from '@components/Layout';
 import NoPage from '@pages/NoPage';
-import useLazyLoading from '@hook/useLazyLoading';
 
 const App = () => {
   // Stato per animazioni di caricamento della pagina
@@ -23,9 +22,6 @@ const App = () => {
   useEffect(() => {
     setStartAnimation(false);
   }, [location.pathname]);
-
-  // Attivazione del lazy loading per immagini
-  useLazyLoading();
 
   return (
     <Routes>
