@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { UseResponsiveJSX } from '@components/UseResponsiveJSX';
 import { useMyData } from '@components/ScrollData';
 import { gsap } from 'gsap';
+import { useGSAP } from "@gsap/react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
@@ -16,6 +17,8 @@ import laghetto from '@images/img_home/laghetto.webp';
 import la_tana from '@images/img_home/la_tana.webp';
 import area_camper from '@images/img_home/area_camper.webp';
 import campeggio from '@images/img_home/campeggio.webp';
+
+gsap.registerPlugin(useGSAP);
 
 const DescriptionHome = () => {
   const { t } = useTranslation();

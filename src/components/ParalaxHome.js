@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { UseResponsiveJSX } from '@components/UseResponsiveJSX';
 import { MouseParallax } from 'react-just-parallax';
 import gsap from 'gsap';
+import { useGSAP } from "@gsap/react";
 
 import '@styles/ParalaxHome.css';
 
@@ -14,6 +15,8 @@ import fog_1 from '@images/img_paralax_home/fog_1.webp';
 import laghetto from '@images/img_paralax_home/laghetto.webp';
 import sun_rays from '@images/img_paralax_home/sun_rays.webp';
 import front from '@images/img_paralax_home/front.webp';
+
+gsap.registerPlugin(useGSAP);
 
 const ParalaxHome = memo(({ onLoad }) => {
   const { t } = useTranslation();
@@ -110,7 +113,7 @@ const ParalaxHome = memo(({ onLoad }) => {
   );
 
   const renderContent = (deviceClass, titlesClass) => (
-    <>
+    <div>
       {renderParallaxLayer(cielo, `cielo-${deviceClass}`, {}, 0, 0)}
       {renderParallaxLayer(nuvola, `nuvola-${deviceClass}`, getGyroStyle(0.7, 0.2), 0.02, 0.02)}
       {renderParallaxLayer(fog_2, `fog-2-${deviceClass}`, getGyroStyle(0.7, 0.45), 0.1, 0.05)}
@@ -126,7 +129,7 @@ const ParalaxHome = memo(({ onLoad }) => {
         </div>
       </MouseParallax>
       {renderParallaxLayer(front, `front-${deviceClass}`, getGyroStyle(0.7, 0.55), 0.05, 0.15)}
-    </>
+    </div>
   );
 
   return (

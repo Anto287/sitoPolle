@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { UseResponsiveJSX } from '@components/UseResponsiveJSX';
 import { useMyData } from '@components/ScrollData';
 import { gsap } from 'gsap';
+import { useGSAP } from "@gsap/react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay, EffectFade } from 'swiper/modules';
 import 'swiper/css';
@@ -26,6 +27,8 @@ import img_9 from '@images/img_home_desc/img_9.webp';
 import img_10 from '@images/img_home_desc/img_10.webp';
 import img_11 from '@images/img_home_desc/img_11.webp';
 import img_12 from '@images/img_home_desc/img_12.webp';
+
+gsap.registerPlugin(useGSAP);
 
 const HomePage = ({ pageArleadyStart }) => {  
   const { t } = useTranslation();
