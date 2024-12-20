@@ -36,11 +36,13 @@
     font-weight: 700;
     font-style: normal;
     font-size: clamp(10px, 3.5vw, 24px);
+    will-change: transform, opacity;
 }
 
 .container-swiper-home-mobile{
     position: relative;
     width: 100%;
+    will-change: transform, opacity;
 }
 
 .container-who-are-mobile {

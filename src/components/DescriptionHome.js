@@ -53,39 +53,43 @@ const DescriptionHome = () => {
   ];
 
   const animateOnScroll = () => {
-    const viewportHeight = window.innerHeight;
-  
-    if (containerParagraphRef.current) {
-      const paragraphTop = containerParagraphRef.current.getBoundingClientRect().top;
-      gsap.to(containerParagraphRef.current, {
-        opacity: paragraphTop < viewportHeight * 0.9 ? 1 : 0,
-        y: paragraphTop < viewportHeight * 0.9 ? 0 : 100,
-        duration: 1.2,
-        ease: 'power4.out',
-      });
-    }
-  
-    if (containerCarouselRef.current) {
-      const carouselTop = containerCarouselRef.current.getBoundingClientRect().top;
-      gsap.to(containerCarouselRef.current, {
-        opacity: carouselTop < viewportHeight * 0.8 ? 1 : 0,
-        y: carouselTop < viewportHeight * 0.8 ? 0 : 100,
-        duration: 1.2,
-        ease: 'power4.out',
-      });
-    }
-  
-    listStructure.forEach((_, index) => {
-      if (cardsRef.current[index]) {
-        const cardTop = cardsRef.current[index].getBoundingClientRect().top;
-        gsap.to(cardsRef.current[index], {
-          opacity: cardTop < viewportHeight * 0.9 ? 1 : 0,
-          y: cardTop < viewportHeight * 0.9 ? 0 : 70,
-          scale: cardTop < viewportHeight * 0.9 ? 1 : 0.9,
+    window.requestAnimationFrame(() => {
+      const viewportHeight = window.innerHeight;
+    
+      if (containerParagraphRef.current) {
+        const paragraphTop = containerParagraphRef.current.getBoundingClientRect().top;
+        gsap.to(containerParagraphRef.current, {
+          opacity: paragraphTop < viewportHeight * 0.9 ? 1 : 0,
+          y: paragraphTop < viewportHeight * 0.9 ? 0 : 100,
           duration: 1.2,
           ease: 'power4.out',
+          force3D: true,
         });
       }
+    
+      if (containerCarouselRef.current) {
+        const carouselTop = containerCarouselRef.current.getBoundingClientRect().top;
+        gsap.to(containerCarouselRef.current, {
+          opacity: carouselTop < viewportHeight * 0.8 ? 1 : 0,
+          y: carouselTop < viewportHeight * 0.8 ? 0 : 100,
+          duration: 1.2,
+          ease: 'power4.out',
+          force3D: true,
+        });
+      }
+    
+      listStructure.forEach((_, index) => {
+        if (cardsRef.current[index]) {
+          const cardTop = cardsRef.current[index].getBoundingClientRect().top;
+          gsap.to(cardsRef.current[index], {
+            opacity: cardTop < viewportHeight * 0.9 ? 1 : 0,
+            y: cardTop < viewportHeight * 0.9 ? 0 : 70,
+            scale: cardTop < viewportHeight * 0.9 ? 1 : 0.9,
+            duration: 1.2,
+            ease: 'power4.out',
+          });
+        }
+      });
     });
   };
 
@@ -121,7 +125,7 @@ const DescriptionHome = () => {
               <div
                 key={index}
                 ref={(elRef) => cardsRef.current[index] = elRef}
-                style={{ opacity: 0 }}
+                style={{ opacity: 0, willChange: 'transform, opacity'}}
               >
                 <Card
                   visible

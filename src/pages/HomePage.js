@@ -45,27 +45,31 @@ const HomePage = ({ pageArleadyStart }) => {
   };
 
   const animateOnScroll = () => {
-    const viewportHeight = window.innerHeight;
-  
-    if (titleRef.current) {
-      const titleTop = titleRef.current.getBoundingClientRect().top;
-      gsap.to(titleRef.current, {
-        opacity: titleTop < viewportHeight * 0.9 ? 1 : 0,
-        y: titleTop < viewportHeight * 0.9 ? 0 : 100,
-        duration: 1.2,
-        ease: 'power4.out',
-      });
-    }
-  
-    if (swiperRef.current) {
-      const swiperTop = swiperRef.current.getBoundingClientRect().top;
-      gsap.to(swiperRef.current, {
-        opacity: swiperTop < viewportHeight * 0.8 ? 1 : 0,
-        y: swiperTop < viewportHeight * 0.8 ? 0 : 100,
-        duration: 1.2,
-        ease: 'power4.out',
-      });
-    }
+    window.requestAnimationFrame(() => {
+      const viewportHeight = window.innerHeight;
+    
+      if (titleRef.current) {
+        const titleTop = titleRef.current.getBoundingClientRect().top;
+        gsap.to(titleRef.current, {
+          opacity: titleTop < viewportHeight * 0.9 ? 1 : 0,
+          y: titleTop < viewportHeight * 0.9 ? 0 : 100,
+          duration: 1.2,
+          ease: 'power4.out',
+          force3D: true,
+        });
+      }
+    
+      if (swiperRef.current) {
+        const swiperTop = swiperRef.current.getBoundingClientRect().top;
+        gsap.to(swiperRef.current, {
+          opacity: swiperTop < viewportHeight * 0.8 ? 1 : 0,
+          y: swiperTop < viewportHeight * 0.8 ? 0 : 100,
+          duration: 1.2,
+          ease: 'power4.out',
+          force3D: true,
+        });
+      }
+    });
   };
 
   useEffect(() => {
@@ -134,6 +138,10 @@ const HomePage = ({ pageArleadyStart }) => {
                           width: '100%',
                           height: '50vh',
                         }}
+                        styleImg={{
+                          objectFit: 'cover',
+                        }}
+                        loading="lazy"
                       />
                     </SwiperSlide>
                   ))}

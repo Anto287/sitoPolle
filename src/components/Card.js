@@ -24,6 +24,7 @@ const Card = ({
         containerClass={containerClassImgLoader}
         styleImg={styleImg}
         alt={t(altImgCard)}
+        loading="lazy"
       />
       <div className="card-content">
         <h2 className="card-title">{t(titleCard)}</h2>

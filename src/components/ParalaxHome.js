@@ -30,6 +30,19 @@ const ParalaxHome = memo(({ onLoad }) => {
   const imageSources = [cielo, nuvola, fog_2, secondo_piano, fog_1, laghetto, sun_rays, front];
 
   useEffect(() => {
+    const preloadImages = () => {
+      imageSources.forEach((src) => {
+        const img = new Image();
+        img.src = src;
+        img.onload = () => handleImageLoad(src);
+        img.onerror = handleImageError;
+      });
+    };
+
+    preloadImages();
+  }, []);
+
+  useEffect(() => {
     if (loadedImages === imageSources.length || errorPageLoaded) {
       onLoad();
 
@@ -106,7 +119,6 @@ const ParalaxHome = memo(({ onLoad }) => {
           onError={handleImageError}
           className={`${className}`}
           alt=""
-          loading="eager"
         />
       </div>
     </MouseParallax>

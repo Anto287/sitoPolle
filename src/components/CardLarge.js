@@ -31,6 +31,7 @@ const CardLarge = ({
             height: '100%'
           }}
           alt={t(altImgCard)}
+          loading="lazy"
         />
       </div>
       
