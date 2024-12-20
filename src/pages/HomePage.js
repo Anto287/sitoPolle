@@ -82,12 +82,12 @@ const HomePage = ({ pageArleadyStart }) => {
   return (
     <>
       <div className="container-page">
-        <div className='contaienr-paralax-effect' style={{visibility: isParalaxLoaded ? 'visible' : 'hidden'}}>
+        <div className='container-paralax-effect' style={{visibility: isParalaxLoaded ? 'visible' : 'hidden'}}>
           <ParalaxHome onLoad={handleParalaxLoad}/>
         </div>
         <div className='container-who-are'>
           {breakpoint === 0 && (
-            <div className='container-slideer-home-mobile'>
+            <div className='container-slider-home-mobile'>
               <div
                 className='title-who-are-mobile'
                 ref={titleRef}

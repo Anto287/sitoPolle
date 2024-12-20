@@ -6,7 +6,7 @@
     flex-direction: column;
 }
 
-.contaienr-paralax-effect{
+.container-paralax-effect{
     min-height: 100vh;
     min-width: 100vw;
     overflow: hidden;
@@ -20,7 +20,7 @@
     color: white
 }
 
-.container-slideer-home-mobile{
+.container-slider-home-mobile{
     width: 100%;
     display: flex;
     justify-content: center;
