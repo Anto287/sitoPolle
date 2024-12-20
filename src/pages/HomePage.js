@@ -32,7 +32,7 @@ gsap.registerPlugin(useGSAP);
 
 const HomePage = ({ pageArleadyStart }) => {  
   const { t } = useTranslation();
-  const [isParalaxLoaded, setIsParalaxLoaded] = useState(false);
+  const [isParalaxLoaded, setIsParalaxLoaded] = useState(true);
   const { data: scrollPosition } = useMyData();
   const breakpoint = UseResponsiveJSX([600, 1200, 2000]);
   const listImg = [img_1, img_2, img_3, img_4, img_5, img_6, img_7, img_8, img_9, img_10, img_11, img_12];
@@ -89,9 +89,7 @@ const HomePage = ({ pageArleadyStart }) => {
   return (
     <>
       <div className="container-page">
-        <div className='container-paralax-effect' style={{visibility: isParalaxLoaded ? 'visible' : 'hidden'}}>
-          <ParalaxHome onLoad={handleParalaxLoad}/>
-        </div>
+        
         <div className='container-who-are'>
           {breakpoint === 0 && (
             <div className='container-slider-home-mobile'>
