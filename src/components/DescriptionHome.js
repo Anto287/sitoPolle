@@ -115,8 +115,6 @@ const DescriptionHome = () => {
         <div className="content-where-are-mobile">
           <div
             className="container-paragraph-mobile"
-            ref={containerParagraphRef}
-            style={{ opacity: 0 }}
           >
             <h1>{t('OUR_STRUCTURE')}</h1>
           </div>
@@ -124,8 +122,6 @@ const DescriptionHome = () => {
             {listStructure.map((el, index) => (
               <div
                 key={index}
-                ref={(elRef) => cardsRef.current[index] = elRef}
-                style={{ opacity: 0, willChange: 'transform, opacity'}}
               >
                 <Card
                   visible

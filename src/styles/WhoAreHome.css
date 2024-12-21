@@ -1,0 +1,100 @@
+.container-who-are{
+    background-color: var(--app-third-color);
+    width: 100%;
+    height: auto;
+    padding: 2vh 5vw 2vh 5vw;
+    color: white
+}
+
+.container-slider-home-mobile{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 5vh;
+    margin-top: 6vh;
+    color: var(--app-color-black);
+}
+
+.title-who-are-mobile{
+    font-family: "Lora", serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: clamp(10px, 3.5vw, 24px);
+    will-change: transform, opacity;
+}
+
+.container-swiper-home-mobile{
+    position: relative;
+    width: 100%;
+    will-change: transform, opacity;
+}
+
+.container-who-are-mobile {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    margin: 3vh 4vw 3vh 4vw;
+    border-radius: 6px;
+    width: calc(100% - 8vw);
+    height: calc(100% - 6vh);
+    overflow: hidden;
+    padding: 2vh 2vw 2vh 2vw;
+}
+
+.container-who-are-mobile::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--app-color-white);
+    opacity: 0.75;
+    z-index: -1; 
+    border-radius: 6px; 
+}
+
+.container-text-who-are-mobile{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1vh;
+    flex-direction: column;
+    color: var(--app-color-black);
+    font-family: "Lato", serif;
+    font-weight: 600;
+    font-size: clamp(14px, 1.2vw, 20px);
+}
+
+.container-text-who-are-mobile > b {
+    font-weight: 900;
+    font-size: clamp(16px, 1.3vw, 22px);
+}
+
+.container-slider-home-tablet{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 5vh;
+    margin-top: 6vh;
+    color: var(--app-color-black);
+}
+
+.title-who-are-tablet{
+    font-family: "Lora", serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: clamp(10px, 3.5vw, 24px);
+    will-change: transform, opacity;
+}
+
+.container-swiper-home-tablet{
+    position: relative;
+    width: 100%;
+    will-change: transform, opacity;
+}
