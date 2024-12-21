@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
+import PageWrapper from '@components/PageWrapper';
 
 import HomePage from '@pages/HomePage';
 import AboutPage from '@pages/AboutPage';
@@ -26,10 +27,10 @@ const App = () => {
   return (
     <Routes>
       {/* Layout principale con Topbar */}
-      <Route path="/" element={<Layout showTopbar={true} startPage={startAnimation} />}>
-        <Route index element={<HomePage pageArleadyStart={pageStart} />} />
-        <Route path="home" element={<HomePage pageArleadyStart={pageStart} />} />
-        <Route path="about" element={<AboutPage />} />
+      <Route path="/" element={<Layout showTopbar={true} />}>
+        <Route index element={<PageWrapper startAnimated={startAnimation}> <HomePage pageArleadyStart={pageStart} /> </PageWrapper>} />
+        <Route path="home" element={<PageWrapper startAnimated={startAnimation}> <HomePage pageArleadyStart={pageStart} /> </PageWrapper>} />
+        <Route path="about" element={<PageWrapper startAnimated={startAnimation}> <AboutPage /> </PageWrapper>} />
       </Route>
 
       {/* Layout per pagine non trovate */}

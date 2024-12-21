@@ -8,7 +8,7 @@
   },
   "homepage": "https://Anto287.github.io/sitoPolle",
   "description": "",
-  "main": "index.js",
+  "main": "index.jsx",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack serve --open --mode development --hot",

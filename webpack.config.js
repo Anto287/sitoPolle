@@ -8,7 +8,7 @@ module.exports = (env, argv) => {
   const basename = isProduction ? '/sitoPolle' : '';
 
   return {
-    entry: path.join(__dirname, 'src', 'index.js'),
+    entry: path.join(__dirname, 'src', 'index.jsx'),
     output: {
       path: path.resolve(__dirname, 'build'),
       filename: 'bundle.[contenthash].js',
@@ -61,7 +61,7 @@ module.exports = (env, argv) => {
         '@assets': path.resolve(__dirname, 'src/assets'),
         '@images': path.resolve(__dirname, 'src/assets/images'),
         '@translation': path.resolve(__dirname, 'public/locales'),
-        '@hook': path.resolve(__dirname, 'src/hook'),
+        '@hooks': path.resolve(__dirname, 'src/hooks'),
       },
     },
     plugins: [
