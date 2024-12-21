@@ -45,6 +45,3 @@ npm run build
 ```
 
 I file di output verranno generati nella directory build.
-
-
-Mmmmh forse devo rifare tutto
