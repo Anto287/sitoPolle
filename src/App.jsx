@@ -27,7 +27,7 @@ const App = () => {
   return (
     <Routes>
       {/* Layout principale con Topbar */}
-      <Route path="/" element={<Layout showTopbar={true} />}>
+      <Route path="/" element={<Layout showTopbar={true} startPage={startAnimation} />}>
         <Route index element={<PageWrapper startAnimated={startAnimation}> <HomePage pageArleadyStart={pageStart} /> </PageWrapper>} />
         <Route path="home" element={<PageWrapper startAnimated={startAnimation}> <HomePage pageArleadyStart={pageStart} /> </PageWrapper>} />
         <Route path="about" element={<PageWrapper startAnimated={startAnimation}> <AboutPage /> </PageWrapper>} />
