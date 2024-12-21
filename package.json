@@ -10,13 +10,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack serve --open --mode development --hot",
+    "start": "vite", 
     "format": "prettier --write \"src/**/*.js\"",
     "eslint-fix": "eslint --fix \"src/**/*.js\"",
-    "build": "webpack --mode production",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
   "keywords": [],
   "author": "",
