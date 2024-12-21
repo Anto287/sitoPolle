@@ -34,18 +34,59 @@ const WhoAreHome = () => {
   const breakpoint = UseResponsiveJSX([600, 1200, 2000]);
   const listImg = [img_1, img_2, img_3, img_4, img_5, img_6, img_7, img_8, img_9, img_10, img_11, img_12];
 
+  const titleRef = useRef(null);
+  const swiperRef = useRef(null);
+
+  const animateOnScroll = () => {
+    window.requestAnimationFrame(() => {
+      const viewportHeight = window.innerHeight;
+    
+      if (titleRef.current) {
+        const titleTop = titleRef.current.getBoundingClientRect().top;
+        gsap.to(titleRef.current, {
+          opacity: titleTop < viewportHeight * 0.9 ? 1 : 0,
+          y: titleTop < viewportHeight * 0.9 ? 0 : 100,
+          duration: 1.2,
+          ease: 'power4.out',
+          force3D: true,
+        });
+      }
+    
+      if (swiperRef.current) {
+        const swiperTop = swiperRef.current.getBoundingClientRect().top;
+        gsap.to(swiperRef.current, {
+          opacity: swiperTop < viewportHeight * 0.8 ? 1 : 0,
+          y: swiperTop < viewportHeight * 0.8 ? 0 : 100,
+          duration: 1.2,
+          ease: 'power4.out',
+          force3D: true,
+        });
+      }
+    });
+  };
+
+  useEffect(() => {
+    animateOnScroll();
+
+    return () => {
+      gsap.killTweensOf([swiperRef.current, titleRef.current]);
+    };
+  }, [scrollPosition]);
+
   return (
     <div className='container-who-are'>
         {breakpoint === 0 && (
             <div className='container-slider-home-mobile'>
                 <div
                     className='title-who-are-mobile'
+                    ref={titleRef}
                 >
                     <h1>{t('WHO_ARE')}</h1>
                 </div>
                 
                 <div
                     className='container-swiper-home-mobile'
+                    ref={swiperRef}
                 >
                     <Swiper
                         modules={[Autoplay, EffectFade]}
